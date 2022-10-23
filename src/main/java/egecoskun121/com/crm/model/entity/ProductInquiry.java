@@ -32,6 +32,7 @@ public class ProductInquiry {
     @Column(updatable = false)
     private Timestamp createdDate;
 
+
     @UpdateTimestamp
     private Timestamp lastModifiedDate;
 

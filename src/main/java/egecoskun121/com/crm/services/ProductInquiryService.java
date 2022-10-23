@@ -8,6 +8,7 @@ import egecoskun121.com.crm.model.mapper.ProductMapper;
 import egecoskun121.com.crm.repositories.ProductInquiryRepository;
 import egecoskun121.com.crm.repositories.ProductRepository;
 import lombok.extern.slf4j.Slf4j;
+import java.util.*;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -35,6 +36,10 @@ public class ProductInquiryService {
         productInquiry.setAnswer(productInquiryDTO.getAnswer());
         productInquiry.setMail(productInquiryDTO.getMail());
         return productInquiryRepository.save(productInquiry);
+    }
+
+    public List<ProductInquiry> getAllProductInquiries(){
+        return productInquiryRepository.findAll();
     }
     public void deleteProductInquiryById(Long id){
         productInquiryRepository.delete(productInquiryRepository.findById(id).orElseThrow(NotFoundException::new));
