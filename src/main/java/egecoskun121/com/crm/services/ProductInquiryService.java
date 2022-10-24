@@ -33,7 +33,7 @@ public class ProductInquiryService {
         ProductInquiry productInquiry = productInquiryRepository.findById(productInquiryId).orElseThrow(NotFoundException::new);
         productInquiry.setProductCategory(productInquiryDTO.getProductCategory());
         productInquiry.setDetails(productInquiryDTO.getDetails());
-        productInquiry.setAnswer(productInquiryDTO.getAnswer());
+
         productInquiry.setMail(productInquiryDTO.getMail());
         return productInquiryRepository.save(productInquiry);
     }

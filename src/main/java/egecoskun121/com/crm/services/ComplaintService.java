@@ -7,6 +7,7 @@ import egecoskun121.com.crm.model.mapper.ComplaintMapper;
 import egecoskun121.com.crm.repositories.ComplaintRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import java.util.*;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -25,6 +26,10 @@ public class ComplaintService {
 
     public Complaint getComplaintById(Long id){
         return complaintRepository.findById(id).orElseThrow(NotFoundException::new);
+    }
+
+    public List<Complaint> getAllComplaints(){
+        return complaintRepository.findAll();
     }
 
     public Complaint saveNewComplaint(ComplaintDTO complaintDTO){
@@ -48,6 +53,7 @@ public class ComplaintService {
         long l = 62;
 
     }
+
 
 
 }
