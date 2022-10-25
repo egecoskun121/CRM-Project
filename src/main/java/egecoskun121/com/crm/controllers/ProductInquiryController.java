@@ -1,6 +1,7 @@
 package egecoskun121.com.crm.controllers;
 
 import egecoskun121.com.crm.model.DTO.ProductInquiryDTO;
+import egecoskun121.com.crm.model.entity.Product;
 import egecoskun121.com.crm.model.entity.ProductInquiry;
 import egecoskun121.com.crm.model.mapper.ProductInquiryMapperImpl;
 import egecoskun121.com.crm.services.ProductInquiryService;
@@ -28,8 +29,8 @@ public class ProductInquiryController {
         return mav;
     }
 
-    @RequestMapping(path="/updateInquiry")
-    public RedirectView updateInquiry(@RequestParam Long id,@ModelAttribute ProductInquiryDTO productInquiryDTO){
+    @RequestMapping(path="/updateInquiry/{id}")
+    public RedirectView updateInquiry(@PathVariable("id") Long id,@ModelAttribute ProductInquiryDTO productInquiryDTO){
 
         productInquiryService.updateProductInquiryById(id, productInquiryDTO);
         RedirectView redirectView = new RedirectView();
@@ -38,6 +39,13 @@ public class ProductInquiryController {
         return redirectView;
     }
 
+    @GetMapping("/showUpdateForm")
+    public ModelAndView showUpdateForm(@RequestParam Long id){
+        ModelAndView mav= new ModelAndView("update-inquiry-form");
+        ProductInquiry productInquiry = productInquiryService.getById(id);
+        mav.addObject("productInquiry",productInquiry);
+        return mav;
+    }
 
 
     @RequestMapping(path = "/deleteInquiry")
@@ -49,11 +57,6 @@ public class ProductInquiryController {
 
         return redirectView;
     }
-
-
-
-
-
 
 
 }

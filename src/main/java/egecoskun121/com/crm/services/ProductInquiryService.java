@@ -31,10 +31,11 @@ public class ProductInquiryService {
     }
     public ProductInquiry updateProductInquiryById(Long productInquiryId,ProductInquiryDTO productInquiryDTO){
         ProductInquiry productInquiry = productInquiryRepository.findById(productInquiryId).orElseThrow(NotFoundException::new);
+
         productInquiry.setProductCategory(productInquiryDTO.getProductCategory());
         productInquiry.setDetails(productInquiryDTO.getDetails());
-
         productInquiry.setMail(productInquiryDTO.getMail());
+
         return productInquiryRepository.save(productInquiry);
     }
 
