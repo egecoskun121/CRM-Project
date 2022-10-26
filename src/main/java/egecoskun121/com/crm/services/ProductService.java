@@ -8,6 +8,7 @@ import egecoskun121.com.crm.model.mapper.ProductMapper;
 import egecoskun121.com.crm.repositories.ProductRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import java.util.*;
 
 @Slf4j
 @Service
@@ -27,6 +28,10 @@ public class ProductService {
 
     public Product saveNewProduct(ProductDTO productDTO){
         return productRepository.save(productMapper.toProduct(productDTO));
+    }
+
+    public List<Product> getAllProducts(){
+        return productRepository.findAll();
     }
 
     public Product updateProductById(Long productId,ProductDTO productDTO){

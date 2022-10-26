@@ -1,7 +1,7 @@
 package egecoskun121.com.crm.controllers;
 
 import egecoskun121.com.crm.model.DTO.ProductInquiryDTO;
-import egecoskun121.com.crm.model.entity.Product;
+
 import egecoskun121.com.crm.model.entity.ProductInquiry;
 import egecoskun121.com.crm.model.mapper.ProductInquiryMapperImpl;
 import egecoskun121.com.crm.services.ProductInquiryService;
@@ -15,11 +15,10 @@ import org.springframework.web.servlet.view.RedirectView;
 public class ProductInquiryController {
 
     private final ProductInquiryService productInquiryService;
-    private ProductInquiryMapperImpl productInquiryMapper;
 
-    public ProductInquiryController(ProductInquiryService productInquiryService, ProductInquiryMapperImpl productInquiryMapper) {
+
+    public ProductInquiryController(ProductInquiryService productInquiryService) {
         this.productInquiryService = productInquiryService;
-        this.productInquiryMapper = productInquiryMapper;
     }
 
     @RequestMapping(path = "/showList")

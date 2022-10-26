@@ -19,7 +19,7 @@ public class ProductDTO {
 
     private String imageURL;
 
-    private String productCode;
+    private Long productCode;
 
     @Size(min = 3,max = 100)
     private String productName;
