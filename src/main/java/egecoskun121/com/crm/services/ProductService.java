@@ -5,6 +5,7 @@ import egecoskun121.com.crm.exception.NotFoundException;
 import egecoskun121.com.crm.model.DTO.ProductDTO;
 import egecoskun121.com.crm.model.entity.Product;
 import egecoskun121.com.crm.model.mapper.ProductMapper;
+import egecoskun121.com.crm.model.mapper.ProductMapperImpl;
 import egecoskun121.com.crm.repositories.ProductRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -15,11 +16,11 @@ import java.util.*;
 public class ProductService {
 
     private final ProductRepository productRepository;
-    private final ProductMapper productMapper;
+    private final ProductMapperImpl productMapperImpl;
 
-    public ProductService(ProductRepository productRepository, ProductMapper productMapper) {
+    public ProductService(ProductRepository productRepository, ProductMapperImpl productMapperImpl) {
         this.productRepository = productRepository;
-        this.productMapper = productMapper;
+        this.productMapperImpl = productMapperImpl;
     }
 
     public Product getById(Long productId){
@@ -27,7 +28,7 @@ public class ProductService {
     }
 
     public Product saveNewProduct(ProductDTO productDTO){
-        return productRepository.save(productMapper.toProduct(productDTO));
+        return productRepository.save(productMapperImpl.toProduct(productDTO));
     }
 
     public List<Product> getAllProducts(){

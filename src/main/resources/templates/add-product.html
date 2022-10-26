@@ -205,8 +205,7 @@
         <div class="title">
           <h2>Add Product</h2>
         </div>
-        <form th:action="@{/api/v1/product/saveNewProduct}" th:object="${product}" id="register"
-              class="input-group" method="post">
+        <form th:action="@{/api/v1/product/saveNewProduct}" th:object="${product}" id="register" class="input-group" method="post">
           <input
                   type="number"
                   th:field="*{productCode}"
@@ -236,10 +235,9 @@
             required
           />
           <select th:field="*{productCategory}" class="form-select form-select-lg col-4 mb-4" name="type">
-            <option th:each="typeOpt : ${T(egecoskun121.com.crm.model.entity.ProductCategory).values()}"
-                    th:value="${typeOpt}" th:text="${typeOpt}"></option>
+            <option th:each="productCategoryOpt : ${T(egecoskun121.com.crm.model.entity.ProductCategory).values()}"
+                    th:value="${productCategoryOpt}" th:text="${productCategoryOpt}"></option>
           </select>
-
 
           <input
             type="text"

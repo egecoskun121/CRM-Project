@@ -40,7 +40,7 @@ public class ProductController {
     }
 
     @RequestMapping(path = "/saveNewProduct")
-    public RedirectView saveNewProduct(@ModelAttribute ProductDTO productDTO){
+    public  RedirectView saveNewProduct(@ModelAttribute ProductDTO productDTO){
         productService.saveNewProduct(productDTO);
         RedirectView redirectView = new RedirectView();
         redirectView.setUrl("http://localhost:8093/api/v1/product/showAllProducts");
