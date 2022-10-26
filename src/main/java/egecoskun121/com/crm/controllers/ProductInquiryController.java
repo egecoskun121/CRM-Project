@@ -2,9 +2,7 @@ package egecoskun121.com.crm.controllers;
 
 import egecoskun121.com.crm.model.DTO.ProductDTO;
 import egecoskun121.com.crm.model.DTO.ProductInquiryDTO;
-
 import egecoskun121.com.crm.model.entity.ProductInquiry;
-import egecoskun121.com.crm.model.mapper.ProductInquiryMapperImpl;
 import egecoskun121.com.crm.services.ProductInquiryService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
