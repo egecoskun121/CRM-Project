@@ -2,6 +2,7 @@ package egecoskun121.com.crm.controllers;
 
 import egecoskun121.com.crm.model.DTO.ProductDTO;
 import egecoskun121.com.crm.model.DTO.ProductInquiryDTO;
+import egecoskun121.com.crm.model.entity.Product;
 import egecoskun121.com.crm.model.mapper.ProductMapperImpl;
 import egecoskun121.com.crm.services.ProductService;
 import org.springframework.stereotype.Controller;
@@ -31,7 +32,14 @@ public class ProductController {
     }
 
     @RequestMapping(path = "/addNewProduct")
-    public RedirectView addNewProduct(@ModelAttribute ProductDTO productDTO){
+    public ModelAndView addNewProduct(@ModelAttribute ProductDTO productDTO){
+       ModelAndView mav = new ModelAndView("add-product");
+        Product product = new Product();
+        mav.addObject("product",product);
+        return mav;
+    }
+
+    public  RedirectView saveNewProduct(@ModelAttribute ProductDTO productDTO){
         productService.saveNewProduct(productDTO);
         RedirectView redirectView = new RedirectView();
         redirectView.setUrl("http://localhost:8093/api/v1/product/showAllProducts");

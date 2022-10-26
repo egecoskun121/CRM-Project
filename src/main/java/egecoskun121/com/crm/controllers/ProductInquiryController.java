@@ -1,5 +1,6 @@
 package egecoskun121.com.crm.controllers;
 
+import egecoskun121.com.crm.model.DTO.ProductDTO;
 import egecoskun121.com.crm.model.DTO.ProductInquiryDTO;
 
 import egecoskun121.com.crm.model.entity.ProductInquiry;
@@ -26,6 +27,14 @@ public class ProductInquiryController {
         ModelAndView mav = new ModelAndView("productInquiryList");
         mav.addObject("productInquiry",productInquiryService.getAllProductInquiries());
         return mav;
+    }
+
+    @RequestMapping(path = "/addNewProductInquiry")
+    public RedirectView addNewProductInquiry(@ModelAttribute ProductInquiryDTO productInquiryDTO){
+        productInquiryService.saveNewProductInquiry(productInquiryDTO);
+        RedirectView redirectView = new RedirectView();
+        redirectView.setUrl("http://localhost:8093/api/v1/inquiry/showList");
+        return redirectView;
     }
 
     @RequestMapping(path="/updateInquiry/{id}")

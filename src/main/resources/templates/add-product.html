@@ -205,23 +205,23 @@
         <div class="title">
           <h2>Add Product</h2>
         </div>
-        <form th:action="@{/api/v1/product/saveNewProduct}" th:object="${product}" id="register" class="input-group">
+        <form th:action="@{/api/v1/product/saveNewProduct}" th:object="${product}" id="register" class="input-group" method="post">
           <input
                   type="number"
-                  th:field="{*productCode}"
+                  th:field="*{productCode}"
             class="input-field"
             placeholder=" Product Code"
             required
           />
           <input
             type="text"
-            th:field="{*productName}"
+            th:field="*{productName}"
             class="input-field"
             placeholder=" Product Name"
             required
           />
           <textarea
-                  th:field="{*details}"
+                  th:field="*{details}"
             class="input-field"
             placeholder=" Details"
             required
@@ -229,7 +229,7 @@
           ></textarea>
           <input
             type="number"
-            th:field="{*price}"
+            th:field="*{price}"
             class="input-field"
             placeholder=" Price"
             required
