@@ -193,7 +193,7 @@
     <div class="form-box">
         <form>
             <div class="title">
-                <h2 id="h2-title">Product Inquiry List</h2>
+                <h2 id="h2-title">Product List</h2>
             </div>
             <table class="content-table table table-bordered table-striped " id="productinquiry-table">
                 <thead>
@@ -212,14 +212,14 @@
                 <tr th:each="productList:${productList}">
                     <td><img th:src="@{/images/bg.png}" style="width: 100px; height: 100px"/></td>
                     <td th:text="${productList.id}"/>
-                    <td th:text="${productList.productCategory}"/>
+                    <td th:text="${productList.productCode}"/>
                     <td th:text="${productList.productName}"/>
                     <td th:text="${productList.price}"/>
                     <td th:text="${productList.productCategory}"/>
                     <td th:text="${productList.details}"/>
 
                     <td>
-<!--                        <a th:href="@{/api/v1/inquiry/showUpdateForm(id=${productInquiry.id})}" class="btn btn-info">Update</a>-->
+                        <a th:href="@{/api/v1/product/showUpdateForm(id=${productList.id})}" class="btn btn-info">Update</a>
                         <a th:href="@{/api/v1/product/deleteProduct(id=${productList.id})}" class="btn btn-info">Delete</a>
                     </td>
                 </tr>

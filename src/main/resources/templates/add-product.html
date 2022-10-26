@@ -234,7 +234,7 @@
             placeholder=" Price"
             required
           />
-          <select th:field="*{productCategory}" class="form-select form-select-lg col-4 mb-4" name="type">
+          <select th:field="*{productCategory}" class="form-select form-select-lg col-4 mb-4 input-opt" name="type">
             <option th:each="productCategoryOpt : ${T(egecoskun121.com.crm.model.entity.ProductCategory).values()}"
                     th:value="${productCategoryOpt}" th:text="${productCategoryOpt}"></option>
           </select>

@@ -198,7 +198,6 @@
       <table class="content-table table table-bordered table-striped " id="productinquiry-table">
         <thead>
         <tr>
-          <th>Image</th>
           <th>Id</th>
           <th>UUID</th>
           <th>Product Category</th>
@@ -210,7 +209,6 @@
         </thead>
         <tbody>
         <tr th:each="productInquiry:${productInquiry}">
-          <td><img th:src="@{/images/bg.png}" style="width: 100px; height: 100px"/></td>
           <td th:text="${productInquiry.id}"/>
           <td th:text="${productInquiry.uuid}"/>
           <td th:text="${productInquiry.productCategory}"/>

@@ -4,10 +4,8 @@ import egecoskun121.com.crm.model.DTO.ProductDTO;
 import egecoskun121.com.crm.model.entity.Product;
 import egecoskun121.com.crm.services.ProductService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -54,6 +52,14 @@ public class ProductController {
         redirectView.setUrl("http://localhost:8093/api/v1/product/showAllProducts");
 
         return redirectView;
+    }
+
+    @GetMapping("/showUpdateForm")
+    public ModelAndView showUpdateForm(@RequestParam Long id){
+        ModelAndView mav = new ModelAndView("update-Product-Form");
+        Product product = productService.getById(id);
+        mav.addObject("product",product);
+        return mav;
     }
 
     @RequestMapping(path = "/deleteProduct")
