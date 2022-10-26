@@ -1,9 +1,7 @@
 package egecoskun121.com.crm.controllers;
 
 import egecoskun121.com.crm.model.DTO.ProductDTO;
-import egecoskun121.com.crm.model.DTO.ProductInquiryDTO;
 import egecoskun121.com.crm.model.entity.Product;
-import egecoskun121.com.crm.model.mapper.ProductMapperImpl;
 import egecoskun121.com.crm.services.ProductService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -26,7 +24,7 @@ public class ProductController {
 
     @RequestMapping(path = "/showAllProducts")
     public ModelAndView showProductList(){
-        ModelAndView modelAndView = new ModelAndView("product-list");
+        ModelAndView modelAndView = new ModelAndView("showAllProducts");
         modelAndView.addObject("productList",productService.getAllProducts());
         return modelAndView;
     }
@@ -39,6 +37,7 @@ public class ProductController {
         return mav;
     }
 
+
     @RequestMapping(path = "/saveNewProduct")
     public  RedirectView saveNewProduct(@ModelAttribute ProductDTO productDTO){
         productService.saveNewProduct(productDTO);
@@ -46,7 +45,6 @@ public class ProductController {
         redirectView.setUrl("http://localhost:8093/api/v1/product/showAllProducts");
         return redirectView;
     }
-
 
     @RequestMapping(path="/updateProduct/{id}")
     public RedirectView updateInquiry(@PathVariable("id") Long id, @ModelAttribute ProductDTO productDTO){
