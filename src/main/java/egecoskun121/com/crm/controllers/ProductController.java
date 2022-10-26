@@ -47,6 +47,7 @@ public class ProductController {
         return redirectView;
     }
 
+
     @RequestMapping(path="/updateProduct/{id}")
     public RedirectView updateInquiry(@PathVariable("id") Long id, @ModelAttribute ProductDTO productDTO){
 
