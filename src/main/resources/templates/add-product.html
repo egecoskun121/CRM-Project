@@ -235,8 +235,8 @@
             required
           />
           <select class="form-select form-select-lg col-4 mb-4" name="type">
-            <option th:each="typeOpt : ${T(egecoskun121.com.crm.model.entity.ProductCategory).values()}"
-                    th:value="${typeOpt}" th:text="${typeOpt}"></option>
+            <option th:each="productCategoryOpt : ${T(egecoskun121.com.crm.model.entity.ProductCategory).values()}"
+                    th:value="${productCategoryOpt}" th:text="${productCategoryOpt}"></option>
           </select>
 
           <input
