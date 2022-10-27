@@ -78,9 +78,9 @@ public class ProductController {
     @RequestMapping(path = "/categoryList")
     public ModelAndView showCategoryList(){
         Map<String,Integer> map = new LinkedHashMap<>();
-        int i=0;
+        int categoryCounter=0;
         for (ProductCategory  a: ProductCategory.values()) {
-            map.put(a.toString(),productService.getProductCategoryCounts(i++));
+            map.put(a.toString(),productService.getProductCategoryCounts(categoryCounter));
         }
 
         ModelAndView mav = new ModelAndView("product-category-list");
