@@ -50,6 +50,10 @@ public class ProductService {
         productRepository.delete(productRepository.findById(productId).orElseThrow(NotFoundException::new));
     }
 
+    public Integer getProductCategoryCounts(int categoryNumber){
+     return productRepository.findByProductCategory(categoryNumber);
+    }
+
 
 
 }

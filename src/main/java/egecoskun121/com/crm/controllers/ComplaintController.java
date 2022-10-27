@@ -40,8 +40,6 @@ public class ComplaintController {
         return redirectView;
     }
 
-
-
     @RequestMapping(path = "/deleteComplaint")
     public RedirectView deleteComplaint(@RequestParam Long id){
 

@@ -1810,3 +1810,9 @@ insert into product (id, created_date, details, imageurl, last_modified_date, pr
 2022-10-26 17:51:12 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLDataException: Value too long for column "PRICE NUMERIC(19, 2)": "21431231231231234123123.00 (25)"; SQL statement:
 insert into product (id, created_date, details, imageurl, last_modified_date, price, product_category, product_code, product_name) values (default, ?, ?, ?, ?, ?, ?, ?, ?) [22001-214]
+2022-10-27 11:55:34 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select new map[*](count(product_category) , product_category) from PRODUCT"; SQL statement:
+select new map(count(product_category) , product_category) from PRODUCT [42000-214]
+2022-10-27 11:56:03 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select new map[*](count(PRODUCT_CATEGORY),PRODUCT_CATEGORY) from PRODUCT"; SQL statement:
+select new map(count(PRODUCT_CATEGORY),PRODUCT_CATEGORY) from PRODUCT [42000-214]

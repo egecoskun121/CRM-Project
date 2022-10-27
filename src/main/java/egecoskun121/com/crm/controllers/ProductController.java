@@ -2,12 +2,15 @@ package egecoskun121.com.crm.controllers;
 
 import egecoskun121.com.crm.model.DTO.ProductDTO;
 import egecoskun121.com.crm.model.entity.Product;
+import egecoskun121.com.crm.model.entity.ProductCategory;
 import egecoskun121.com.crm.services.ProductService;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
+import java.util.*;
+
+
 
 @Controller
 @RequestMapping("/api/v1/product")
@@ -45,7 +48,7 @@ public class ProductController {
     }
 
     @RequestMapping(path="/updateProduct/{id}")
-    public RedirectView updateInquiry(@PathVariable("id") Long id, @ModelAttribute ProductDTO productDTO){
+    public RedirectView updateProduct(@PathVariable("id") Long id, @ModelAttribute ProductDTO productDTO){
 
         productService.updateProductById(id, productDTO);
         RedirectView redirectView = new RedirectView();
@@ -63,7 +66,7 @@ public class ProductController {
     }
 
     @RequestMapping(path = "/deleteProduct")
-    public RedirectView deleteProductInquiry(@RequestParam Long id){
+    public RedirectView deleteProduct(@RequestParam Long id){
 
         productService.deleteProductById(id);
         RedirectView redirectView = new RedirectView();
@@ -71,4 +74,20 @@ public class ProductController {
 
         return redirectView;
     }
+
+    @RequestMapping(path = "/categoryList")
+    public ModelAndView showCategoryList(){
+        Map<String,Integer> map = new LinkedHashMap<>();
+        int i=0;
+        for (ProductCategory  a: ProductCategory.values()) {
+            map.put(a.toString(),productService.getProductCategoryCounts(i++));
+        }
+
+        ModelAndView mav = new ModelAndView("product-category-list");
+        mav.addObject("categoryCountList",map);
+
+        return mav;
+    }
+
+
 }
