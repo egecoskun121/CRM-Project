@@ -80,7 +80,7 @@ public class ProductController {
         Map<String,Integer> map = new LinkedHashMap<>();
         int categoryCounter=0;
         for (ProductCategory  a: ProductCategory.values()) {
-            map.put(a.toString(),productService.getProductCategoryCounts(categoryCounter));
+            map.put(a.toString(),productService.getProductCategoryCounts(categoryCounter++));
         }
 
         ModelAndView mav = new ModelAndView("product-category-list");
