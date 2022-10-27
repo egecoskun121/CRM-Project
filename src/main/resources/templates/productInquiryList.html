@@ -173,12 +173,12 @@
     <img src="../../../../../htmld/navbarWithTable/logo-yeni-2.png" alt="logo" />
     <nav>
       <ul class="nav__links">
-        <li><a href="#">Product Category List</a></li>
-        <li><a href="#">Product Details List</a></li>
-        <li><a href="#">Product Inquiry</a></li>
-        <li><a href="#">Raise Complaint</a></li>
+        <li><a th:href="@{/api/v1/product/categoryList}">Product Category List</a></li>
+        <li><a th:href="@{/api/v1/product/showAllProducts}">Product Details List</a></li>
+        <li><a href="@{/api/v1/inquiry/}">Product Inquiry</a></li>
+        <li><a href="">Raise Complaint</a></li>
         <li><a href="#">Complaint List</a></li>
-        <li><a href="#">Product Inquiry List</a></li>
+        <li><a th:href="@{/api/v1/inquiry/showList}">Product Inquiry List</a></li>
       </ul>
     </nav>
     <select class="input-opt">
