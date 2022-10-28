@@ -44,10 +44,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     protected void configure(HttpSecurity httpSecurity)throws Exception{
         httpSecurity.authorizeRequests()
-                .antMatchers("/ogin").hasAnyAuthority()
+                .antMatchers("/login").hasAnyAuthority()
                 .antMatchers("/api/v1/product/showList").hasAnyAuthority("ROLE_USER")
+                .antMatchers("/api/v1/product/showAllProducts").hasAnyAuthority("ROLE_ADMIN","ROLE_USER")
                 .antMatchers("/h2/**").permitAll()
-                .antMatchers("api/v1/product/**").hasAuthority("ROLE_USER")
+              //  .antMatchers("api/v1/product/**").hasAuthority("ROLE_USER")
                         .and()
                                 .formLogin(form -> form.defaultSuccessUrl("/api/v1/product/showAllProducts")
                                         .loginPage("/login")
