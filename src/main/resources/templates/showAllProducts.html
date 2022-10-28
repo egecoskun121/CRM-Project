@@ -173,9 +173,10 @@
     <header>
         <img src="../../../../../htmld/navbarWithTable/logo-yeni-2.png" alt="logo" />
         <nav>
+
             <ul class="nav__links">
-                <li><a th:href="@{/api/v1/product/categoryList}">Product Category List</a></li>
-                <li><a th:href="@{/api/v1/product/showAllProducts}">Product Details List</a></li>
+                <li><a  th:href="@{/api/v1/product/categoryList}">Product Category List</a></li>
+                <li><a th:href="@{/api/v1/product/showAllProducts(id=${#request.userPrincipal})}">Product Details List</a></li>
                 <li><a href="@{/api/v1/inquiry/}">Product Inquiry</a></li>
                 <li><a href="">Raise Complaint</a></li>
                 <li><a href="#">Complaint List</a></li>
@@ -206,7 +207,9 @@
                     <th>Price</th>
                     <th>Category</th>
                     <th>Details</th>
+                    <div sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
                     <th>Action</th>
+                    </div>
                 </tr>
                 </thead>
                 <tbody>
@@ -219,12 +222,14 @@
                     <td th:text="${productList.productCategory}"/>
                     <td th:text="${productList.details}"/>
 
+                    <div sec:authorize="hasAnyAuthority('ROLE_ADMIN')" >
                     <td>
-                        <div sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+
                         <a th:href="@{/api/v1/product/showUpdateForm(id=${productList.id})}" class="btn btn-info">Update</a>
                         <a th:href="@{/api/v1/product/deleteProduct(id=${productList.id})}" class="btn btn-info">Delete</a>
-                        </div>
+
                     </td>
+                     </div>
                 </tr>
 
                 </tbody>
