@@ -24,6 +24,10 @@ public class MyUserDetails implements UserDetails {
         return Collections.singleton(authority);
     }
 
+    public Long getId(){
+        return user.getId();
+    }
+
     @Override
     public String getPassword() {
         return user.getPassword();
@@ -33,6 +37,8 @@ public class MyUserDetails implements UserDetails {
     public String getUsername() {
         return user.getUserName();
     }
+
+
 
     @Override
     public boolean isAccountNonExpired() {

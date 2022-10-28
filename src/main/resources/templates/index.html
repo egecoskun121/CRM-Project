@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -121,15 +122,17 @@
         <div class="title">
           <h2>CRM System</h2>
         </div>
-        <form id="login" class="input-group">
+        <form id="login" class="input-group" method="post" th:action="@{/login}">
           <input
-            type="email"
+            type="text"
+            name="username"
             class="input-field"
-            placeholder="Enter Mail"
+            placeholder="Enter Username"
             required
           />
           <input
             type="password"
+            name="password"
             class="input-field"
             placeholder="Enter Password"
             required
@@ -137,33 +140,34 @@
           <input type="checkbox" class="check-box" /><span
             >Remember Password</span
           >
+
           <button   type="submit" class="submit-btn">Log in</button>
         </form>
-        <form th:action="@{/api/v1/user/saveUser}" th:object="${user}" method="post" id="register" class="input-group">
+        <form  method="post" id="register" class="input-group">
           <input
             type="text"
-            th:field="*{userName}"
+
             class="input-field"
             placeholder="User Name"
             required
           />
           <input
             type="email"
-            th:field="*{email}"
+
             class="input-field"
             placeholder="Email"
             required
           />
           <input
             type="password"
-            th:field="*{password}"
+
             class="input-field"
             placeholder="Password"
             required
           />
           <input
             type="tel"
-            th:field="*{phoneNumber}"
+
             class="input-field"
             placeholder="Phone Number"
             required
@@ -171,7 +175,7 @@
           <input type="checkbox" class="check-box" /><span
             >I agree to the terms & conditions</span
           >
-          <button th:href="@{/api/v1/user/getAllUsers}" type="submit" class="submit-btn">Register</button>
+          <button  type="submit" class="submit-btn">Register</button>
         </form>
       </div>
     </div>
