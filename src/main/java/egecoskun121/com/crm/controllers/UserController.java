@@ -11,7 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
-@RequestMapping("/api/v1/user")
+@RequestMapping("")
 public class UserController {
 
     private final UserService userService;
@@ -23,8 +23,6 @@ public class UserController {
     @GetMapping("/login")
     public ModelAndView getLoginPage(){
         ModelAndView mav = new ModelAndView("index");
-        User user = new User();
-        mav.addObject("user",user);
         return mav;
     }
 

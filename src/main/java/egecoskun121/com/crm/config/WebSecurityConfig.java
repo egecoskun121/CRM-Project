@@ -44,14 +44,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     protected void configure(HttpSecurity httpSecurity)throws Exception{
         httpSecurity.authorizeRequests()
-                .antMatchers("/api/v1/user/login").hasAnyAuthority("ROLE_CLIENT","ROLE_ADMIN")
-                .antMatchers("/api/v1/product/showList").hasAnyAuthority("ROLE_ADMIN","ROLE_CLIENT")
+                .antMatchers("/ogin").hasAnyAuthority()
+                .antMatchers("/api/v1/product/showList").hasAnyAuthority("ROLE_USER")
                 .antMatchers("/h2/**").permitAll()
-                .anyRequest().authenticated()
-                .and().formLogin().permitAll()
-                .and()
-                .logout().permitAll()
-                .and().exceptionHandling().accessDeniedPage("/403");
+                .antMatchers("api/v1/product/**").hasAuthority("ROLE_USER")
+                        .and()
+                                .formLogin(form -> form.defaultSuccessUrl("/api/v1/product/showAllProducts")
+                                        .loginPage("/login")
+                                       );
+
 
         httpSecurity.csrf().disable();
         httpSecurity.headers().frameOptions().disable();
