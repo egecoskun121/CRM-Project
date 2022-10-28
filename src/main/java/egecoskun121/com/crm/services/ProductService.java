@@ -35,6 +35,11 @@ public class ProductService {
         return productRepository.findAll();
     }
 
+    public List<Product> getAllProductsById(Long id){
+        List<Product> list =  productRepository.findAllProductsById(id);;
+        return list;
+    }
+
     public Product updateProductById(Long productId,ProductDTO productDTO){
         Product product = productRepository.findById(productId).orElseThrow(NotFoundException::new);
         product.setProductName(productDTO.getProductName());
