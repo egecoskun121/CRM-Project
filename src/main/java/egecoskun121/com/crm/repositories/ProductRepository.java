@@ -8,4 +8,6 @@ import org.springframework.data.repository.query.Param;
 public interface ProductRepository extends JpaRepository<Product,Long> {
     @Query(value = "SELECT COUNT(PRODUCT_CATEGORY) FROM PRODUCT WHERE PRODUCT_CATEGORY = :categoryNumber", nativeQuery = true)
     Integer findByProductCategory(@Param("categoryNumber") int categoryNumber );
+
+
 }

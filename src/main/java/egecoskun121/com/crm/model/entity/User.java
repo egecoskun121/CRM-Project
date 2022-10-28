@@ -47,8 +47,8 @@ public class User {
     @NotNull
     private String password;
 
-    @Transient
-    @OneToMany(fetch = FetchType.LAZY,mappedBy = "product",cascade = CascadeType.ALL,orphanRemoval = true)
+
+    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Product> products;
 
     @Transient

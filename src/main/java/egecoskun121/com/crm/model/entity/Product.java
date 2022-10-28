@@ -3,6 +3,7 @@ package egecoskun121.com.crm.model.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -14,8 +15,8 @@ import java.sql.Timestamp;
 @Entity
 @Data
 @Table(name = "product")
-@NoArgsConstructor
 @AllArgsConstructor
+@RequiredArgsConstructor
 public class Product {
 
     @Id
