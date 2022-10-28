@@ -12,12 +12,44 @@ import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
+
+@SqlResultSetMapping(name="Product.productResult", classes = {
+        @ConstructorResult(targetClass = Product.class,
+                columns = {@ColumnResult(name="ID",type = Long.class), @ColumnResult(name="CREATED_DATE",type = String.class) ,@ColumnResult(name = "LAST_MODIFIED_DATE",type = String.class),@ColumnResult(name = "IMAGEURL"),
+                        @ColumnResult(name = "PRODUCT_CODE",type = Long.class), @ColumnResult(name = "PRODUCT_NAME")
+                        ,@ColumnResult(name = "DETAILS"),@ColumnResult(name = "PRICE",type = BigDecimal.class),@ColumnResult(name = "PRODUCT_CATEGORY")})
+})
+@NamedNativeQuery(
+        name = "Product.productResult",
+        resultClass = Product.class,
+        query = "SELECT p.ID,p.CREATED_DATE,p.LAST_MODIFIED_DATE,p.IMAGEURL,p.PRODUCT_CODE,p.PRODUCT_NAME, p.DETAILS, p.PRICE, p.PRODUCT_CATEGORY FROM PRODUCT AS p INNER JOIN USERS_PRODUCTS AS u ON u.PRODUCTS_ID = p.ID WHERE u.USER_ID = :id" ,
+        resultSetMapping = "Product.productResult")
 @Entity
 @Data
 @Table(name = "product")
-@AllArgsConstructor
-@RequiredArgsConstructor
+@NoArgsConstructor
 public class Product {
+
+    public Product(Long id,String createdDate,String lastModifiedDate,String imageURL,Long productCode,String productName,String details,BigDecimal price,Integer productCategory){
+        this.id=id;
+        this.createdDate=Timestamp.valueOf(createdDate);
+        this.lastModifiedDate=Timestamp.valueOf(lastModifiedDate);
+        this.imageURL=imageURL;
+        this.productCode=productCode;
+        this.productName=productName;
+        this.details=details;
+        this.price=price;
+       int i=0;
+        for (ProductCategory productCategory1: ProductCategory.values()) {
+            if(productCategory==i){
+                this.productCategory=productCategory1;
+            }
+            i++;
+        }
+    }
+
+
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

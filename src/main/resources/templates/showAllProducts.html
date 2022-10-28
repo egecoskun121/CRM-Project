@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -219,8 +220,10 @@
                     <td th:text="${productList.details}"/>
 
                     <td>
+                        <div sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
                         <a th:href="@{/api/v1/product/showUpdateForm(id=${productList.id})}" class="btn btn-info">Update</a>
                         <a th:href="@{/api/v1/product/deleteProduct(id=${productList.id})}" class="btn btn-info">Delete</a>
+                        </div>
                     </td>
                 </tr>
 

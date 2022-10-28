@@ -55,8 +55,6 @@ public class User {
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "product",cascade = CascadeType.ALL,orphanRemoval = true)
     private List<ProductInquiry> productInquiries;
 
-
-    @ElementCollection(fetch = FetchType.EAGER)
-    private List<Role> roles;
+    private Role role;
 
 }

@@ -23,10 +23,19 @@ public class ProductController {
 
     }
 
-    @RequestMapping(path = "/showAllProducts")
+  /*  @RequestMapping(path = "/showAllProducts")
     public ModelAndView showProductList(){
         ModelAndView modelAndView = new ModelAndView("showAllProducts");
         modelAndView.addObject("productList",productService.getAllProducts());
+        return modelAndView;
+    }
+
+   */
+
+    @RequestMapping(path = "/showAllProducts")
+    public ModelAndView showProductListById(@RequestParam Long id){
+        ModelAndView modelAndView = new ModelAndView("showAllProducts");
+        modelAndView.addObject("productList",productService.getAllProductsById(id));
         return modelAndView;
     }
 
@@ -35,8 +44,11 @@ public class ProductController {
        ModelAndView mav = new ModelAndView("add-product");
         Product product = new Product();
         mav.addObject("product",product);
+      final int i = 10;
+
         return mav;
     }
+
 
 
     @RequestMapping(path = "/saveNewProduct")
