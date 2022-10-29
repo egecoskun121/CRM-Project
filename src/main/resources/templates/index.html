@@ -22,7 +22,11 @@
         position: absolute;
       }
       .submit-btn-2{
-        width: 238px;
+        width: 178px;
+        text-align: center;
+        text-decoration: none;
+        font-family: sans-serif;
+        font-size: 13.3px;
         padding: 10px 30px;
         cursor: pointer;
         display: block;
@@ -116,6 +120,9 @@
         margin: auto;
         color: #777;
       }
+      a:visited{
+        color: black;
+      }
     </style>
   </head>
   <body>
@@ -141,7 +148,7 @@
           />
           <button   type="submit" class="submit-btn">Log in</button>
         </form>
-        <a  th:href="@{/saveUser}"  class="submit-btn-2">Register</a>
+        <a  th:href="@{/saveUser}" class="submit-btn-2">Register</a>
       </div>
     </div>
   </body>
