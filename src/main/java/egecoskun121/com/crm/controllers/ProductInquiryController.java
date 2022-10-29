@@ -27,6 +27,13 @@ public class ProductInquiryController {
         return mav;
     }
 
+    @RequestMapping(path = "/showAllProductInquiriesByName")
+    public ModelAndView showAllProductsInquiriesByUsername(@RequestParam String username) {
+        ModelAndView modelAndView = new ModelAndView("showAllProductsInquiriesByUsername");
+        modelAndView.addObject("productInquiry", productInquiryService.getAllProductInquiriesByUsername(username));
+        return modelAndView;
+    }
+
     @RequestMapping(path = "/addNewProductInquiry")
     public RedirectView addNewProductInquiry(@ModelAttribute ProductInquiryDTO productInquiryDTO){
         productInquiryService.saveNewProductInquiry(productInquiryDTO);

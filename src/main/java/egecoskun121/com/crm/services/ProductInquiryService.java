@@ -2,6 +2,7 @@ package egecoskun121.com.crm.services;
 
 import egecoskun121.com.crm.exception.NotFoundException;
 import egecoskun121.com.crm.model.DTO.ProductInquiryDTO;
+import egecoskun121.com.crm.model.entity.Product;
 import egecoskun121.com.crm.model.entity.ProductInquiry;
 import egecoskun121.com.crm.model.mapper.ProductInquiryMapper;
 import egecoskun121.com.crm.model.mapper.ProductMapper;
@@ -37,6 +38,11 @@ public class ProductInquiryService {
         productInquiry.setMail(productInquiryDTO.getMail());
 
         return productInquiryRepository.save(productInquiry);
+    }
+
+    public List<ProductInquiry> getAllProductInquiriesByUsername(String username){
+        List<ProductInquiry> list =  productInquiryRepository.findAllProductsInquiriesByName(username);;
+        return list;
     }
 
     public List<ProductInquiry> getAllProductInquiries(){
