@@ -51,8 +51,8 @@ public class User {
     @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Product> products;
 
-    @Transient
-    @OneToMany(fetch = FetchType.LAZY,mappedBy = "product",cascade = CascadeType.ALL,orphanRemoval = true)
+
+    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,orphanRemoval = true)
     private List<ProductInquiry> productInquiries;
 
     private Role role;
