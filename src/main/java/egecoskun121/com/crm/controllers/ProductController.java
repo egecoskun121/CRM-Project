@@ -100,5 +100,16 @@ public class ProductController {
         return mav;
     }
 
+    @RequestMapping(path ="/categoryListByUsername")
+    public ModelAndView showCategoryListByUsername(@RequestParam String username){
+        Map<String, Integer> map = new LinkedHashMap<>();
+        int categoryCounter=0;
+        for (ProductCategory  a: ProductCategory.values()) {
+            map.put(a.toString(),productService.getProductCategoryCountsByUsername(categoryCounter++,username));
+        }
+        ModelAndView mav =new ModelAndView("productCategoryListByUsername");
+        mav.addObject("categoryCountList",map);
 
+        return mav;
+    }
 }
