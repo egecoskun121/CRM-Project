@@ -28,11 +28,19 @@ public class UserController {
 
 
     @RequestMapping("/saveUser")
-    public RedirectView saveUser(@ModelAttribute UserDTO userDTO){
+    public ModelAndView saveUser(){
+       ModelAndView mav = new ModelAndView("register");
+       User user = new User();
+       mav.addObject("user",user);
+        return mav;
+    }
+
+    @RequestMapping("addUser")
+    public RedirectView addUser(@ModelAttribute UserDTO userDTO){
         userService.createUser(userDTO);
         RedirectView redirectView = new RedirectView();
-        redirectView.setUrl("http://localhost:8093/api/v1/user/main");
-        return redirectView;
+        redirectView.setUrl("http://localhost:8093/");
+        return  redirectView;
     }
 
     @GetMapping("/getAllUsers")
