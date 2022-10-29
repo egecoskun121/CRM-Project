@@ -12,6 +12,17 @@
       padding: 0;
       font-family: sans-serif;
     }
+    .submit-btn-2{
+      width: 238px;
+      padding: 10px 30px;
+      cursor: pointer;
+      display: block;
+      margin: 225px 85px 5px auto;
+      background: linear-gradient(to right, #ff105f, #ffad06);
+      border: 0;
+      outline: none;
+      border-radius: 30px;
+    }
     .hero {
       height: 100%;
       width: 100%;
@@ -110,37 +121,37 @@
     <div class="title">
       <h2>CRM System</h2>
     </div>
-    <form  method="post" id="register" class="input-group">
+    <form th:action="@{/addUser}" th:object="${user}" method="post" id="register" class="input-group">
       <input
               type="text"
-
+              th:field="*{userName}"
               class="input-field"
               placeholder="User Name"
               required
       />
       <input
               type="email"
-
+              th:field="*{email}"
               class="input-field"
               placeholder="Email"
               required
       />
       <input
               type="password"
-
+              th:field="*{password}"
               class="input-field"
               placeholder="Password"
               required
       />
       <input
               type="tel"
-
+              th:field="*{phoneNumber}"
               class="input-field"
               placeholder="Phone Number"
               required
       />
-      <button  type="submit" class="submit-btn">Register</button>
-      <button  type="submit" class="submit-btn">Back</button>
+      <button th:href="@{/login}" type="submit" class="submit-btn">Register</button>
+      <button th:href="@{/login}" type="submit" class="submit-btn">Back</button>
     </form>
   </div>
 </div>
