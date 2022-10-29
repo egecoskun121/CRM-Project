@@ -33,9 +33,9 @@ public class ProductController {
 
 
     @RequestMapping(path = "/showAllProductsById")
-    public ModelAndView showProductListById(@RequestParam Long id){
+    public ModelAndView showProductListById(@RequestParam String userName){
         ModelAndView modelAndView = new ModelAndView("showAllProducts");
-        modelAndView.addObject("productList",productService.getAllProductsById(id));
+        modelAndView.addObject("productList",productService.getAllProductsById(userName));
         return modelAndView;
     }
 
@@ -44,7 +44,6 @@ public class ProductController {
        ModelAndView mav = new ModelAndView("add-product");
         Product product = new Product();
         mav.addObject("product",product);
-      final int i = 10;
 
         return mav;
     }

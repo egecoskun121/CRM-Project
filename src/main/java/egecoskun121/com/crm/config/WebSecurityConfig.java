@@ -2,7 +2,6 @@ package egecoskun121.com.crm.config;
 
 
 import egecoskun121.com.crm.security.UserDetailsServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -47,6 +46,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/login").hasAnyAuthority()
                 .antMatchers("/api/v1/product/showList").hasAnyAuthority("ROLE_USER")
                 .antMatchers("/api/v1/product/showAllProducts").hasAnyAuthority("ROLE_ADMIN","ROLE_USER")
+                .antMatchers("/api/v1/product/showAllProductsById").hasAuthority("ROLE_ADMIN")
                 .antMatchers("/h2/**").permitAll()
               //  .antMatchers("api/v1/product/**").hasAuthority("ROLE_USER")
                         .and()

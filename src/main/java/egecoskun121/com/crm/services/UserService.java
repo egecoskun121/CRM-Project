@@ -2,6 +2,7 @@ package egecoskun121.com.crm.services;
 import java.util.*;
 
 import egecoskun121.com.crm.model.DTO.UserDTO;
+import egecoskun121.com.crm.model.entity.Role;
 import egecoskun121.com.crm.model.entity.User;
 import egecoskun121.com.crm.model.mapper.UserMapperImpl;
 import egecoskun121.com.crm.repositories.UserRepository;
@@ -26,13 +27,10 @@ public class UserService {
 
     public User createUser(UserDTO userDTO){
         User user = userMapperImpl.toUser(userDTO);
+        user.setRole(Role.ROLE_USER);
         return userRepository.save(user);
     }
 
-    public void updateUser(UserDTO userDTO,Long id){
-        //todo
-
-    }
 
     public void deleteUserById(Long id){
         userRepository.deleteById(id );

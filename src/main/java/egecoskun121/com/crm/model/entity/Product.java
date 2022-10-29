@@ -22,7 +22,12 @@ import java.sql.Timestamp;
 @NamedNativeQuery(
         name = "Product.productResult",
         resultClass = Product.class,
-        query = "SELECT p.ID,p.CREATED_DATE,p.LAST_MODIFIED_DATE,p.IMAGEURL,p.PRODUCT_CODE,p.PRODUCT_NAME, p.DETAILS, p.PRICE, p.PRODUCT_CATEGORY FROM PRODUCT AS p INNER JOIN USERS_PRODUCTS AS u ON u.PRODUCTS_ID = p.ID WHERE u.USER_ID = :id" ,
+        query = "SELECT p.ID,p.CREATED_DATE,p.LAST_MODIFIED_DATE,p.IMAGEURL,p.PRODUCT_CODE,p.PRODUCT_NAME, p.DETAILS, p.PRICE, p.PRODUCT_CATEGORY  " +
+                "FROM PRODUCT AS p " +
+                "INNER JOIN  USERS_PRODUCTS AS u " +
+                "ON u.PRODUCTS_ID = p.ID " +
+                "WHERE u.USER_ID=" +
+                "{SELECT ID FROM USERS WHERE USER_NAME=':username'}" ,
         resultSetMapping = "Product.productResult")
 @Entity
 @Data
