@@ -32,9 +32,9 @@ public class ProductController {
 
 
 
-    @RequestMapping(path = "/showAllProductsById")
+    @RequestMapping(path = "/showAllProductsByUsername")
     public ModelAndView showProductListById(@RequestParam String userName){
-        ModelAndView modelAndView = new ModelAndView("showAllProducts");
+        ModelAndView modelAndView = new ModelAndView("showAllProductsByUsername");
         modelAndView.addObject("productList",productService.getAllProductsById(userName));
         return modelAndView;
     }
