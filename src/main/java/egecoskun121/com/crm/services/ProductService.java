@@ -59,6 +59,8 @@ public class ProductService {
      return productRepository.findByProductCategory(categoryNumber);
     }
 
-
+    public Integer getProductCategoryCountsByUsername(int categoryNumber,String username){
+        return productRepository.findProductCategoryByUsername(categoryNumber,username);
+    }
 
 }

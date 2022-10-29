@@ -14,7 +14,8 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
     Integer findByProductCategory(@Param("categoryNumber") int categoryNumber );
 
 
-
+    @Query(value = "SELECT COUNT(PRODUCT_CATEGORY) FROM (SELECT p.PRODUCT_CATEGORY FROM PRODUCT AS p INNER JOIN  USERS_PRODUCTS AS u ON u.PRODUCTS_ID = p.ID WHERE u.USER_ID= {SELECT ID FROM USERS WHERE USER_NAME= (:username)}) WHERE PRODUCT_CATEGORY = :categoryNumber",nativeQuery = true)
+    Integer findProductCategoryByUsername(@Param("categoryNumber")int categoryNumber,@Param("username")String username);
 
     @Query(nativeQuery = true,name="Product.productResult")
     List<Product> findAllProductsByName(@Param("username")String name);
