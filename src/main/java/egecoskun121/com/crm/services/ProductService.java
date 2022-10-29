@@ -35,8 +35,8 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public List<Product> getAllProductsById(String userName){
-        List<Product> list =  productRepository.findAllProductsByName(userName);;
+    public List<Product> getAllProductsByUsername(String username){
+        List<Product> list =  productRepository.findAllProductsByName(username);;
         return list;
     }
 
