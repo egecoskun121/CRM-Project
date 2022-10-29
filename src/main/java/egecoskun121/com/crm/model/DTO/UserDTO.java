@@ -21,4 +21,5 @@ public class UserDTO {
     private String email;
     @Size(min = 5, message = "Minimum password length: 5 characters")
     private String password;
+
 }
