@@ -21,6 +21,17 @@
         background-size: cover;
         position: absolute;
       }
+      .submit-btn-2{
+        width: 238px;
+        padding: 10px 30px;
+        cursor: pointer;
+        display: block;
+        margin: 105px 75px 5px auto;
+        background: linear-gradient(to right, #ff105f, #ffad06);
+        border: 0;
+        outline: none;
+        border-radius: 30px;
+      }
       .form-box {
         width: 380px;
         height: 480px;
@@ -129,8 +140,8 @@
             required
           />
           <button   type="submit" class="submit-btn">Log in</button>
-          <button   type="submit" class="submit-btn">Register</button>
         </form>
+        <button  th:href="@{/saveUser}" type="submit" class="submit-btn-2">Register</button>
       </div>
     </div>
   </body>

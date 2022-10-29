@@ -17,7 +17,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
-
     @Bean
     public UserDetailsService userDetailsService(){
         return new UserDetailsServiceImpl();
@@ -43,7 +42,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     protected void configure(HttpSecurity httpSecurity)throws Exception{
         httpSecurity.authorizeRequests()
-                .antMatchers("/login").hasAnyAuthority()
+                .antMatchers("/login").permitAll()
+                .antMatchers("/addUser").permitAll()
+                .antMatchers("/saveUser").permitAll()
+                .antMatchers("/register").permitAll()
                 .antMatchers("/api/v1/product/showList").hasAnyAuthority("ROLE_USER")
                 .antMatchers("/api/v1/product/showAllProducts").hasAnyAuthority("ROLE_ADMIN","ROLE_USER")
                 .antMatchers("/api/v1/product/showAllProductsById").hasAuthority("ROLE_ADMIN")
