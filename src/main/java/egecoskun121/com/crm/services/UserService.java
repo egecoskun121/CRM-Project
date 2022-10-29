@@ -6,6 +6,7 @@ import egecoskun121.com.crm.model.entity.Role;
 import egecoskun121.com.crm.model.entity.User;
 import egecoskun121.com.crm.model.mapper.UserMapperImpl;
 import egecoskun121.com.crm.repositories.UserRepository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,11 +15,13 @@ public class UserService {
     private final UserRepository userRepository;
     private final UserMapperImpl userMapperImpl;
 
-    public UserService(UserRepository userRepository, UserMapperImpl userMapperImpl) {
+    private final BCryptPasswordEncoder passwordEncoder;
+
+    public UserService(UserRepository userRepository, UserMapperImpl userMapperImpl, BCryptPasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.userMapperImpl = userMapperImpl;
+        this.passwordEncoder = passwordEncoder;
     }
-
 
     public List<User> getAllUsers(){
         List<User> all = userRepository.findAll();
@@ -28,6 +31,7 @@ public class UserService {
     public User createUser(UserDTO userDTO){
         User user = userMapperImpl.toUser(userDTO);
         user.setRole(Role.ROLE_USER);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
 
