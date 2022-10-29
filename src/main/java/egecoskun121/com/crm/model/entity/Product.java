@@ -39,7 +39,7 @@ public class Product {
         this.productName=productName;
         this.details=details;
         this.price=price;
-       int i=0;
+        int i=0;
         for (ProductCategory productCategory1: ProductCategory.values()) {
             if(productCategory==i){
                 this.productCategory=productCategory1;
