@@ -3,6 +3,7 @@ package egecoskun121.com.crm.controllers;
 import egecoskun121.com.crm.model.DTO.UserDTO;
 import egecoskun121.com.crm.model.entity.User;
 import egecoskun121.com.crm.services.UserService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -59,6 +60,18 @@ public class UserController {
        mav.addObject("users",userService.getAllUsers());
         return mav;
     }
+
+
+
+    @RequestMapping("/changePassword")
+    public ModelAndView changePassword(@RequestParam String username){
+        ModelAndView mav = new ModelAndView("change-password");
+        User user = userService.getUserByUsername(username);
+        mav.addObject("user",user);
+        return mav;
+    }
+
+
 
 
 

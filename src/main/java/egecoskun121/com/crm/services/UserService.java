@@ -39,6 +39,13 @@ public class UserService {
         return userRepository.save(user);
     }
 
+    public User changePassword(String username,String password){
+        User user = userRepository.getUserByUserName(username);
+        user.setPassword(passwordEncoder.encode(password));
+
+        return userRepository.save(user);
+    }
+
 
     public void deleteUserById(Long id){
         userRepository.deleteById(id );
