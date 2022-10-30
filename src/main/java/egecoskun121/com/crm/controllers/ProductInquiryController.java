@@ -2,23 +2,28 @@ package egecoskun121.com.crm.controllers;
 
 import egecoskun121.com.crm.model.DTO.ProductDTO;
 import egecoskun121.com.crm.model.DTO.ProductInquiryDTO;
+import egecoskun121.com.crm.model.entity.Product;
 import egecoskun121.com.crm.model.entity.ProductInquiry;
 import egecoskun121.com.crm.services.ProductInquiryService;
+import egecoskun121.com.crm.services.ProductService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
+import java.util.*;
 
 @Controller
 @RequestMapping("/api/v1/inquiry")
 public class ProductInquiryController {
 
     private final ProductInquiryService productInquiryService;
+    private final ProductService productService;
 
-
-    public ProductInquiryController(ProductInquiryService productInquiryService) {
+    public ProductInquiryController(ProductInquiryService productInquiryService, ProductService productService) {
         this.productInquiryService = productInquiryService;
+        this.productService = productService;
     }
+
 
     @RequestMapping(path = "/showList")
     public ModelAndView showProductInquiryList(){
@@ -35,7 +40,17 @@ public class ProductInquiryController {
     }
 
     @RequestMapping(path = "/addNewProductInquiry")
-    public RedirectView addNewProductInquiry(@ModelAttribute ProductInquiryDTO productInquiryDTO){
+    public ModelAndView addNewProductInquiry(@ModelAttribute ProductInquiryDTO productInquiryDTO,@RequestParam String username){
+        ModelAndView mav = new ModelAndView("productInquiry");
+        ProductInquiry productInquiry = new ProductInquiry();
+        List<Product> productList = productService.getAllProductsByUsername(username);
+        mav.addObject("productInquiry",productInquiry);
+        mav.addObject("productList",productList);
+        return mav;
+    }
+
+    @RequestMapping(path = "/saveNewProductInquiry")
+    public RedirectView saveNewProductInquiry(@ModelAttribute ProductInquiryDTO productInquiryDTO){
         productInquiryService.saveNewProductInquiry(productInquiryDTO);
         RedirectView redirectView = new RedirectView();
         redirectView.setUrl("http://localhost:8093/api/v1/inquiry/showList");

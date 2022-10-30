@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -17,7 +18,7 @@
     height: 100%;
     width: 100%;
     background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url(bg.png);
+    url(https://cdn.wperp.com/uploads/2019/08/231-1920x768.png);
     background-position: center;
     background-size: cover;
     position: absolute;
@@ -183,17 +184,17 @@
     <img src="../../../../../htmld/productInquiry/logo-yeni-2.png" alt="logo" />
     <nav>
       <ul class="nav__links">
-        <li><a href="#">Product Category List</a></li>
-        <li><a href="#">Product Details List</a></li>
-        <li><a href="#">Product Inquiry</a></li>
-        <li><a href="#">Raise Complaint</a></li>
+        <li><a th:href="@{/api/v1/product/categoryList}">Product Category List</a></li>
+        <li><a th:href="@{/api/v1/product/showAllProducts(id=${#request.userPrincipal})}">Product Details List</a></li>
+        <li><a href="@{/api/v1/inquiry/}">Product Inquiry</a></li>
+        <li><a href="">Raise Complaint</a></li>
         <li><a href="#">Complaint List</a></li>
-        <li><a href="#">Product Inquiry List</a></li>
+        <li><a th:href="@{/api/v1/inquiry/showList}">Product Inquiry List</a></li>
       </ul>
     </nav>
     <select class="input-opt-2">
       <option selected disabled id="opt">
-        <a href="#">Hello, User</a>
+        <a href="#">Hello </a>
       </option>
       <option><a href="#">My Profile</a></option>
       <option><a href="#">Change Password</a></option>
@@ -204,21 +205,21 @@
     <div class="title">
       <h2>Product Inquiry</h2>
     </div>
-    <form id="register" class="input-group">
+    <form  th:action="@{/api/v1/inquiry/saveNewProductInquiry}" th:object="${productInquiry}"  id="register" class="input-group">
 
-      <select class="input-opt">
-        <option selected disabled id="opt">Choose a Product</option>
-        <option>Choose 2 Product</option>
-        <option>Choose 3 Product</option>
-      </select>
+      <select th:field="*{productName}"  class="input-opt">
+        <option th:each="a,iterStatus : ${productList}" th:text="${a.productName}" th:value="${a.productName}" id="opt2">Choose a Product</option>
+      </select >
       <textarea
               class="input-field"
+              th:field="*{details}"
               placeholder=" Details"
               required
               rows="5"
       ></textarea>
       <input
               type="email"
+              th:field="*{mail}"
               class="input-field"
               placeholder=" Email"
               required
