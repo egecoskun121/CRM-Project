@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -217,15 +218,21 @@
         <div class="title">
           <h2 id="h2-title">Raise Complaint</h2>
         </div>
-        <form id="login" class="input-group">
+        <form  th:action="@{/api/v1/complaint/saveNewComplaint}" th:object="${complaint}" id="login" class="input-group">
+          <select th:field="*{productName}"  class="input-opt">
+            <option th:each="a,iterStatus : ${productList}" th:text="${a.productName}" th:value="${a.productName}" id="opt2">Choose a Product</option>
+          </select >
+
           <input
             type="text"
+            th:field="*{complaintSubject}"
             class="input-field"
             placeholder="Enter Complaint Subject"
             required
           />
           <textarea
             class="input-field"
+            th:fielkd="*{details}"
             required
             placeholder="Write Your Details"
             rows="8"

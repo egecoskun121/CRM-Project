@@ -2,14 +2,20 @@ package egecoskun121.com.crm.controllers;
 
 import egecoskun121.com.crm.model.DTO.ComplaintDTO;
 import egecoskun121.com.crm.model.DTO.ProductInquiryDTO;
+import egecoskun121.com.crm.model.entity.Complaint;
+import egecoskun121.com.crm.model.entity.Product;
+import egecoskun121.com.crm.model.entity.ProductInquiry;
 import egecoskun121.com.crm.model.mapper.ComplaintMapperImpl;
 import egecoskun121.com.crm.services.ComplaintService;
+import egecoskun121.com.crm.services.ProductService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("api/v1/complaint")
@@ -18,16 +24,38 @@ public class ComplaintController {
     private final ComplaintService complaintService;
     private final ComplaintMapperImpl complaintMapperImpl;
 
-    public ComplaintController(ComplaintService complaintService, ComplaintMapperImpl complaintMapperImpl) {
+    private final ProductService productService;
+
+    public ComplaintController(ComplaintService complaintService, ComplaintMapperImpl complaintMapperImpl, ProductService productService) {
         this.complaintService = complaintService;
         this.complaintMapperImpl = complaintMapperImpl;
+        this.productService = productService;
     }
+
 
     @RequestMapping(path = "/showList")
     public ModelAndView showComplaintList(){
         ModelAndView mav = new ModelAndView("complaintList");
         mav.addObject("complaintList",complaintService.getAllComplaints());
         return mav;
+    }
+
+    @RequestMapping(path = "/addNewComplaint")
+    public ModelAndView addNewComplaint(@ModelAttribute ComplaintDTO complaintDTO,@RequestParam String username){
+        ModelAndView mav = new ModelAndView("raiseComplaint");
+        Complaint complaint = new Complaint();
+        List<Product> productList = productService.getAllProductsByUsername(username);
+        mav.addObject("complaint",complaint);
+        mav.addObject("productList",productList);
+        return mav;
+    }
+
+    @RequestMapping(path = "/saveNewComplaint")
+    public RedirectView saveNewProductInquiry(@ModelAttribute ComplaintDTO complaintDTO){
+        complaintService.saveNewComplaint(complaintDTO);
+        RedirectView redirectView = new RedirectView();
+        redirectView.setUrl("http://localhost:8093/api/v1/complaint/showList");
+        return redirectView;
     }
 
     @RequestMapping(path="/updateComplaint")
