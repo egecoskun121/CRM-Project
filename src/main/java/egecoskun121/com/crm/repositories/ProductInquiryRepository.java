@@ -1,7 +1,6 @@
 package egecoskun121.com.crm.repositories;
 
 
-import egecoskun121.com.crm.model.entity.Product;
 import egecoskun121.com.crm.model.entity.ProductInquiry;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

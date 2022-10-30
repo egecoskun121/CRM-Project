@@ -44,7 +44,6 @@ public class ProductController {
        ModelAndView mav = new ModelAndView("add-product");
         Product product = new Product();
         mav.addObject("product",product);
-
         return mav;
     }
 
