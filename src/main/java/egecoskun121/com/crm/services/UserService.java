@@ -28,6 +28,10 @@ public class UserService {
         return all;
     }
 
+    public User getUserByUsername(String username){
+        return userRepository.getUserByUserName(username);
+    }
+
     public User createUser(UserDTO userDTO){
         User user = userMapperImpl.toUser(userDTO);
         user.setRole(Role.ROLE_USER);

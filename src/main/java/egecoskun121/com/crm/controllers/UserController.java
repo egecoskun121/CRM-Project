@@ -4,9 +4,11 @@ import egecoskun121.com.crm.model.DTO.UserDTO;
 import egecoskun121.com.crm.model.entity.User;
 import egecoskun121.com.crm.services.UserService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -35,12 +37,20 @@ public class UserController {
         return mav;
     }
 
-    @RequestMapping("addUser")
+    @RequestMapping("/addUser")
     public RedirectView addUser(@ModelAttribute UserDTO userDTO){
         userService.createUser(userDTO);
         RedirectView redirectView = new RedirectView();
         redirectView.setUrl("http://localhost:8093/");
         return  redirectView;
+    }
+
+    @RequestMapping("/showUserDetails")
+    public ModelAndView getUserDetails(@RequestParam String username){
+        ModelAndView mav = new ModelAndView("my-profile");
+        User user = userService.getUserByUsername(username);
+        mav.addObject("user",user);
+        return mav;
     }
 
     @GetMapping("/getAllUsers")

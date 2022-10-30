@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -25,6 +26,10 @@
       }
 
       /****************************************************************/
+
+      a:visited{
+        color: black;
+      }
 
       header {
         box-sizing: border-box;
@@ -174,6 +179,22 @@
         color: #777;
       }
 
+      .submit-btn-2{
+        width: 178px;
+        text-align: center;
+        text-decoration: none;
+        font-family: sans-serif;
+        font-size: 13.3px;
+        padding: 10px 30px;
+        cursor: pointer;
+        display: block;
+        margin: 225px 85px 5px auto;
+        background: linear-gradient(to right, #ff105f, #ffad06);
+        border: 0;
+        outline: none;
+        border-radius: 30px;
+      }
+
     </style>
   </head>
   <body>
@@ -203,32 +224,39 @@
         <div class="title">
           <h2>CRM System</h2>
         </div>
-        <form id="register" class="input-group">
+        <form th:object="${user}" id="register" class="input-group">
           <input
             type="text"
+            th:field="*{userName}"
             class="input-field"
             placeholder="User Name"
-            required
+            disabled
           />
           <input
             type="email"
+            th:field="*{email}"
             class="input-field"
             placeholder="Email"
-            required
+            disabled
           />
           <input
-            type="password"
-            class="input-field"
-            placeholder="Password"
-            required
+                  type="text"
+                  th:field="*{role}"
+                  class="input-field"
+                  placeholder="Role"
+                  disabled
           />
+
           <input
-            type="tel"
-            class="input-field"
-            placeholder="Phone Number"
-            required
+                  type="text"
+                  th:field="*{phoneNumber}"
+                  class="input-field"
+                  placeholder="Phone Number"
+                  disabled
           />
-          <button type="submit" class="submit-btn">Update</button>
+
+
+          <a th:action="@{/api/v1/product/showAllProductsByUsername(username=${#authentication.getName()})}"  class="submit-btn-2">Back</a>
         </form>
       </div>
     </div>
