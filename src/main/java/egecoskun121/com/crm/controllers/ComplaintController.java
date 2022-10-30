@@ -1,10 +1,8 @@
 package egecoskun121.com.crm.controllers;
 
 import egecoskun121.com.crm.model.DTO.ComplaintDTO;
-import egecoskun121.com.crm.model.DTO.ProductInquiryDTO;
 import egecoskun121.com.crm.model.entity.Complaint;
 import egecoskun121.com.crm.model.entity.Product;
-import egecoskun121.com.crm.model.entity.ProductInquiry;
 import egecoskun121.com.crm.model.mapper.ComplaintMapperImpl;
 import egecoskun121.com.crm.services.ComplaintService;
 import egecoskun121.com.crm.services.ProductService;
@@ -35,14 +33,14 @@ public class ComplaintController {
 
     @RequestMapping(path = "/showList")
     public ModelAndView showComplaintList(){
-        ModelAndView mav = new ModelAndView("complaintList");
+        ModelAndView mav = new ModelAndView("complaint-list");
         mav.addObject("complaintList",complaintService.getAllComplaints());
         return mav;
     }
 
     @RequestMapping(path = "/addNewComplaint")
     public ModelAndView addNewComplaint(@ModelAttribute ComplaintDTO complaintDTO,@RequestParam String username){
-        ModelAndView mav = new ModelAndView("raiseComplaint");
+        ModelAndView mav = new ModelAndView("raise-complaint");
         Complaint complaint = new Complaint();
         List<Product> productList = productService.getAllProductsByUsername(username);
         mav.addObject("complaint",complaint);

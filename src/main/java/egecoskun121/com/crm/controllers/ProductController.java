@@ -25,7 +25,7 @@ public class ProductController {
 
     @RequestMapping(path = "/showAllProducts")
     public ModelAndView showProductList(){
-        ModelAndView modelAndView = new ModelAndView("showAllProducts");
+        ModelAndView modelAndView = new ModelAndView("show-all-products");
         modelAndView.addObject("productList",productService.getAllProducts());
         return modelAndView;
     }
@@ -34,7 +34,7 @@ public class ProductController {
 
     @RequestMapping(path = "/showAllProductsByUsername")
     public ModelAndView showProductListByUsername(@RequestParam String username){
-        ModelAndView modelAndView = new ModelAndView("showAllProductsByUsername");
+        ModelAndView modelAndView = new ModelAndView("show-all-products-by-username");
         modelAndView.addObject("productList",productService.getAllProductsByUsername(username));
         return modelAndView;
     }
@@ -69,7 +69,7 @@ public class ProductController {
 
     @GetMapping("/showUpdateForm")
     public ModelAndView showUpdateForm(@RequestParam Long id){
-        ModelAndView mav = new ModelAndView("update-Product-Form");
+        ModelAndView mav = new ModelAndView("update-product-form");
         Product product = productService.getById(id);
         mav.addObject("product",product);
         return mav;
@@ -106,7 +106,7 @@ public class ProductController {
         for (ProductCategory  a: ProductCategory.values()) {
             map.put(a.toString(),productService.getProductCategoryCountsByUsername(categoryCounter++,username));
         }
-        ModelAndView mav =new ModelAndView("productCategoryListByUsername");
+        ModelAndView mav =new ModelAndView("product-category-list-by-username");
         mav.addObject("categoryCountList",map);
 
         return mav;

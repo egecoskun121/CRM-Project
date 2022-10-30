@@ -1,6 +1,5 @@
 package egecoskun121.com.crm.controllers;
 
-import egecoskun121.com.crm.model.DTO.ProductDTO;
 import egecoskun121.com.crm.model.DTO.ProductInquiryDTO;
 import egecoskun121.com.crm.model.entity.Product;
 import egecoskun121.com.crm.model.entity.ProductInquiry;
@@ -27,21 +26,21 @@ public class ProductInquiryController {
 
     @RequestMapping(path = "/showList")
     public ModelAndView showProductInquiryList(){
-        ModelAndView mav = new ModelAndView("productInquiryList");
+        ModelAndView mav = new ModelAndView("product-inquiry-list");
         mav.addObject("productInquiry",productInquiryService.getAllProductInquiries());
         return mav;
     }
 
     @RequestMapping(path = "/showAllProductInquiriesByName")
     public ModelAndView showAllProductsInquiriesByUsername(@RequestParam String username) {
-        ModelAndView modelAndView = new ModelAndView("showAllProductsInquiriesByUsername");
+        ModelAndView modelAndView = new ModelAndView("show-all-products-inquiries-by-username");
         modelAndView.addObject("productInquiry", productInquiryService.getAllProductInquiriesByUsername(username));
         return modelAndView;
     }
 
     @RequestMapping(path = "/addNewProductInquiry")
     public ModelAndView addNewProductInquiry(@ModelAttribute ProductInquiryDTO productInquiryDTO,@RequestParam String username){
-        ModelAndView mav = new ModelAndView("productInquiry");
+        ModelAndView mav = new ModelAndView("product-inquiry");
         ProductInquiry productInquiry = new ProductInquiry();
         List<Product> productList = productService.getAllProductsByUsername(username);
         mav.addObject("productInquiry",productInquiry);
