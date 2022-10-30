@@ -50,12 +50,16 @@
     }
 
     .input-opt {
-      padding: 9px 5px;
-      background-color: rgba(0, 136, 169, 1);
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: all 0.3s ease 0s;
+      color: #777;
+      width: 100%;
+      padding: 10px 0px;
+      margin: 5px 0;
+      border-left: 0;
+      border-top: 0;
+      border-right: 0;
+      border-bottom: 1px solid #999;
+      outline: none;
+      background: transparent;
     }
     .input-opt optgroup {
       padding: 9px 5px;
@@ -99,6 +103,15 @@
       background-color: #ffff;
       padding: 5px;
       overflow: hidden;
+    }
+
+    header .input-opt-2 {
+      padding: 9px 5px;
+      background-color: rgba(0, 136, 169, 1);
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease 0s;
     }
     .button-box {
       width: 220px;
@@ -205,7 +218,7 @@
             <li><a href="#">Product Inquiry List</a></li>
           </ul>
         </nav>
-        <select class="input-opt">
+        <select class="input-opt-2">
           <option selected disabled id="opt">
             <a href="#">Hello, User</a>
           </option>
@@ -220,7 +233,7 @@
         </div>
         <form  th:action="@{/api/v1/complaint/saveNewComplaint}" th:object="${complaint}" id="login" class="input-group">
           <select th:field="*{productName}"  class="input-opt">
-            <option th:each="a,iterStatus : ${productList}" th:text="${a.productName}" th:value="${a.productName}" id="opt2">Choose a Product</option>
+            <option th:each="a,iterStatus : ${productList}" th:text="${a.productName}" th:value="${a.productName}" id="opt">Choose a Product</option>
           </select >
 
           <input
