@@ -3,6 +3,7 @@ package egecoskun121.com.crm.controllers;
 import egecoskun121.com.crm.model.DTO.UserDTO;
 import egecoskun121.com.crm.model.entity.User;
 import egecoskun121.com.crm.services.UserService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,12 +24,12 @@ public class UserController {
         this.userService = userService;
     }
 
+
     @GetMapping("/login")
     public ModelAndView getLoginPage(){
         ModelAndView mav = new ModelAndView("index");
         return mav;
     }
-
 
     @RequestMapping("/saveUser")
     public ModelAndView saveUser(){
@@ -46,6 +47,7 @@ public class UserController {
         return  redirectView;
     }
 
+    @PreAuthorize("hasRole('ROLE_USER') OR hasRole('ROLE_ADMIN')")
     @RequestMapping("/showUserDetails")
     public ModelAndView getUserDetails(@RequestParam String username){
         ModelAndView mav = new ModelAndView("my-profile");
@@ -53,6 +55,7 @@ public class UserController {
         mav.addObject("user",user);
         return mav;
     }
+
 
     @GetMapping("/getAllUsers")
     public ModelAndView getAllUsers(){
@@ -62,7 +65,6 @@ public class UserController {
     }
 
 
-
     @RequestMapping("/changePassword")
     public ModelAndView changePassword(@RequestParam String username){
         ModelAndView mav = new ModelAndView("change-password");
@@ -70,12 +72,5 @@ public class UserController {
         mav.addObject("user",user);
         return mav;
     }
-
-
-
-
-
-
-
 
 }

@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -14,6 +15,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(
+        prePostEnabled = true
+)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
@@ -47,13 +51,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/saveUser").permitAll()
                 .antMatchers("/register").permitAll()
                 .antMatchers("/api/v1/product/showList").hasAnyAuthority("ROLE_USER")
-                .antMatchers("/api/v1/product/showAllProducts").hasAnyAuthority("ROLE_ADMIN","ROLE_USER")
+                .antMatchers("/api/v1/product/showAllProducts").hasAnyAuthority("ROLE_ADMIN")
                 .antMatchers("/api/v1/product/categoryList").hasAnyAuthority("ROLE_USER")
                 .antMatchers("/api/v1/product/showAllProductsByUsername").hasAuthority("ROLE_USER")
                 .antMatchers("/h2/**").permitAll()
               //  .antMatchers("api/v1/product/**").hasAuthority("ROLE_USER")
                         .and()
-                                .formLogin(form -> form.defaultSuccessUrl("/api/v1/product/showAllProducts")
+                                .formLogin(form -> form.defaultSuccessUrl("/showUserDetails")
                                         .loginPage("/login")
                                        );
 
