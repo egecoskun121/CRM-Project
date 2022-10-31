@@ -5,8 +5,8 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login and Registration Form</title>
-  <link rel="stylesheet" href="../../../../../htmld/productInquiry/style.css" />
+  <title>Login and Refistration Form</title>
+  <link rel="stylesheet" href="../../../../../htmld/raiseComplaint/style.css" />
 </head>
 <style>
   * {
@@ -24,7 +24,7 @@
     position: absolute;
   }
 
-    /****************************************************************/
+  /****************************************************************/
 
   header {
     box-sizing: border-box;
@@ -49,7 +49,19 @@
     padding: 9px 6px;
   }
 
-  header .input-opt-2 {
+  .input-opt {
+    color: #777;
+    width: 100%;
+    padding: 10px 0px;
+    margin: 5px 0;
+    border-left: 0;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 1px solid #999;
+    outline: none;
+    background: transparent;
+  }
+  .input-opt optgroup {
     padding: 9px 5px;
     background-color: rgba(0, 136, 169, 1);
     border: none;
@@ -92,6 +104,15 @@
     padding: 5px;
     overflow: hidden;
   }
+
+  header .input-opt-2 {
+    padding: 9px 5px;
+    background-color: rgba(0, 136, 169, 1);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+  }
   .button-box {
     width: 220px;
     margin: 35px auto;
@@ -118,12 +139,13 @@
     transition: 0.5s;
   }
   .input-group {
-    top: 120px;
+    top: 70px;
     position: absolute;
     width: 280px;
     transition: 0.5s;
   }
   .input-field {
+    color: #777;
     width: 100%;
     padding: 10px 0;
     margin: 5px 0;
@@ -137,6 +159,7 @@
   .submit-btn {
     width: 85%;
     padding: 10px 30px;
+    margin-top: 150px;
     cursor: pointer;
     display: block;
     margin: 30px auto;
@@ -154,42 +177,45 @@
     bottom: 66px;
     position: absolute;
   }
-  #register {
+  #login {
     left: 50px;
   }
+
   .title {
-    width: 85%;
-    text-align: center;
-    padding: 40px 0;
+    height: 120px;
+    right: 300px;
+    width: 55%;
+    padding: 4px 80px;
     display: block;
-    margin: auto;
+    margin: 30px 15px 30px 0;
     color: #777;
   }
-  .input-opt {
-    color: #777;
+
+  #h2-title {
     width: 100%;
-    padding: 10px 0px;
-    margin: 5px 0;
-    border-left: 0;
-    border-top: 0;
-    border-right: 0;
-    border-bottom: 1px solid #999;
-    outline: none;
-    background: transparent;
+    padding: 0px 8px;
   }
-  ​
+
+  #h3-title {
+    width: 100%;
+    padding: 0px 31px;
+    display: block;
+    margin: 30px 10px 30px 0;
+  }
+
 </style>
 <body>
 <div class="hero">
   <header>
-    <img src="../../../../../htmld/productInquiry/logo-yeni-2.png" alt="logo" />
+    <img src="../../../../../htmld/raiseComplaint/logo-yeni-2.png" alt="logo" />
     <nav>
       <ul class="nav__links">
+
         <div sec:authorize="hasAnyAuthority('ROLE_USER')">
           <li><a th:href="@{/api/v1/product/categoryListByUsername(username=${#authentication.getName()})}">Product Category List</a></li>
           <li><a th:href="@{/api/v1/product/showAllProductsByUsername(username=${#authentication.getName()})}">Product Details List</a></li>
-          <li><a th:href="@{/api/v1/inquiry/addNewProductInquiry(username=${#authentication.getName()})}">Product Inquiry</a></li>
-          <li><a th:href="@{/api/v1/complaint/addNewComplaint(username=${#authentication.getName()})}">Raise Complaint</a></li>
+          <li><a th:href="@{/api/v1/inquiry/addNewProductInquiry}">Product Inquiry</a></li>
+          <li><a th:href="@{/api/v1/complaint/addNewComplaint}">Raise Complaint</a></li>
           <li><a th:href="@{/api/v1/complaint/showComplaintsByUsername(username=${#authentication.getName()})}">Complaint List</a></li>
           <li><a th:href="@{/api/v1/complaint/showAllProductInquiriesByName(username=${#authentication.getName()})}">Product Inquiry List</a></li>
         </div>
@@ -197,9 +223,11 @@
         <div sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
           <li><a th:href="@{/api/v1/product/categoryList}">Product Category List</a></li>
           <li><a th:href="@{/api/v1/product/showAllProducts}">Product Details List</a></li>
+          <li><a th:href="@{/api/v1/inquiry/addNewProductInquiry}">Product Inquiry</a></li>
           <li><a th:href="@{/api/v1/complaint/showList}">Complaint List</a></li>
           <li><a th:href="@{/api/v1/inquiry/showList}">Product Inquiry List</a></li>
         </div>
+
       </ul>
     </nav>
     <select class="input-opt-2">
@@ -213,19 +241,84 @@
   </header>
   <div class="form-box">
     <div class="title">
-      <h2>Update Product Inquiry</h2>
+      <h2 id="h2-title">Raise Complaint</h2>
     </div>
-    <form th:action="@{/api/v1/inquiry/updateInquiry/}+${productInquiry.id}" th:object="${productInquiry}"
-          method="put" id="register" class="input-group">
+    <form  th:action="@{/api/v1/complaint/updateComplaint/}+${complaint.id}" th:object="${complaint}" id="login" class="input-group" method="put">
 
-      <input type="text" th:field="*{productCategory}" readonly class="input-field" placeholder=" Product Category" required/>
+      <div sec:authorize="hasAnyAuthority('ROLE_USER')" >
+        <input
+                type="text"
+                th:field="*{id}"
+                class="input-field"
+                placeholder="Enter Complaint Subject"
+                readonly
+                required
+        />
+        <input
+                type="text"
+                th:field="*{complaintSubject}"
+                class="input-field"
+                placeholder="Enter Complaint Subject"
+                required
+        />
+        <input
+                type="text"
+                th:field="*{productName}"
+                class="input-field"
+                placeholder="Enter Complaint Subject"
+                required
+        />
+        <textarea
+                class="input-field"
+                th:field="*{details}"
+                required
+                placeholder="Write Your Details"
+                rows="8"
+        ></textarea>
+      </div>
 
-
-      <textarea th:field="*{details}" class="input-field" placeholder=" Details" required rows="5"
-      ></textarea>
-      <input type="email" th:field="*{mail}" class="input-field" placeholder=" Email" required
+      <div sec:authorize="hasAnyAuthority('ROLE_ADMIN')" >
+      <input
+              type="text"
+              th:field="*{id}"
+              class="input-field"
+              placeholder="Enter Complaint Subject"
+              readonly
+              required
       />
-      <button th:href="@{/api/v1/inquiry/showList}" type="submit" class="submit-btn">Update</button>
+      <input
+              type="text"
+              th:field="*{complaintSubject}"
+              class="input-field"
+              placeholder="Enter Complaint Subject"
+              readonly
+              required
+      />
+      <input
+              type="text"
+              th:field="*{productName}"
+              class="input-field"
+              placeholder="Enter Complaint Subject"
+              readonly
+              required
+      />
+      <textarea
+              class="input-field"
+              th:field="*{details}"
+              required
+              placeholder="Write Your Details"
+              readonly
+              rows="8"
+      ></textarea>
+        <input
+                type="text"
+                th:field="*{answer}"
+                class="input-field"
+                placeholder="Enter Answer"
+                required
+        />
+      </div>
+      <button type="submit" class="submit-btn">Submit</button>
     </form>
   </div>
 </div>

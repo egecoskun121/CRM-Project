@@ -174,12 +174,21 @@
     <img src="../../../../../htmld/navbarWithTable/logo-yeni-2.png" alt="logo" />
     <nav>
       <ul class="nav__links">
-        <li><a href="#">Product Category List</a></li>
-        <li><a th:href="@{/api/v1/product/showAllProductsByUsername(username=${#authentication.getName()})}">Product Details List</a></li>
-        <li><a href="#">Product Inquiry</a></li>
-        <li><a href="#">Raise Complaint</a></li>
-        <li><a href="#">Complaint List</a></li>
-        <li><a href="#">Product Inquiry List</a></li>
+        <div sec:authorize="hasAnyAuthority('ROLE_USER')">
+          <li><a th:href="@{/api/v1/product/categoryListByUsername(username=${#authentication.getName()})}">Product Category List</a></li>
+          <li><a th:href="@{/api/v1/product/showAllProductsByUsername(username=${#authentication.getName()})}">Product Details List</a></li>
+          <li><a th:href="@{/api/v1/inquiry/addNewProductInquiry(username=${#authentication.getName()})}">Product Inquiry</a></li>
+          <li><a th:href="@{/api/v1/complaint/addNewComplaint(username=${#authentication.getName()})}">Raise Complaint</a></li>
+          <li><a th:href="@{/api/v1/complaint/showComplaintsByUsername(username=${#authentication.getName()})}">Complaint List</a></li>
+          <li><a th:href="@{/api/v1/complaint/showAllProductInquiriesByName(username=${#authentication.getName()})}">Product Inquiry List</a></li>
+        </div>
+
+        <div sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+          <li><a th:href="@{/api/v1/product/categoryList}">Product Category List</a></li>
+          <li><a th:href="@{/api/v1/product/showAllProducts}">Product Details List</a></li>
+          <li><a th:href="@{/api/v1/complaint/showList}">Complaint List</a></li>
+          <li><a th:href="@{/api/v1/inquiry/showList}">Product Inquiry List</a></li>
+        </div>
       </ul>
     </nav>
     <select class="input-opt">
@@ -194,7 +203,7 @@
   <div class="form-box">
     <form>
       <div class="title">
-        <h2 id="h2-title">Product List</h2>
+        <h2 id="h2-title">Product Category List</h2>
       </div>
       <table class="content-table table table-bordered table-striped " id="productinquiry-table">
         <thead>
