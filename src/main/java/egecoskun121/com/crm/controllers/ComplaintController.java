@@ -40,6 +40,8 @@ public class ComplaintController {
         mav.addObject("complaintList",complaintService.getAllComplaints());
         return mav;
     }
+
+    @PreAuthorize("hasRole('ROLE_USER') OR hasRole('ROLE_ADMIN')")
     @RequestMapping(path = "/showComplaintsByUsername")
     public ModelAndView showComplaintListByUsername(@RequestParam String username){
         ModelAndView modelAndView = new ModelAndView("complaint-list-by-username");
@@ -47,7 +49,7 @@ public class ComplaintController {
         return modelAndView;
     }
 
-
+    @PreAuthorize("hasRole('ROLE_USER')")
     @RequestMapping(path = "/addNewComplaint")
     public ModelAndView addNewComplaint(@ModelAttribute ComplaintDTO complaintDTO,@RequestParam String username){
         ModelAndView mav = new ModelAndView("raise-complaint");
@@ -58,7 +60,7 @@ public class ComplaintController {
         return mav;
     }
 
-
+    @PreAuthorize("hasRole('ROLE_USER')")
     @RequestMapping(path = "/saveNewComplaint")
     public RedirectView saveNewProductInquiry(@ModelAttribute ComplaintDTO complaintDTO){
         complaintService.saveNewComplaint(complaintDTO);
@@ -67,7 +69,7 @@ public class ComplaintController {
         return redirectView;
     }
 
-
+    @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("/showUpdateForm")
     public ModelAndView showUpdateForm(@RequestParam Long id){
         ModelAndView mav = new ModelAndView("update-complaint-form");
@@ -77,17 +79,18 @@ public class ComplaintController {
     }
 
 
+    @PreAuthorize("hasRole('ROLE_USER') OR hasRole('ROLE_ADMIN')")
     @RequestMapping(path="/updateComplaint/{id}")
     public RedirectView updateComplaint(@PathVariable("id") Long id, @ModelAttribute ComplaintDTO complaintDTO){
 
         complaintService.updateComplaintById(complaintDTO,id);
         RedirectView redirectView = new RedirectView();
         redirectView.setUrl("http://localhost:8093/api/v1/complaint/showList");
-
         return redirectView;
     }
 
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(path = "/deleteComplaint")
     public RedirectView deleteComplaint(@RequestParam Long id){
 
@@ -97,6 +100,6 @@ public class ComplaintController {
 
         return redirectView;
     }
-    }
+}
 
 

@@ -4,6 +4,7 @@ import egecoskun121.com.crm.model.DTO.ProductDTO;
 import egecoskun121.com.crm.model.entity.Product;
 import egecoskun121.com.crm.model.entity.ProductCategory;
 import egecoskun121.com.crm.services.ProductService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -23,6 +24,7 @@ public class ProductController {
 
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(path = "/showAllProducts")
     public ModelAndView showProductList(){
         ModelAndView modelAndView = new ModelAndView("show-all-products");
@@ -31,7 +33,7 @@ public class ProductController {
     }
 
 
-
+    @PreAuthorize("hasRole('ROLE_USER') OR hasRole('ROLE_ADMIN')")
     @RequestMapping(path = "/showAllProductsByUsername")
     public ModelAndView showProductListByUsername(@RequestParam String username){
         ModelAndView modelAndView = new ModelAndView("show-all-products-by-username");
@@ -39,6 +41,7 @@ public class ProductController {
         return modelAndView;
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(path = "/addNewProduct")
     public ModelAndView addNewProduct(@ModelAttribute ProductDTO productDTO){
        ModelAndView mav = new ModelAndView("add-product");
@@ -47,8 +50,7 @@ public class ProductController {
         return mav;
     }
 
-
-
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(path = "/saveNewProduct")
     public  RedirectView saveNewProduct(@ModelAttribute ProductDTO productDTO){
         productService.saveNewProduct(productDTO);
@@ -57,6 +59,7 @@ public class ProductController {
         return redirectView;
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(path="/updateProduct/{id}")
     public RedirectView updateProduct(@PathVariable("id") Long id, @ModelAttribute ProductDTO productDTO){
 
@@ -67,6 +70,7 @@ public class ProductController {
         return redirectView;
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/showUpdateForm")
     public ModelAndView showUpdateForm(@RequestParam Long id){
         ModelAndView mav = new ModelAndView("update-product-form");
@@ -75,6 +79,7 @@ public class ProductController {
         return mav;
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(path = "/deleteProduct")
     public RedirectView deleteProduct(@RequestParam Long id){
 
@@ -85,6 +90,7 @@ public class ProductController {
         return redirectView;
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(path = "/categoryList")
     public ModelAndView showCategoryList(){
         Map<String,Integer> map = new LinkedHashMap<>();
@@ -99,6 +105,7 @@ public class ProductController {
         return mav;
     }
 
+    @PreAuthorize("hasRole('ROLE_USER') OR hasRole('ROLE_ADMIN')")
     @RequestMapping(path ="/categoryListByUsername")
     public ModelAndView showCategoryListByUsername(@RequestParam String username){
         Map<String, Integer> map = new LinkedHashMap<>();

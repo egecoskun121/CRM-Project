@@ -5,6 +5,7 @@ import egecoskun121.com.crm.model.entity.Product;
 import egecoskun121.com.crm.model.entity.ProductInquiry;
 import egecoskun121.com.crm.services.ProductInquiryService;
 import egecoskun121.com.crm.services.ProductService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -24,6 +25,7 @@ public class ProductInquiryController {
     }
 
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(path = "/showList")
     public ModelAndView showProductInquiryList(){
         ModelAndView mav = new ModelAndView("product-inquiry-list");
@@ -31,6 +33,7 @@ public class ProductInquiryController {
         return mav;
     }
 
+    @PreAuthorize("hasRole('ROLE_USER') OR hasRole('ROLE_ADMIN')")
     @RequestMapping(path = "/showAllProductInquiriesByName")
     public ModelAndView showAllProductsInquiriesByUsername(@RequestParam String username) {
         ModelAndView modelAndView = new ModelAndView("show-all-products-inquiries-by-username");
@@ -38,6 +41,7 @@ public class ProductInquiryController {
         return modelAndView;
     }
 
+    @PreAuthorize("hasRole('ROLE_USER')")
     @RequestMapping(path = "/addNewProductInquiry")
     public ModelAndView addNewProductInquiry(@ModelAttribute ProductInquiryDTO productInquiryDTO,@RequestParam String username){
         ModelAndView mav = new ModelAndView("product-inquiry");
@@ -48,6 +52,7 @@ public class ProductInquiryController {
         return mav;
     }
 
+    @PreAuthorize("hasRole('ROLE_USER')")
     @RequestMapping(path = "/saveNewProductInquiry")
     public RedirectView saveNewProductInquiry(@ModelAttribute ProductInquiryDTO productInquiryDTO){
         productInquiryService.saveNewProductInquiry(productInquiryDTO);
@@ -56,6 +61,7 @@ public class ProductInquiryController {
         return redirectView;
     }
 
+    @PreAuthorize("hasRole('ROLE_USER') OR hasRole('ROLE_ADMIN')")
     @RequestMapping(path="/updateInquiry/{id}")
     public RedirectView updateInquiry(@PathVariable("id") Long id,@ModelAttribute ProductInquiryDTO productInquiryDTO){
 
@@ -66,6 +72,7 @@ public class ProductInquiryController {
         return redirectView;
     }
 
+    @PreAuthorize("hasRole('ROLE_USER') OR hasRole('ROLE_ADMIN')")
     @GetMapping("/showUpdateForm")
     public ModelAndView showUpdateForm(@RequestParam Long id){
         ModelAndView mav= new ModelAndView("update-inquiry-form");

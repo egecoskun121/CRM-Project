@@ -56,7 +56,6 @@ public class UserController {
         return mav;
     }
 
-
     @GetMapping("/getAllUsers")
     public ModelAndView getAllUsers(){
        ModelAndView mav = new ModelAndView("main");
