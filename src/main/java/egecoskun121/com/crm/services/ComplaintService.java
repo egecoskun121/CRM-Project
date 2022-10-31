@@ -32,6 +32,11 @@ public class ComplaintService {
         return complaintRepository.findAll();
     }
 
+    public List<Complaint> getAllComplaintsByUsername(String username){
+        List<Complaint> allComplaintsByName = complaintRepository.findAllComplaintsByUsername(username);
+        return allComplaintsByName;
+    }
+
     public Complaint saveNewComplaint(ComplaintDTO complaintDTO){
         return complaintRepository.save(complaintMapper.toComplaint(complaintDTO));
     }

@@ -9,14 +9,36 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 
+@SqlResultSetMapping(name="Complaint.complaintResult", classes = {
+        @ConstructorResult(targetClass = Complaint.class,
+                columns = {@ColumnResult(name="ID",type = Long.class), @ColumnResult(name="ANSWER"), @ColumnResult(name="COMPLAINT_SUBJECT"),
+                        @ColumnResult(name="CREATED_DATE",type = String.class) ,@ColumnResult(name = "DETAILS"),
+                        @ColumnResult(name = "LAST_MODIFIED_DATE",type = String.class), @ColumnResult(name = "PRODUCT_NAME")
+                })
+})
+@NamedNativeQuery(
+        name = "Complaint.complaintResult",
+        resultClass = Complaint.class,
+        query = "SELECT p.ID,p.ANSWER, p.COMPLAINT_SUBJECT, p.CREATED_DATE, p.DETAILS,p.LAST_MODIFIED_DATE, p.PRODUCT_NAME FROM COMPLAINT AS p INNER JOIN USERS_COMPLAINTS AS u ON u.COMPLAINTS_ID = p.ID WHERE u.USER_ID= {SELECT ID FROM USERS WHERE USER_NAME= (:username)}" ,
+        resultSetMapping = "Complaint.complaintResult")
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name="complaint")
 public class Complaint {
+
+    public Complaint(Long id, String answer, String complaintSubject, String createdDate, String details, String lastModifiedDate, String productName) {
+        this.id = id;
+        this.answer = answer;
+        this.complaintSubject = complaintSubject;
+        this.createdDate=Timestamp.valueOf(createdDate);
+        this.details = details;
+        this.lastModifiedDate=Timestamp.valueOf(lastModifiedDate);
+        this.productName = productName;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,7 +52,6 @@ public class Complaint {
     private Timestamp lastModifiedDate;
 
     @Size(min = 5,max = 100)
-    @NotNull
     private String complaintSubject;
 
     @Size(min = 5,max = 100)

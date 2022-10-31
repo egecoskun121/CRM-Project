@@ -6,14 +6,17 @@ import egecoskun121.com.crm.model.entity.Product;
 import egecoskun121.com.crm.model.mapper.ComplaintMapperImpl;
 import egecoskun121.com.crm.services.ComplaintService;
 import egecoskun121.com.crm.services.ProductService;
+import org.springframework.security.access.prepost.PostAuthorize;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
+
 
 @Controller
 @RequestMapping("api/v1/complaint")
@@ -30,13 +33,20 @@ public class ComplaintController {
         this.productService = productService;
     }
 
-
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(path = "/showList")
     public ModelAndView showComplaintList(){
         ModelAndView mav = new ModelAndView("complaint-list");
         mav.addObject("complaintList",complaintService.getAllComplaints());
         return mav;
     }
+    @RequestMapping(path = "/showComplaintsByUsername")
+    public ModelAndView showComplaintListByUsername(@RequestParam String username){
+        ModelAndView modelAndView = new ModelAndView("complaint-list-by-username");
+        modelAndView.addObject("complaintList",complaintService.getAllComplaintsByUsername(username));
+        return modelAndView;
+    }
+
 
     @RequestMapping(path = "/addNewComplaint")
     public ModelAndView addNewComplaint(@ModelAttribute ComplaintDTO complaintDTO,@RequestParam String username){
@@ -48,6 +58,7 @@ public class ComplaintController {
         return mav;
     }
 
+
     @RequestMapping(path = "/saveNewComplaint")
     public RedirectView saveNewProductInquiry(@ModelAttribute ComplaintDTO complaintDTO){
         complaintService.saveNewComplaint(complaintDTO);
@@ -56,8 +67,18 @@ public class ComplaintController {
         return redirectView;
     }
 
-    @RequestMapping(path="/updateComplaint")
-    public RedirectView updateComplaint(@RequestParam Long id, @ModelAttribute ComplaintDTO complaintDTO){
+
+    @GetMapping("/showUpdateForm")
+    public ModelAndView showUpdateForm(@RequestParam Long id){
+        ModelAndView mav = new ModelAndView("update-complaint-form");
+        Complaint complaint = complaintService.getComplaintById(id);
+        mav.addObject("complaint",complaint);
+        return mav;
+    }
+
+
+    @RequestMapping(path="/updateComplaint/{id}")
+    public RedirectView updateComplaint(@PathVariable("id") Long id, @ModelAttribute ComplaintDTO complaintDTO){
 
         complaintService.updateComplaintById(complaintDTO,id);
         RedirectView redirectView = new RedirectView();
@@ -65,6 +86,7 @@ public class ComplaintController {
 
         return redirectView;
     }
+
 
     @RequestMapping(path = "/deleteComplaint")
     public RedirectView deleteComplaint(@RequestParam Long id){
