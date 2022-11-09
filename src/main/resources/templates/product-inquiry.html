@@ -15,6 +15,7 @@
     font-family: sans-serif;
   }
   .hero {
+    z-index: -2;
     height: 100%;
     width: 100%;
     background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
@@ -24,8 +25,7 @@
     position: absolute;
   }
 
-  /****************************************************************/
-
+  /*****************************************************************/
   header {
     box-sizing: border-box;
     backdrop-filter: blur(10px);
@@ -49,7 +49,15 @@
     padding: 9px 6px;
   }
 
-  header .input-opt-2 {
+  .input-opt {
+    padding: 9px 5px;
+    background-color: rgba(0, 136, 169, 1);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+  }
+  .input-opt optgroup {
     padding: 9px 5px;
     background-color: rgba(0, 136, 169, 1);
     border: none;
@@ -60,10 +68,6 @@
 
   header button:hover {
     background-color: rgba(0, 136, 169, 0.8);
-  }
-
-  .logo {
-    cursor: pointer;
   }
 
   .nav__links {
@@ -92,9 +96,10 @@
     padding: 9px 20px;
   }
   .dropdown-options {
+    z-index: 1;
     color: black;
     background-color: rgba(0, 136, 169, 1);
-    width: 89.5px;
+    width: 89px;
     font-size: 14px;
     padding: 15px 15px 15px 15px;
     right: 0;
@@ -103,9 +108,10 @@
     position: absolute;
     overflow: auto;
     border-radius:5px;
-    box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.4);
+    box-shadow: 0 10px 10px 0 rgba(0,0,0,0.4);
   }
   .dropdown-options a{
+    z-index: 1;
     display: block;
     color: #000000;
     text-decoration: none;
@@ -122,8 +128,9 @@
     background-color: rgba(0, 136, 169, 0.8);
     text-align: center;
   }
-  /******************************************************************/
+  /*****************************************************************/
   .form-box {
+    z-index: -1;
     width: 380px;
     height: 480px;
     position: relative;
