@@ -18,6 +18,7 @@
             font-family: sans-serif;
         }
         .hero {
+            z-index: -2;
             height: 100%;
             width: 100%;
             background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
@@ -89,9 +90,52 @@
             color: white;
         }
 
+
+        .dropdown{
+            color: black;
+            background-color: rgba(0, 136, 169, 1);
+            display: inline-block;
+            position: relative;
+            font-size: 16px;
+            padding: 9px 20px;
+        }
+        .dropdown-options {
+            z-index: 1;
+            color: black;
+            background-color: rgba(0, 136, 169, 1);
+            width: 119.5px;
+            font-size: 14px;
+            padding: 15px 15px 15px 15px;
+            right: 0;
+            text-align: center;
+            display: none;
+            position: absolute;
+            overflow: auto;
+            border-radius:5px;
+            box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.4);
+        }
+        .dropdown-options a{
+            z-index: 1;
+            display: block;
+            color: #000000;
+            text-decoration: none;
+            padding:17px 10px;
+        }
+
+        .dropdown-options a:hover {
+            color: #0a0a23;
+            background-color: white;
+        }
+
+        .dropdown:hover .dropdown-options {
+            display: block;
+            background-color: rgba(0, 136, 169, 0.8);
+            text-align: center;
+        }
         /*****************************************************************/
 
         .form-box {
+            z-index: -1;
             width: 92%;
             height: 80%;
             position: relative;
@@ -180,7 +224,7 @@
                     <li><a th:href="@{/api/v1/inquiry/addNewProductInquiry(username=${#authentication.getName()})}">Product Inquiry</a></li>
                     <li><a th:href="@{/api/v1/complaint/addNewComplaint(username=${#authentication.getName()})}">Raise Complaint</a></li>
                     <li><a th:href="@{/api/v1/complaint/showComplaintsByUsername(username=${#authentication.getName()})}">Complaint List</a></li>
-                    <li><a th:href="@{/api/v1/complaint/showAllProductInquiriesByName(username=${#authentication.getName()})}">Product Inquiry List</a></li>
+                    <li><a th:href="@{/api/v1/inquiry/showAllProductInquiriesByName(username=${#authentication.getName()})}">Product Inquiry List</a></li>
                 </div>
 
                 <div sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
@@ -191,14 +235,14 @@
                 </div>
             </ul>
         </nav>
-        <select class="input-opt">
-            <option selected disabled id="opt">
-                <a href="#">Hello, User</a>
-            </option>
-            <option><a href="#">My Profile</a></option>
-            <option><a href="#">Change Password</a></option>
-            <option><a href="#">Logout</a></option>
-        </select>
+        <div class="dropdown">
+            <a>Hello, User</a>
+            <div class="dropdown-options">
+                <a href="#">Dashboard</a>
+                <a href="#">Setting</a>
+                <a th:href="@{/logout}">Logout</a>
+            </div>
+        </div>
     </header>
     <div class="form-box">
         <form>

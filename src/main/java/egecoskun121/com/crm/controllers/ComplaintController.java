@@ -69,7 +69,7 @@ public class ComplaintController {
         return redirectView;
     }
 
-    @PreAuthorize("hasRole('ROLE_USER')")
+    @PreAuthorize("hasRole('ROLE_USER') OR hasRole('ROLE_ADMIN')")
     @GetMapping("/showUpdateForm")
     public ModelAndView showUpdateForm(@RequestParam Long id){
         ModelAndView mav = new ModelAndView("update-complaint-form");
@@ -79,7 +79,7 @@ public class ComplaintController {
     }
 
 
-    @PreAuthorize("hasRole('ROLE_USER') OR hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(path="/updateComplaint/{id}")
     public RedirectView updateComplaint(@PathVariable("id") Long id, @ModelAttribute ComplaintDTO complaintDTO){
 
@@ -89,6 +89,15 @@ public class ComplaintController {
         return redirectView;
     }
 
+    @PreAuthorize("hasRole('ROLE_USER') OR hasRole('ROLE_ADMIN')")
+    @RequestMapping(path="/updateComplaintByUsername/{id}/{username}")
+    public RedirectView updateComplaintByUsername(@PathVariable("id") Long id,@PathVariable("username") String username, @ModelAttribute ComplaintDTO complaintDTO){
+
+        complaintService.updateComplaintById(complaintDTO,id);
+        RedirectView redirectView = new RedirectView();
+        redirectView.setUrl("http://localhost:8093/api/v1/complaint/showComplaintsByUsername?username="+username);
+        return redirectView;
+    }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(path = "/deleteComplaint")

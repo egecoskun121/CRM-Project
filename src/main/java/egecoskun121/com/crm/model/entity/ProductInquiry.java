@@ -16,13 +16,15 @@ import java.util.UUID;
 
 @SqlResultSetMapping(name="ProductInquiry.productInquiryResult", classes = {
         @ConstructorResult(targetClass = ProductInquiry.class,
-                columns = {@ColumnResult(name="ID",type = Long.class),@ColumnResult(name="ANSWER"), @ColumnResult(name="CREATED_DATE",type = String.class),@ColumnResult(name = "DETAILS") ,@ColumnResult(name = "LAST_MODIFIED_DATE",type = String.class),@ColumnResult(name = "MAIL"),
-                        @ColumnResult(name = "PRODUCT_CATEGORY")})
+                columns = {@ColumnResult(name="ID",type = Long.class),@ColumnResult(name="ANSWER"),
+                        @ColumnResult(name="CREATED_DATE",type = String.class),@ColumnResult(name = "DETAILS") ,
+                        @ColumnResult(name = "LAST_MODIFIED_DATE",type = String.class),@ColumnResult(name = "MAIL"),
+                        @ColumnResult(name = "PRODUCT_INQUIRY_ANSWER")})
 })
 @NamedNativeQuery(
         name = "ProductInquiry.productInquiryResult",
         resultClass = ProductInquiry.class,
-        query = "SELECT p.ID,p.ANSWER,p.CREATED_DATE,p.DETAILS,p.LAST_MODIFIED_DATE,p.MAIL, p.PRODUCT_CATEGORY FROM PRODUCT_INQUIRY AS p INNER JOIN  USERS_PRODUCT_INQUIRIES  AS u ON u.PRODUCT_INQUIRIES_ID = p.ID WHERE u.USER_ID= {SELECT ID FROM USERS WHERE USER_NAME= (:username)}" ,
+        query = "SELECT p.ID,p.ANSWER,p.CREATED_DATE,p.DETAILS,p.LAST_MODIFIED_DATE,p.MAIL, p.PRODUCT_INQUIRY_ANSWER FROM PRODUCT_INQUIRY AS p INNER JOIN  USERS_PRODUCT_INQUIRIES  AS u ON u.PRODUCT_INQUIRIES_ID = p.ID WHERE u.USER_ID= {SELECT ID FROM USERS WHERE USER_NAME= (:username)}" ,
         resultSetMapping = "ProductInquiry.productInquiryResult")
 @Data
 @Entity
@@ -30,7 +32,7 @@ import java.util.UUID;
 @NoArgsConstructor
 public class ProductInquiry {
 
-    public ProductInquiry(Long id,String answer,String createdDate,String details,String lastModifiedDate,String mail,Integer productCategory){
+    public ProductInquiry(Long id,String answer,String createdDate,String details,String lastModifiedDate,String mail,Integer productInquiryAnswer){
         this.id=id;
         this.answer=answer;
         this.createdDate=Timestamp.valueOf(createdDate);
@@ -38,9 +40,9 @@ public class ProductInquiry {
         this.lastModifiedDate=Timestamp.valueOf(lastModifiedDate);
         this.mail=mail;
         int i=0;
-        for (ProductCategory productCategory1: ProductCategory.values()) {
-            if(productCategory==i){
-                this.productCategory=productCategory1;
+        for (ProductInquiryAnswer productInquiryAnswer1: ProductInquiryAnswer.values()) {
+            if(productInquiryAnswer==i){
+                this.productInquiryAnswer=productInquiryAnswer1;
             }
             i++;
         }
@@ -62,8 +64,6 @@ public class ProductInquiry {
     @Email
     private String mail;
 
-    private ProductCategory productCategory;
-
     @Size(min = 5,max = 100)
     private String details;
     @Size(min = 5,max = 100)
@@ -71,4 +71,5 @@ public class ProductInquiry {
 
     private String productName;
 
+    private ProductInquiryAnswer productInquiryAnswer;
 }

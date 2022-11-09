@@ -54,11 +54,6 @@ public class ComplaintService {
 
     public void deleteComplaintById(Long id){
         complaintRepository.delete(complaintRepository.findById(id).orElseThrow(NotFoundException::new));
-        double d = 22;
-        long l = 62;
-
     }
-
-
 
 }

@@ -27,7 +27,7 @@ public class ProductController {
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(path = "/showAllProducts")
     public ModelAndView showProductList(){
-        ModelAndView modelAndView = new ModelAndView("show-all-products");
+        ModelAndView modelAndView = new ModelAndView("product-list");
         modelAndView.addObject("productList",productService.getAllProducts());
         return modelAndView;
     }
@@ -36,7 +36,7 @@ public class ProductController {
     @PreAuthorize("hasRole('ROLE_USER') OR hasRole('ROLE_ADMIN')")
     @RequestMapping(path = "/showAllProductsByUsername")
     public ModelAndView showProductListByUsername(@RequestParam String username){
-        ModelAndView modelAndView = new ModelAndView("show-all-products-by-username");
+        ModelAndView modelAndView = new ModelAndView("product-list-by-username");
         modelAndView.addObject("productList",productService.getAllProductsByUsername(username));
         return modelAndView;
     }

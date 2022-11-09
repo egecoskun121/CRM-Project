@@ -36,7 +36,7 @@ public class ProductInquiryController {
     @PreAuthorize("hasRole('ROLE_USER') OR hasRole('ROLE_ADMIN')")
     @RequestMapping(path = "/showAllProductInquiriesByName")
     public ModelAndView showAllProductsInquiriesByUsername(@RequestParam String username) {
-        ModelAndView modelAndView = new ModelAndView("show-all-products-inquiries-by-username");
+        ModelAndView modelAndView = new ModelAndView("product-inquiry-list-by-username");
         modelAndView.addObject("productInquiry", productInquiryService.getAllProductInquiriesByUsername(username));
         return modelAndView;
     }
@@ -68,6 +68,17 @@ public class ProductInquiryController {
         productInquiryService.updateProductInquiryById(id, productInquiryDTO);
         RedirectView redirectView = new RedirectView();
         redirectView.setUrl("http://localhost:8093/api/v1/inquiry/showList");
+
+        return redirectView;
+    }
+
+    @PreAuthorize("hasRole('ROLE_USER') OR hasRole('ROLE_ADMIN')")
+    @RequestMapping(path="/updateInquiryByUsername/{id}/{username}")
+    public RedirectView updateInquiryByUsername(@PathVariable("id") Long id,@PathVariable("username") String username,@ModelAttribute ProductInquiryDTO productInquiryDTO){
+
+        productInquiryService.updateProductInquiryById(id, productInquiryDTO);
+        RedirectView redirectView = new RedirectView();
+        redirectView.setUrl("http://localhost:8093/api/v1/inquiry/showAllProductInquiriesByName?username="+username);
 
         return redirectView;
     }
