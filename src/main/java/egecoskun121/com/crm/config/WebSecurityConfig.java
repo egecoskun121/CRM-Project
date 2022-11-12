@@ -52,12 +52,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/register").permitAll()
                 .antMatchers("/api/v1/product/showList").hasAnyAuthority("ROLE_USER")
                 .antMatchers("/api/v1/product/showAllProducts").hasAnyAuthority("ROLE_ADMIN")
-                .antMatchers("/api/v1/product/categoryList").hasAnyAuthority("ROLE_USER")
+                .antMatchers("/api/v1/product/categoryList").hasAnyAuthority("ROLE_ADMIN")
                 .antMatchers("/api/v1/product/showAllProductsByUsername").hasAuthority("ROLE_USER")
                 .antMatchers("/h2/**").permitAll()
               //  .antMatchers("api/v1/product/**").hasAuthority("ROLE_USER")
                         .and()
-                                .formLogin(form -> form.defaultSuccessUrl("/showUserDetails")
+                                .formLogin(form -> form.defaultSuccessUrl("/api/v1/product/showAllProducts")
                                         .loginPage("/login")
                                        );
 
