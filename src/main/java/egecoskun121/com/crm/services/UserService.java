@@ -52,5 +52,7 @@ public class UserService {
     }
 
 
-
+    public List<User> getAllUsersOrderedById() {
+        return userRepository.getAllUsersOrderedById();
+    }
 }
