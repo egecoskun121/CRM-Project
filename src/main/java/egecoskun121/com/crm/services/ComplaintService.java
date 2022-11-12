@@ -3,6 +3,7 @@ package egecoskun121.com.crm.services;
 import egecoskun121.com.crm.exception.NotFoundException;
 import egecoskun121.com.crm.model.DTO.ComplaintDTO;
 import egecoskun121.com.crm.model.entity.Complaint;
+import egecoskun121.com.crm.model.entity.User;
 import egecoskun121.com.crm.model.mapper.ComplaintMapper;
 import egecoskun121.com.crm.repositories.ComplaintRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -19,9 +20,13 @@ public class ComplaintService {
     private final ComplaintMapper complaintMapper;
     private final ComplaintRepository complaintRepository;
 
-    public ComplaintService(ComplaintMapper complaintMapper, ComplaintRepository complaintRepository) {
+    private final UserService userService;
+
+
+    public ComplaintService(ComplaintMapper complaintMapper, ComplaintRepository complaintRepository, UserService userService) {
         this.complaintMapper = complaintMapper;
         this.complaintRepository = complaintRepository;
+        this.userService = userService;
     }
 
     public Complaint getComplaintById(Long id){
@@ -37,8 +42,12 @@ public class ComplaintService {
         return allComplaintsByName;
     }
 
-    public Complaint saveNewComplaint(ComplaintDTO complaintDTO){
-        return complaintRepository.save(complaintMapper.toComplaint(complaintDTO));
+    public Complaint saveNewComplaint(ComplaintDTO complaintDTO,String username){
+        Complaint complaint = complaintMapper.toComplaint(complaintDTO);
+        User user = userService.getUserByUsername(username);
+        complaint.setUser(user);
+        user.getComplaints().add(complaint);
+        return complaintRepository.save(complaint);
     }
 
     public Complaint updateComplaintById(ComplaintDTO complaintDTO,Long id){

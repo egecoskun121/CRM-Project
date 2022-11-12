@@ -61,11 +61,11 @@ public class ComplaintController {
     }
 
     @PreAuthorize("hasRole('ROLE_USER')")
-    @RequestMapping(path = "/saveNewComplaint")
-    public RedirectView saveNewProductInquiry(@ModelAttribute ComplaintDTO complaintDTO){
-        complaintService.saveNewComplaint(complaintDTO);
+    @RequestMapping(path = "/saveNewComplaint/{username}")
+    public RedirectView saveNewComplaint(@ModelAttribute ComplaintDTO complaintDTO,@PathVariable("username") String username){
+        complaintService.saveNewComplaint(complaintDTO,username);
         RedirectView redirectView = new RedirectView();
-        redirectView.setUrl("http://localhost:8093/api/v1/complaint/showList");
+        redirectView.setUrl("http://localhost:8093/api/v1/complaint/showComplaintsByUsername?username="+username);
         return redirectView;
     }
 
