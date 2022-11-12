@@ -62,5 +62,8 @@ public class Complaint {
 
     private String productName;
 
+    @JoinColumn(name = "user_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User user;
 
 }
