@@ -46,18 +46,18 @@ public class ProductInquiryController {
     public ModelAndView addNewProductInquiry(@ModelAttribute ProductInquiryDTO productInquiryDTO,@RequestParam String username){
         ModelAndView mav = new ModelAndView("product-inquiry");
         ProductInquiry productInquiry = new ProductInquiry();
-        List<Product> productList = productService.getAllProductsByUsername(username);
+        List<Product> productList = productService.getAllProducts();
         mav.addObject("productInquiry",productInquiry);
         mav.addObject("productList",productList);
         return mav;
     }
 
     @PreAuthorize("hasRole('ROLE_USER')")
-    @RequestMapping(path = "/saveNewProductInquiry")
-    public RedirectView saveNewProductInquiry(@ModelAttribute ProductInquiryDTO productInquiryDTO){
-        productInquiryService.saveNewProductInquiry(productInquiryDTO);
+    @RequestMapping(path = "/saveNewProductInquiry/{username}")
+    public RedirectView saveNewProductInquiry(@ModelAttribute ProductInquiryDTO productInquiryDTO,@PathVariable("username") String username){
+        productInquiryService.saveNewProductInquiry(productInquiryDTO,username);
         RedirectView redirectView = new RedirectView();
-        redirectView.setUrl("http://localhost:8093/api/v1/inquiry/showList");
+        redirectView.setUrl("http://localhost:8093/api/v1/inquiry/showAllProductInquiriesByName?username="+username);
         return redirectView;
     }
 

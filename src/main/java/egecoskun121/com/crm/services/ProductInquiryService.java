@@ -5,6 +5,7 @@ import egecoskun121.com.crm.model.DTO.ProductInquiryDTO;
 import egecoskun121.com.crm.model.entity.Product;
 import egecoskun121.com.crm.model.entity.ProductInquiry;
 import egecoskun121.com.crm.model.entity.ProductInquiryAnswer;
+import egecoskun121.com.crm.model.entity.User;
 import egecoskun121.com.crm.model.mapper.ProductInquiryMapper;
 import egecoskun121.com.crm.model.mapper.ProductMapper;
 import egecoskun121.com.crm.repositories.ProductInquiryRepository;
@@ -18,19 +19,27 @@ import org.springframework.stereotype.Service;
 public class ProductInquiryService {
 
     private final ProductInquiryRepository productInquiryRepository;
+
+    private final UserService userService;
     private final ProductInquiryMapper productInquiryMapper;
 
-    public ProductInquiryService(ProductInquiryRepository productInquiryRepository, ProductInquiryMapper productInquiryMapper) {
+    public ProductInquiryService(ProductInquiryRepository productInquiryRepository, UserService userService, ProductInquiryMapper productInquiryMapper) {
         this.productInquiryRepository = productInquiryRepository;
+        this.userService = userService;
         this.productInquiryMapper = productInquiryMapper;
     }
 
     public ProductInquiry getById(Long id){
         return productInquiryRepository.findById(id).orElseThrow(NotFoundException::new);
     }
-    public ProductInquiry saveNewProductInquiry(ProductInquiryDTO productInquiryDTO){
+    public ProductInquiry saveNewProductInquiry(ProductInquiryDTO productInquiryDTO,String username){
         productInquiryDTO.setProductInquiryAnswer(ProductInquiryAnswer.WAITING);
-        return productInquiryRepository.save(productInquiryMapper.toProductInquiry(productInquiryDTO));
+        User user = userService.getUserByUsername(username);
+        ProductInquiry productInquiry = productInquiryMapper.toProductInquiry(productInquiryDTO);
+        user.getProductInquiries().add(productInquiry);
+        productInquiry.setUser(user);
+
+        return productInquiryRepository.save(productInquiry);
     }
     public ProductInquiry updateProductInquiryById(Long productInquiryId,ProductInquiryDTO productInquiryDTO){
         ProductInquiry productInquiry = productInquiryRepository.findById(productInquiryId).orElseThrow(NotFoundException::new);
