@@ -12,7 +12,7 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
+      font-family:  sans-serif;
     }
 
     body {
@@ -140,6 +140,7 @@
     h1,
     h2 {
       color: #444;
+
     }
 
     h3 {
@@ -193,6 +194,7 @@
     }
 
     .container .content .cards {
+
       padding: 20px 15px;
       display: flex;
       align-items: center;
@@ -201,10 +203,10 @@
     }
 
     .container .content .cards .card {
+    background:#EEEEEE ;
       z-index: -1;
       width: 250px;
       height: 150px;
-      background: white;
       margin: 20px 10px;
       display: flex;
       align-items: center;
@@ -223,16 +225,23 @@
     .container .content .content-2 .recent-payments {
       min-height: 50vh;
       flex: 5;
-      background: white;
+      background: #EEEEEE;
       margin: 0 25px 25px 25px;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       display: flex;
       flex-direction: column;
     }
 
+    .container .content .content-2 .recent-payments tbody tr:nth-of-type(even){
+      background: white;
+    }
+    .container .content .content-2 .recent-payments tbody tr:nth-of-type(odd){
+      background: whitesmoke;
+    }
+
     .container .content .content-2 .new-students {
       flex: 2;
-      background: white;
+      background: #EEEEEE;
       min-height: 50vh;
       margin: 0 25px;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -291,11 +300,12 @@
       </div>
     </div>
   </header>
-  <div class="content">
+  <div   class="content">
     <div class="cards">
       <div class="card">
-        <div class="box">
-          <h1>2194</h1>
+        <div  class="box">
+
+          <h1  th:text="${productCount}">2194</h1>
           <h3>Products</h3>
         </div>
         <div class="icon-case">
@@ -304,7 +314,7 @@
       </div>
       <div class="card">
         <div class="box">
-          <h1>53</h1>
+          <h1 th:text="${userCount}">53</h1>
           <h3>Users</h3>
         </div>
         <div class="icon-case">
@@ -313,7 +323,7 @@
       </div>
       <div class="card">
         <div class="box">
-          <h1>16</h1>
+          <h1 th:text="${productCategoryCount}"></h1>
           <h3>Category</h3>
         </div>
         <div class="icon-case">
@@ -322,7 +332,7 @@
       </div>
       <div class="card">
         <div class="box">
-          <h1>350000</h1>
+          <h1 th:text="${totalPrice}">350000</h1>
           <h3>Income</h3>
         </div>
         <div class="icon-case">
@@ -337,78 +347,25 @@
           <a href="#" class="btn">View All</a>
         </div>
         <table>
+          <thead>
           <tr>
             <th>Id</th>
-            <th>Name</th>
+            <th>Product Name</th>
             <th>Details</th>
             <th>E-Mail</th>
             <th>Result</th>
-            <th>Option</th>
           </tr>
-          <tr>
-            <td>1</td>
-            <td>John Doe</td>
-            <td>St. James College</td>
-            <td>deneme@mail.com</td>
-            <td>WAITING</td>
-            <td><a href="#" class="btn">View</a></td>
+          </thead>
+          <tbody>
+          <tr th:each="productInquiryList:${productInquiryList}">
+            <td  th:text="${productInquiryList.id}">1</td>
+            <td  th:text="${productInquiryList.productName}">1</td>
+            <td  th:text="${productInquiryList.details}">1</td>
+            <td  th:text="${productInquiryList.mail}">1</td>
+            <td  th:text="${productInquiryList.productInquiryAnswer}">1</td>
           </tr>
-          <tr>
-            <td>2</td>
-            <td>John Doe</td>
-            <td>St. James College</td>
-            <td>deneme@mail.com</td>
-            <td>WAITING</td>
-            <td><a href="#" class="btn">View</a></td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>John Doe</td>
-            <td>St. James College</td>
-            <td>deneme@mail.com</td>
-            <td>WAITING</td>
-            <td><a href="#" class="btn">View</a></td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>John Doe</td>
-            <td>St. James College</td>
-            <td>deneme@mail.com</td>
-            <td>WAITING</td>
-            <td><a href="#" class="btn">View</a></td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td>John Doe</td>
-            <td>St. James College</td>
-            <td>deneme@mail.com</td>
-            <td>WAITING</td>
-            <td><a href="#" class="btn">View</a></td>
-          </tr>
-          <tr>
-            <td>6</td>
-            <td>John Doe</td>
-            <td>St. James College</td>
-            <td>deneme@mail.com</td>
-            <td>WAITING</td>
-            <td><a href="#" class="btn">View</a></td>
-          </tr>
-          <tr>
-            <td>7</td>
-            <td>John Doe</td>
-            <td>St. James College</td>
-            <td>deneme@mail.com</td>
-            <td>WAITING</td>
-            <td><a href="#" class="btn">View</a></td>
-          </tr>
-          <tr>
-            <td>8</td>
-            <td>John Doe</td>
-            <td>St. James College</td>
-            <td>deneme@mail.com</td>
-            <td>WAITING</td>
-            <td><a href="#" class="btn">View</a></td>
-          </tr>
+          </tbody>
+
         </table>
       </div>
       <div class="new-students">
@@ -417,56 +374,20 @@
           <a href="#" class="btn">View All</a>
         </div>
         <table>
+          <thead>
           <tr>
             <th>Id</th>
-            <th>Name</th>
-            <th>Age</th>
+            <th>Mail</th>
+            <th>Username</th>
           </tr>
-          <tr>
-            <td>1</td>
-            <td>John Steve Doe</td>
-            <td>45</td>
+          </thead>
+          <tbody>
+          <tr  th:each="userList:${userList}">
+            <td th:text="${userList.id}">1</td>
+            <td th:text="${userList.userName}">John Steve Doe</td>
+            <td th:text="${userList.email}">45</td>
           </tr>
-          <tr>
-            <td>1</td>
-            <td>John Steve Doe</td>
-            <td>45</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>John Steve Doe</td>
-            <td>45</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>John Steve Doe</td>
-            <td>45</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>John Steve Doe</td>
-            <td>45</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>John Steve Doe</td>
-            <td>45</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>John Steve Doe</td>
-            <td>45</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>John Steve Doe</td>
-            <td>45</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>John Steve Doe</td>
-            <td>45</td>
-          </tr>
+          </tbody>
         </table>
       </div>
     </div>
