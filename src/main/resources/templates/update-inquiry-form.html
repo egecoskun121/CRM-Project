@@ -247,7 +247,7 @@
       <div class="dropdown-options">
         <a href="#">Dashboard</a>
         <a href="#">Setting</a>
-        <a href="#">Logout</a>
+        <a th:href="@{/logout}">Logout</a>
       </div>
     </div>
   </header>
@@ -258,7 +258,6 @@
     <form sec:authorize="hasAnyAuthority('ROLE_USER')" th:action="@{/api/v1/inquiry/updateInquiryByUsername/{id}/{username}(id=${productInquiry.id},username=${#authentication.getName()})}" th:object="${productInquiry}"
           method="put" id="register" class="input-group">
 
-      <input type="text" th:field="*{productCategory}" readonly class="input-field" placeholder=" Product Category" required/>
 
       <textarea th:field="*{details}" class="input-field" placeholder=" Details" required rows="5"
       ></textarea>
@@ -270,7 +269,6 @@
     <form sec:authorize="hasAnyAuthority('ROLE_ADMIN')" th:action="@{/api/v1/inquiry/updateInquiry/}+${productInquiry.id}" th:object="${productInquiry}"
           method="put" id="register" class="input-group">
 
-      <input type="text" th:field="*{productCategory}" readonly class="input-field" placeholder=" Product Category" required/>
 
       <textarea th:field="*{details}" class="input-field" placeholder=" Details" required rows="5"
       ></textarea>

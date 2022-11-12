@@ -272,7 +272,7 @@
           <div class="dropdown-options">
             <a href="#">Dashboard</a>
             <a href="#">Setting</a>
-            <a href="#">Logout</a>
+            <a th:href="@{/logout}">Logout</a>
           </div>
         </div>
       </header>
@@ -280,7 +280,7 @@
         <div class="title">
           <h2 id="h2-title">Raise Complaint</h2>
         </div>
-        <form  th:action="@{/api/v1/complaint/saveNewComplaint}" th:object="${complaint}" id="login" class="input-group">
+        <form  th:action="@{/api/v1/complaint/saveNewComplaint/{username}(username=${#authentication.getName()})}" th:object="${complaint}" id="login" class="input-group">
           <select th:field="*{productName}"  class="input-opt">
             <option th:each="a,iterStatus : ${productList}" th:text="${a.productName}" th:value="${a.productName}" id="opt">Choose a Product</option>
           </select >
@@ -294,7 +294,7 @@
           />
           <textarea
             class="input-field"
-            th:fielkd="*{details}"
+            th:field="*{details}"
             required
             placeholder="Write Your Details"
             rows="8"
