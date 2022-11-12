@@ -24,7 +24,7 @@ import java.sql.Timestamp;
 @NamedNativeQuery(
         name = "ProductInquiry.productInquiryResult",
         resultClass = ProductInquiry.class,
-        query = "SELECT p.ID,p.ANSWER,p.CREATED_DATE,p.DETAILS,p.LAST_MODIFIED_DATE,p.MAIL, p.PRODUCT_INQUIRY_ANSWER,p.PRODUCT_NAME FROM PRODUCT_INQUIRY AS p INNER JOIN  USERS_PRODUCT_INQUIRIES  AS u ON u.PRODUCT_INQUIRIES_ID = p.ID WHERE u.USER_ID= {SELECT ID FROM USERS WHERE USER_NAME= (:username)}" ,
+        query = "SELECT ID,ANSWER,CREATED_DATE,DETAILS,LAST_MODIFIED_DATE,MAIL, PRODUCT_INQUIRY_ANSWER,PRODUCT_NAME FROM PRODUCT_INQUIRY WHERE USER_ID= {SELECT ID FROM USERS WHERE USER_NAME= (:username)}" ,
         resultSetMapping = "ProductInquiry.productInquiryResult")
 @Data
 @Entity
@@ -75,6 +75,6 @@ public class ProductInquiry {
     private ProductInquiryAnswer productInquiryAnswer;
 
     @JoinColumn(name = "user_id")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private User user;
 }

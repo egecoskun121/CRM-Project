@@ -109,6 +109,19 @@ public class ComplaintController {
 
         return redirectView;
     }
+
+    @PreAuthorize("hasRole('ROLE_USER')")
+    @RequestMapping(path = "/deleteComplaintByUsername")
+    public RedirectView deleteComplaintByUsername(@RequestParam Long id,@RequestParam String username){
+
+        complaintService.deleteComplaintById(id);
+        RedirectView redirectView = new RedirectView();
+        redirectView.setUrl("http://localhost:8093/api/v1/complaint/showComplaintsByUsername?username="+username);
+
+        return redirectView;
+    }
+
+
 }
 
 

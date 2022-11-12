@@ -269,6 +269,7 @@
                     <td th:text="${complaintList.answer}"/>
                     <td>
                         <a th:href="@{/api/v1/complaint/showUpdateForm(id=${complaintList.id})}" class="btn btn-info">Update</a>
+                        <a th:href="@{/api/v1/complaint/deleteComplaintByUsername(id=${complaintList.id} ,username=${#authentication.getName()})}" class="btn btn-info">Delete</a>
                     </td>
                 </tr>
 

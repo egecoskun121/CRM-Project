@@ -22,7 +22,7 @@ import java.sql.Timestamp;
 @NamedNativeQuery(
         name = "Complaint.complaintResult",
         resultClass = Complaint.class,
-        query = "SELECT p.ID,p.ANSWER, p.COMPLAINT_SUBJECT, p.CREATED_DATE, p.DETAILS,p.LAST_MODIFIED_DATE, p.PRODUCT_NAME FROM COMPLAINT AS p INNER JOIN USERS_COMPLAINTS AS u ON u.COMPLAINTS_ID = p.ID WHERE u.USER_ID= {SELECT ID FROM USERS WHERE USER_NAME= (:username)}" ,
+        query = "SELECT ID,ANSWER,COMPLAINT_SUBJECT,CREATED_DATE,DETAILS,LAST_MODIFIED_DATE, PRODUCT_NAME FROM COMPLAINT  WHERE USER_ID= {SELECT ID FROM USERS WHERE USER_NAME= (:username)}" ,
         resultSetMapping = "Complaint.complaintResult")
 @Data
 @NoArgsConstructor
@@ -63,7 +63,7 @@ public class Complaint {
     private String productName;
 
     @JoinColumn(name = "user_id")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private User user;
 
 }
