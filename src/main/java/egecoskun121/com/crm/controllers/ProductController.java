@@ -44,7 +44,7 @@ public class ProductController {
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(path = "/addNewProduct")
     public ModelAndView addNewProduct(@ModelAttribute ProductDTO productDTO){
-       ModelAndView mav = new ModelAndView("add-product");
+        ModelAndView mav = new ModelAndView("add-product");
         Product product = new Product();
         mav.addObject("product",product);
         return mav;
