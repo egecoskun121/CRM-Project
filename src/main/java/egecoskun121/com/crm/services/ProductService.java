@@ -18,9 +18,12 @@ public class ProductService {
     private final ProductRepository productRepository;
     private final ProductMapperImpl productMapperImpl;
 
-    public ProductService(ProductRepository productRepository, ProductMapperImpl productMapperImpl) {
+    private final UserService userService;
+
+    public ProductService(ProductRepository productRepository, ProductMapperImpl productMapperImpl, UserService userService) {
         this.productRepository = productRepository;
         this.productMapperImpl = productMapperImpl;
+        this.userService = userService;
     }
 
     public Product getById(Long productId){
@@ -61,6 +64,19 @@ public class ProductService {
 
     public Integer getProductCategoryCountsByUsername(int categoryNumber,String username){
         return productRepository.findProductCategoryByUsername(categoryNumber,username);
+    }
+
+    public void addProductToUser(String productName,String username){
+        productRepository.findProductByProductName(productName).setUser(userService.getUserByUsername(username));
+        userService.getUserByUsername(username).getProducts().add(productRepository.findProductByProductName(productName));
+    }
+
+    public double getSumOfPrices(){
+        return productRepository.getSumOfPrices();
+    }
+
+    public double getSumOfPricesWithUsername(String username){
+        return productRepository.getSumOfPricesWithUsername(username);
     }
 
 }

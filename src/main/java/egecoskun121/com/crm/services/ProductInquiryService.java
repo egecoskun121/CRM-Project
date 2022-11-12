@@ -62,4 +62,8 @@ public class ProductInquiryService {
         productInquiryRepository.delete(productInquiryRepository.findById(id).orElseThrow(NotFoundException::new));
     }
 
+    public List<ProductInquiry> getAllProductInquiriesOrderedById(){
+        return productInquiryRepository.findAllProductInquiriesOrderedById();
+    }
+
 }
