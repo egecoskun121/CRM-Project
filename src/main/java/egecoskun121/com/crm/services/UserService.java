@@ -55,4 +55,8 @@ public class UserService {
     public List<User> getAllUsersOrderedById() {
         return userRepository.getAllUsersOrderedById();
     }
+
+    public List<String> getAllEmails(){
+        return userRepository.getAllEmails();
+    }
 }

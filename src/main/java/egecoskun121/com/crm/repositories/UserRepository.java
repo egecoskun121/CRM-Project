@@ -14,4 +14,7 @@ public interface UserRepository extends JpaRepository<User,Long> {
 
     @Query(value = "SELECT * FROM USERS ORDER BY ID DESC",nativeQuery = true)
     List<User> getAllUsersOrderedById();
+
+    @Query(value = "SELECT EMAIL FROM USERS",nativeQuery = true)
+    List<String> getAllEmails();
 }
