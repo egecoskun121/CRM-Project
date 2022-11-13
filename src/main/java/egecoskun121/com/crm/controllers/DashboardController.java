@@ -51,6 +51,9 @@ public class DashboardController {
         mav.addObject("totalPrice",totalPrice);
         mav.addObject("productInquiryList",productInquiryList);
         mav.addObject("userList",userList);
+        User user = userService.getUserByUsername("burak123");
+
+        mav.addObject("user",user);
 
         return mav;
     }
@@ -73,6 +76,12 @@ public class DashboardController {
         return mav;
     }
 
+    @RequestMapping(path = "/changeboolean")
+    public void changeValue(@RequestParam String username){
+        User user = userService.getUserByUsername(username);
+        user.setIsUserHappy(true);
+        user.setIsPopupShowed(true);
+    }
 
 
 

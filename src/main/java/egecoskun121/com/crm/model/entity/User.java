@@ -60,4 +60,8 @@ public class User {
 
     private Role role;
 
+    private Boolean isPopupShowed;
+
+    private Boolean isUserHappy;
+
 }

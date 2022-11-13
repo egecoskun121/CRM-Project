@@ -466,24 +466,27 @@
     </div>
   </div>
   <div class="form-popup" id="myForm">
-    <form action="/action_page.php" class="form-container">
+    <form  th:action="@{/changeboolean}" class="form-container">
       <label>Are you happy with your products?</label>
       <button type="button" class="btn yes" onclick="closeForm()">Yes</button>
       <button type="button" class="btn no" onclick="closeForm()">No</button>
     </form>
   </div>
-  <script>
-    function openForm() {
-      document.getElementById("myForm").style.display = "block";
-    }
-    if(boolen){
-      setTimeout("openForm()", 5000);
-    }
+  <div  th:if="${!user.getIsPopupShowed()}" th:object="${user}">
+    <script>
+      function openForm() {
+        document.getElementById("myForm").style.display = "block";
+      }
 
-    function closeForm() {
-      document.getElementById("myForm").style.display = "none";
-    }
-  </script>
+      setTimeout("openForm()", 5000);
+
+
+      function closeForm() {
+        document.getElementById("myForm").style.display = "none";
+      }
+    </script>
+  </div>
+
 </div>
 </body>
 </html>
