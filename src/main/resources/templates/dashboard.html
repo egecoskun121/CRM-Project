@@ -466,13 +466,17 @@
     </div>
   </div>
   <div class="form-popup" id="myForm">
-    <form  th:action="@{/changeboolean}" class="form-container">
+    <form class="form-container">
       <label>Are you happy with your products?</label>
-      <button type="button" class="btn yes" onclick="closeForm()">Yes</button>
-      <button type="button" class="btn no" onclick="closeForm()">No</button>
+      <form th:action="@{/dashboard/isUserHappyTrue(username=${#authentication.getName()})}" th:method="post" >
+        <button type="submit" class="btn yes" onclick="closeForm()">Yes</button>
+      </form>
+      <form th:action="@{/dashboard/isUserHappyFalse(username=${#authentication.getName()})}" th:method="post">
+        <button type="submit" class="btn no" onclick="closeForm()">No</button>
+      </form>
     </form>
   </div>
-  <div  th:if="${!user.getIsPopupShowed()}" th:object="${user}">
+  <div th:if="${!user.getIsPopupShowed()}" th:object="${user}">
     <script>
       function openForm() {
         document.getElementById("myForm").style.display = "block";
