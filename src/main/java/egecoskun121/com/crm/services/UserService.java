@@ -59,4 +59,8 @@ public class UserService {
     public List<String> getAllEmails(){
         return userRepository.getAllEmails();
     }
+
+    public User update(User user){
+        return userRepository.save(user);
+    }
 }
