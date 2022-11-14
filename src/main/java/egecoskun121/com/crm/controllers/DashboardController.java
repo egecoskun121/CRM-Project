@@ -76,14 +76,20 @@ public class DashboardController {
         return mav;
     }
 
-    @RequestMapping(path = "/changeboolean")
-    public void changeValue(@RequestParam String username){
+    @RequestMapping(path = "/isUserHappyTrue")
+    public void isUserHappyTrue(@RequestParam String username){
         User user = userService.getUserByUsername(username);
         user.setIsUserHappy(true);
         user.setIsPopupShowed(true);
+        userService.update(user);
     }
 
-
-
+    @RequestMapping(path = "/isUserHappyFalse")
+    public void isUserHappyFalse(@RequestParam String username){
+        User user = userService.getUserByUsername(username);
+        user.setIsUserHappy(false);
+        user.setIsPopupShowed(true);
+        userService.update(user);
+    }
 
 }
