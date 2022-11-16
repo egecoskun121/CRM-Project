@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -21,18 +22,19 @@
       integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA=="
       crossorigin="anonymous"
     ></script>
-    <script>
+    <script th:inline="javascript">
       document.addEventListener("DOMContentLoaded", function () {
         const ctx = document.getElementById("myChart");
-
+        let categories = [[${categoryList}]];
         new Chart(ctx, {
+
           type: "line",
           data: {
             labels: ["Baby", "Phone", "Electronics", "Car", "Food", "Laptop"],
             datasets: [
               {
                 label: "Category",
-                data: [12, 19, 3, 5, 2, 3],
+                data: [categories.at(0).keys()],
                 borderWidth: 1,
                 backgroundColor: [
                   "red",
@@ -47,7 +49,7 @@
           },
           options: {},
         });
-        new Chart(ctx, {
+        new Chart2(ctx, {
           type: "bar",
           data: {
             labels: ["Baby", "Phone", "Electronics", "Car", "Food", "Laptop"],
