@@ -25,38 +25,23 @@
     <script th:inline="javascript">
       document.addEventListener("DOMContentLoaded", function () {
         const ctx = document.getElementById("myChart");
-        let categories = [[${categoryList}]];
+        var categories = [[${categoryList}]];
+        var labels=new Array();
+        var values=new Array();
+        for (let index = 0; index < categories.length/2; index++) {
+              labels[index]=categories[2*index];
+              values[index]=categories[2*index+1];
+          }
+
         new Chart(ctx, {
 
-          type: "line",
-          data: {
-            labels: ["Baby", "Phone", "Electronics", "Car", "Food", "Laptop"],
-            datasets: [
-              {
-                label: "Category",
-                data: [categories.at(0).keys()],
-                borderWidth: 1,
-                backgroundColor: [
-                  "red",
-                  "Blue",
-                  "Yellow",
-                  "Green",
-                  "Purple",
-                  "Orange",
-                ],
-              },
-            ],
-          },
-          options: {},
-        });
-        new Chart2(ctx, {
           type: "bar",
           data: {
-            labels: ["Baby", "Phone", "Electronics", "Car", "Food", "Laptop"],
+            labels: labels,
             datasets: [
               {
                 label: "Category",
-                data: [12, 19, 3, 5, 2, 3],
+                data: values,
                 borderWidth: 1,
                 backgroundColor: [
                   "red",
