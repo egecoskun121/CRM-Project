@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #myChart {
+        max-width: 500px;
+        max-height: 500px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <canvas id="myChart"></canvas>
+    </div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"
+      integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA=="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const ctx = document.getElementById("myChart");
+
+        new Chart(ctx, {
+          type: "line",
+          data: {
+            labels: ["Baby", "Phone", "Electronics", "Car", "Food", "Laptop"],
+            datasets: [
+              {
+                label: "Category",
+                data: [12, 19, 3, 5, 2, 3],
+                borderWidth: 1,
+                backgroundColor: [
+                  "red",
+                  "Blue",
+                  "Yellow",
+                  "Green",
+                  "Purple",
+                  "Orange",
+                ],
+              },
+            ],
+          },
+          options: {},
+        });
+        new Chart(ctx, {
+          type: "bar",
+          data: {
+            labels: ["Baby", "Phone", "Electronics", "Car", "Food", "Laptop"],
+            datasets: [
+              {
+                label: "Category",
+                data: [12, 19, 3, 5, 2, 3],
+                borderWidth: 1,
+                backgroundColor: [
+                  "red",
+                  "Blue",
+                  "Yellow",
+                  "Green",
+                  "Purple",
+                  "Orange",
+                ],
+              },
+            ],
+          },
+          options: {},
+        });
+      });
+    </script>
+  </body>
+</html>
