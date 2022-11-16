@@ -92,4 +92,12 @@ public class DashboardController {
         userService.update(user);
     }
 
+    @RequestMapping("/chart")
+    public ModelAndView chart(@RequestParam String username){
+        ModelAndView mav = new ModelAndView("chart-js");
+        mav.addObject("categoryList",productService.getProductCategoryCountsWithUsername(username));
+
+        return mav;
+    }
+
 }
