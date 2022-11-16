@@ -8,6 +8,7 @@ import egecoskun121.com.crm.model.mapper.ProductMapper;
 import egecoskun121.com.crm.model.mapper.ProductMapperImpl;
 import egecoskun121.com.crm.repositories.ProductRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections4.map.MultiKeyMap;
 import org.springframework.stereotype.Service;
 import java.util.*;
 
@@ -77,6 +78,10 @@ public class ProductService {
 
     public double getSumOfPricesWithUsername(String username){
         return productRepository.getSumOfPricesWithUsername(username);
+    }
+
+    public List<Map<Integer,Integer>> getProductCategoryCountsWithUsername(String username){
+        return productRepository.getCategoryCountsWithUsername(username);
     }
 
 }
