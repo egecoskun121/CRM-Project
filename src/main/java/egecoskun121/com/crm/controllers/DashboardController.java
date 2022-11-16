@@ -95,7 +95,14 @@ public class DashboardController {
     @RequestMapping("/chart")
     public ModelAndView chart(@RequestParam String username){
         ModelAndView mav = new ModelAndView("chart-js");
-        mav.addObject("categoryList",productService.getProductCategoryCountsWithUsername(username));
+
+        List<String> categories=new ArrayList<>();
+       for(int i=0;i<productService.getProductCategoryCountsWithUsername(username).size();i++) {
+           for(int j=0;j<=1;j++){
+                   categories.add(String.valueOf(productService.getProductCategoryCountsWithUsername(username).get(i).values().stream().toList().get(j)));
+           }
+       }
+        mav.addObject("categoryList",categories);
 
         return mav;
     }
