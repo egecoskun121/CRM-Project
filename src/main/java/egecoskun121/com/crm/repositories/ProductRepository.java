@@ -35,6 +35,8 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
      @Query(value = "SELECT new map (productCategory, COUNT(productCategory) as pcounter) FROM Product WHERE user.id=(SELECT id FROM User WHERE userName=(:username)) GROUP BY productCategory")
      List<Map<Integer, Integer>> getCategoryCountsWithUsername(@Param("username")String username);
 
+     @Query(value = "SELECT * FROM PRODUCT WHERE USER_ID IS NULL ",nativeQuery = true )
+     List<Product> getAllProductsWithIdNull();
 
 
 }
