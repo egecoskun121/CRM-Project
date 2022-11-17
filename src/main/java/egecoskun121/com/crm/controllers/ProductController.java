@@ -1,6 +1,7 @@
 package egecoskun121.com.crm.controllers;
 
 import egecoskun121.com.crm.model.DTO.ProductDTO;
+import egecoskun121.com.crm.model.DTO.RegisterObject;
 import egecoskun121.com.crm.model.entity.Product;
 import egecoskun121.com.crm.model.entity.ProductCategory;
 import egecoskun121.com.crm.model.entity.User;
@@ -125,17 +126,21 @@ public class ProductController {
     @RequestMapping(path = "/addProductToUser")
     public ModelAndView addProductToUser(){
         ModelAndView mav = new ModelAndView("add-product-to-user");
+        RegisterObject registerObject = new RegisterObject();
         List<User> userList = userService.getAllUsers();
-        List<Product> productList = productService.getAllProducts();
+        List<Product> productList = productService.getAllProductsWithNullId();
+        mav.addObject("dummy", registerObject);
         mav.addObject("userList",userList);
         mav.addObject("productList",productList);
         return mav;
     }
 
-    @RequestMapping(path = "/saveProductToUser/{username}/{productName}")
-    public RedirectView saveProductToUser(@PathVariable("username") String username,@PathVariable("productName") String productName){
+    @RequestMapping(path = "/saveProductToUser")
+    //RegisterObject holds username and product name
+    //This way we can send that RegisterObject to controller
+    public RedirectView saveProductToUser(@ModelAttribute RegisterObject registerObject){
 
-        productService.addProductToUser(productName,username);
+        productService.addProductToUser(registerObject.getProductName(), registerObject.getUsername());
         RedirectView redirectView = new RedirectView();
         redirectView.setUrl("http://localhost:8093/api/v1/product/showAllProducts");
         return redirectView;
