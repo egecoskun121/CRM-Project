@@ -1,6 +1,7 @@
 package egecoskun121.com.crm.services;
 import java.util.*;
 
+import egecoskun121.com.crm.exception.IncorrectPasswordException;
 import egecoskun121.com.crm.model.DTO.UserDTO;
 import egecoskun121.com.crm.model.entity.Role;
 import egecoskun121.com.crm.model.entity.User;
@@ -16,6 +17,7 @@ public class UserService {
     private final UserMapperImpl userMapperImpl;
 
     private final BCryptPasswordEncoder passwordEncoder;
+
 
     public UserService(UserRepository userRepository, UserMapperImpl userMapperImpl, BCryptPasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
@@ -39,9 +41,14 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public User changePassword(String username,String password){
+    public User changePassword(String username,String oldPassword,String newPassword){
         User user = userRepository.getUserByUserName(username);
-        user.setPassword(passwordEncoder.encode(password));
+
+        if(passwordEncoder.matches(oldPassword,user.getPassword())){
+            user.setPassword(passwordEncoder.encode(newPassword));
+        }else{
+            throw new IncorrectPasswordException("Your password is not correct !");
+        }
 
         return userRepository.save(user);
     }

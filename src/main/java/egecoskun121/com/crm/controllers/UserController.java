@@ -1,5 +1,6 @@
 package egecoskun121.com.crm.controllers;
 
+import egecoskun121.com.crm.model.DTO.PasswordDTO;
 import egecoskun121.com.crm.model.DTO.UserDTO;
 import egecoskun121.com.crm.model.entity.User;
 import egecoskun121.com.crm.services.UserService;
@@ -7,10 +8,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -68,8 +66,18 @@ public class UserController {
     public ModelAndView changePassword(@RequestParam String username){
         ModelAndView mav = new ModelAndView("change-password");
         User user = userService.getUserByUsername(username);
+        PasswordDTO passwordDTO = new PasswordDTO();
+        mav.addObject("passwordDTO",passwordDTO);
         mav.addObject("user",user);
         return mav;
+    }
+
+    @RequestMapping("/submitPassword/{username}")
+    public RedirectView submitChangedPassword(@PathVariable("username") String username, @ModelAttribute PasswordDTO passwordDTO){
+        userService.changePassword(username, passwordDTO.getOldPassword(), passwordDTO.getNewPassword());
+        RedirectView redirectView = new RedirectView();
+        redirectView.setUrl("http://localhost:8093/dashboard/dashboardForUser?username="+username);
+        return redirectView;
     }
 
 }
