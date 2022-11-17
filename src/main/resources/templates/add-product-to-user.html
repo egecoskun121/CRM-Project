@@ -262,21 +262,18 @@
         <div class="title">
           <h2>Add Product</h2>
         </div>
-        <div th:object="userList">
-        <form th:action="@{/api/v1/product/saveProductToUser/{username}/{productName}(username=${a.userName},productName=${a.productName})}" th:object="productList"   id="register" class="input-group" method="post">
+        <form th:action="@{/api/v1/product/saveProductToUser}" th:object="${dummy}"   id="register" class="input-group" method="post">
 
-          <select class="input-opt">
+          <select th:field="*{productName}"  class="input-opt">
             <option th:each="a,iterStatus : ${productList}" th:text="${a.productName}" th:value="${a.productName}" id="opt2">Choose a Product</option>
           </select >
 
-          <select  class="input-opt">
-            <option th:each="a,iterStatus : ${userList}" th:text="${a.userName}" th:value="${a.userName}"  id="opt2">Choose a Product</option>
+          <select th:field="*{username}"  class="input-opt">
+            <option th:each="a,iterStatus : ${userList}" th:text="${a.userName}" th:value="${a.userName}" id="opt2">Choose a Product</option>
           </select >
 
-          <a th:href="@{/api/v1/product/showAllProducts}" type="submit" class="submit-btn">Save</a>
-
+          <button  type="submit" class="submit-btn">Save</button>
         </form>
-        </div>
       </div>
     </div>
   </body>
