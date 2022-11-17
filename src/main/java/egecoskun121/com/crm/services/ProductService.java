@@ -4,9 +4,11 @@ package egecoskun121.com.crm.services;
 import egecoskun121.com.crm.exception.NotFoundException;
 import egecoskun121.com.crm.model.DTO.ProductDTO;
 import egecoskun121.com.crm.model.entity.Product;
+import egecoskun121.com.crm.model.entity.User;
 import egecoskun121.com.crm.model.mapper.ProductMapper;
 import egecoskun121.com.crm.model.mapper.ProductMapperImpl;
 import egecoskun121.com.crm.repositories.ProductRepository;
+import egecoskun121.com.crm.repositories.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.map.MultiKeyMap;
 import org.springframework.stereotype.Service;
@@ -18,12 +20,14 @@ public class ProductService {
 
     private final ProductRepository productRepository;
     private final ProductMapperImpl productMapperImpl;
+    private final UserRepository userRepository;
 
     private final UserService userService;
 
-    public ProductService(ProductRepository productRepository, ProductMapperImpl productMapperImpl, UserService userService) {
+    public ProductService(ProductRepository productRepository, ProductMapperImpl productMapperImpl, UserRepository userRepository, UserService userService) {
         this.productRepository = productRepository;
         this.productMapperImpl = productMapperImpl;
+        this.userRepository = userRepository;
         this.userService = userService;
     }
 
@@ -68,8 +72,13 @@ public class ProductService {
     }
 
     public void addProductToUser(String productName,String username){
-        productRepository.findProductByProductName(productName).setUser(userService.getUserByUsername(username));
-        userService.getUserByUsername(username).getProducts().add(productRepository.findProductByProductName(productName));
+        Product product = productRepository.findProductByProductName(productName);
+        User user = userService.getUserByUsername(username);
+        product.setUser(user);
+        List<Product> productList = user.getProducts();
+        productList.add(product);
+        user.setProducts(productList);
+        userRepository.save(user);
     }
 
     public double getSumOfPrices(){
@@ -82,6 +91,10 @@ public class ProductService {
 
     public List<Map<Integer,Integer>> getProductCategoryCountsWithUsername(String username){
         return productRepository.getCategoryCountsWithUsername(username);
+    }
+
+    public List<Product> getAllProductsWithNullId(){
+        return productRepository.getAllProductsWithIdNull();
     }
 
 }
