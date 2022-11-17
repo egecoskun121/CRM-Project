@@ -11,7 +11,8 @@ import java.util.List;
 public interface UserRepository extends JpaRepository<User,Long> {
 
 
-    User getUserByUserName(String userName);
+    @Query(value = "SELECT * FROM USERS WHERE USER_NAME=(:username)",nativeQuery = true)
+    User getUserByUserName(@Param("username") String userName);
 
     @Query(value = "SELECT * FROM USERS ORDER BY ID DESC",nativeQuery = true)
     List<User> getAllUsersOrderedById();
