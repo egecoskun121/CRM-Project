@@ -46,7 +46,7 @@ public class ProductInquiryController {
     public ModelAndView addNewProductInquiry(@ModelAttribute ProductInquiryDTO productInquiryDTO,@RequestParam String username){
         ModelAndView mav = new ModelAndView("product-inquiry");
         ProductInquiry productInquiry = new ProductInquiry();
-        List<Product> productList = productService.getAllProducts();
+        List<Product> productList = productService.getAllProductsWithNullId();
         mav.addObject("productInquiry",productInquiry);
         mav.addObject("productList",productList);
         return mav;
