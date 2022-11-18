@@ -71,8 +71,13 @@ public class DashboardController {
         mav.addObject("productInquiryList",productInquiryList);
         mav.addObject("totalPrice",totalPrice);
         mav.addObject("productCount",productCount);
+        return mav;
+    }
 
-
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @RequestMapping(path = "/main")
+    public ModelAndView getMainPage(){
+        ModelAndView mav = new ModelAndView("main");
         return mav;
     }
 
