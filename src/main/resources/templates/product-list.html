@@ -214,9 +214,8 @@
 <body>
 <div class="hero">
     <header>
-        <img src="../../../../../htmld/navbarWithTable/logo-yeni-2.png" alt="logo" />
+        <img th:src="@{/images/logoNewLast3.png}" alt="logo" height="50px" width="50px"/>
         <nav>
-
             <ul class="nav__links">
                 <div sec:authorize="hasAnyAuthority('ROLE_USER')">
                     <li><a th:href="@{/api/v1/product/categoryListByUsername(username=${#authentication.getName()})}">Product Category List</a></li>
