@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+  <head>
+    <!--meta tags-->
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta
+      name="description"
+      content="GetFit Responsive Fitness Club HTML Template"
+    />
+    <meta
+      name="keywords"
+      content="onepage, gym, fitness, business, clean, modern"
+    />
+    <meta name="author" content="Mouri Theme" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!--template title-->
+    <title>Main Page</title>
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta
+      name="msapplication-TileImage"
+      content="favicon/ms-icon-144x144.png"
+    />
+    <meta name="theme-color" content="#ffffff" />
+
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta
+      name="msapplication-TileImage"
+      content="favicon/ms-icon-144x144.png"
+    />
+    <meta name="theme-color" content="#ffffff" />
+    <!--========== Theme Fonts ==========-->
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:400,400i,600,700,800"
+      rel="stylesheet"
+    />
+    <!--Bootstrap css-->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+    <!--Font Awesome css-->
+    <link rel="stylesheet" th:href="@{/css/fontAwesome.min.css}" />
+
+    <!--Normalizer css-->
+    <link rel="stylesheet" th:href="@{/css/jquery.animatedheadline.css}" />
+
+    <!--Template css-->
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+  </head>
+  <body>
+    <!--navigation area starts-->
+
+    <header class="nav-area navbar-fixed-top">
+      <div class="container">
+        <div class="row">
+          <!--main menu starts-->
+          <div class="col-md-12">
+            <div class="main-menu">
+              <div class="navbar navbar-cus">
+                <div class="navbar-header">
+                  <a href="index.html" class="navbar-brand"
+                    >ZE<span>CRM</span></a
+                  >
+                  <!--edit site name or logo-->
+                  <button
+                    type="button"
+                    class="navbar-toggle"
+                    data-toggle="collapse"
+                    data-target=".navbar-collapse"
+                  >
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                </div>
+
+                <div class="navbar-collapse collapse">
+                  <nav>
+                    <ul class="nav navbar-nav navbar-right">
+                      <li class="active">
+                        <a class="smooth-menu" href="#home">Home</a>
+                      </li>
+                      <li><a class="smooth-menu" href="#about">About</a></li>
+                      <li>
+                        <a class="smooth-menu" href="#trainer">Trainers</a>
+                      </li>
+                      <li>
+                        <a class="smooth-menu" href="#services">Services</a>
+                      </li>
+                      <li>
+                        <a class="smooth-menu" href="#testimonial"
+                          >Testimonial</a
+                        >
+                      </li>
+                      <li>
+                        <a class="smooth-menu" href="#pricing">Pricing</a>
+                      </li>
+                      <li><a class="smooth-menu" href="#blog">Blog</a></li>
+                      <li>
+                        <a class="smooth-menu" href="#contact">Contact</a>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--main menu ends-->
+        </div>
+      </div>
+    </header>
+
+    <!--navigation area ends-->
+
+    <!--banner area starts-->
+
+    <div class="banner-area" id="home">
+      <div class="banner-table">
+        <div class="banner-table-cell">
+          <div class="welcome-text">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12">
+                  <section class="intro animate-rotate-3">
+                    <h2>ZE CRM</h2>
+                    <h1 class="ah-headline">
+                      <span>Increase your</span>
+                      <span class="ah-words-wrapper">
+                        <b class="is-visible">Knowledge</b>
+                        <!--edit here-->
+                        <b>Customer</b>
+                        <!--edit here-->
+                        <b>Relations</b>
+                        <!--edit here-->
+                      </span>
+                    </h1>
+                  </section>
+                  <p class="home-btn">
+                    <a href="#" class="active">Get Started</a>
+                    <a href="#blog">Learn More</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--banner area ends-->
+
+    <!--about area starts-->
+
+    <div id="about" class="about-area section-padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-5 col-sm-12 col-xs-12">
+            <div class="about-video">
+              <div class="single-video">
+                <a
+                  href="https://youtu.be/ng4vA7_XldA"
+                  data-autoplay="true"
+                  data-vbtype="video"
+                  class="venobox"
+                >
+                  <!--change video url-->
+                  <i class="fa fa-play"></i>
+                </a>
+                <img th:src="@{/images/about/about1.jpg}" alt="about image" />
+                <!--change image-->
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-7 col-sm-12 col-xs-12">
+            <div class="about-main">
+              <br />
+              <h3>
+                About <b>ZE<span>CRM</span></b>
+              </h3>
+              <h2>Welcome to our System</h2>
+              <p class="line1"></p>
+              <div class="single-about">
+                <p>
+                  Customer Relationship Management (CRM) is a strategy that
+                  companies use to manage interactions with customers and
+                  potential customers. CRM helps organisations streamline
+                  processes, build customer relationships, increase sales,
+                  improve customer service, and increase profitability.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--about area ends-->
+
+    <!--Blog area starts-->
+
+    <div id="blog" class="blog-area section-padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-header">
+              <h2>Our Features</h2>
+              <p class="line"></p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            <div class="single-blog-news text-center">
+              <div class="news-img">
+                <img th:src="@{/images/blog/blog1.jpg}" alt="blog image" />
+                <!--edit image-->
+              </div>
+
+              <div class="single-post">
+                <h2>Product Recommendation</h2>
+                <p class="line4"></p>
+                <p>
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry. Lorem Ipsum has been the industry's
+                  standard dummy text ever since the 1500s, when an unknown
+                  printer
+                </p>
+
+                <a href="single-blog.html">Continue Reading</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            <div class="single-blog-news text-center">
+              <div class="news-img">
+                <img th:src="@{/images/blog/blog2.jpg}" alt="blog image" />
+                <!--edit image-->
+              </div>
+
+              <div class="single-post">
+                <h2>Complaint Panel</h2>
+                <p class="line4"></p>
+                <p>
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry. Lorem Ipsum has been the industry's
+                  standard dummy text ever since the 1500s, when an unknown
+                  printer
+                </p>
+                <a href="single-blog.html">Continue Reading</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4 hidden-sm col-xs-12">
+            <div class="single-blog-news last-blog-div text-center">
+              <div class="news-img">
+                <img th:src="@{/images/blog/blog3.jpg}" alt="blog image" />
+                <!--edit image-->
+              </div>
+              <div class="single-post">
+                <h2>Increase relations with mail</h2>
+                <p class="line4"></p>
+                <p>
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry. Lorem Ipsum has been the industry's
+                  standard dummy text ever since the 1500s, when an unknown
+                  printer
+                </p>
+                <a href="single-blog.html">Continue Reading</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Blog area ends-->
+
+    <!-- JQuery-->
+    <script th:src="@{/js/jquery.min.js}"></script>
+
+    <!--Bootstrap js-->
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+
+    <!--Magnific popup js-->
+    <script th:src="@{/js/jquery.magnific-popup.js}"></script>
+
+    <!--Magnific popup js-->
+    <script th:src="@{/js/venobox.min.js}"></script>
+
+    <!--Owl Carousel js-->
+    <script th:src="@{/js/owl.carousel.js}"></script>
+
+    <!--Animated headline js-->
+    <script th:src="@{/js/jquery.animatedheadline.js}"></script>
+
+    <!--Validator js-->
+    <script th:src="@{/js/validator.js}"></script>
+
+    <!--Contact js-->
+    <script th:src="@{/js/contact.js}"></script>
+
+    <!--waypoint js-->
+    <script th:src="@{/js/waypoints.min.js}"></script>
+
+    <!--Main js-->
+    <script th:src="@{/js/main.js}"></script>
+  </body>
+</html>
