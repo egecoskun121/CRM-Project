@@ -6,7 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login and Refistration Form</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jq-3.6.0/dt-1.12.1/datatables.min.css"/>
+
+    <link
+            href="https://fonts.googleapis.com/css?family=Poppins:400,400i,600,700,800"
+            rel="stylesheet"
+    />
+
+    <!--Bootstrap css-->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+
+    <!--Font Awesome css-->
+    <link rel="stylesheet" th:href="@{/css/fontAwesome.min.css}" />
+
+    <!--Normalizer css-->
+    <link rel="stylesheet" th:href="@{/css/jquery.animatedheadline.css}" />
+
+    <!--Normalizer css-->
+    <link rel="stylesheet" th:href="@{/css/jquery.animatedheadline.css}" />
   </head>
   <style>
     * {
@@ -18,123 +35,18 @@
       z-index: -2;
       height: 100%;
       width: 100%;
-      background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-      url(https://cdn.wperp.com/uploads/2019/08/231-1920x768.png);
+      background-color: #282A3A;
       background-position: center;
       background-size: cover;
       position: absolute;
     }
 
-    /*****************************************************************/
-    header {
-      box-sizing: border-box;
-      backdrop-filter: blur(10px);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 3%;
-      color: white;
-    }
-
-    .nav__links li a {
-      color: black;
-      background-color: rgba(0, 136, 169, 1);
-      backdrop-filter: blur(10px);
-      border: #777;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: all 0.3s ease 0s;
-      text-decoration: none;
-      font-size: 14px;
-      padding: 9px 6px;
-    }
-
-    .input-opt {
-      padding: 9px 5px;
-      background-color: rgba(0, 136, 169, 1);
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: all 0.3s ease 0s;
-    }
-    .input-opt optgroup {
-      padding: 9px 5px;
-      background-color: rgba(0, 136, 169, 1);
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: all 0.3s ease 0s;
-    }
-
-    header button:hover {
-      background-color: rgba(0, 136, 169, 0.8);
-    }
-
-    .nav__links {
-      list-style: none;
-    }
-
-    .nav__links li {
-      display: inline-block;
-      padding: 0px 20px;
-    }
-
-    .nav__links li a {
-      transition: all 0.3s ease 0s;
-    }
-
-    .nav__links li a:hover {
-      color: white;
-    }
-
-    .dropdown{
-      color: black;
-      background-color: rgba(0, 136, 169, 1);
-      display: inline-block;
-      position: relative;
-      font-size: 16px;
-      padding: 9px 20px;
-    }
-    .dropdown-options {
-      z-index: 1;
-      color: black;
-      background-color: rgba(0, 136, 169, 1);
-      width: 89px;
-      font-size: 14px;
-      padding: 15px 15px 15px 15px;
-      right: 0;
-      text-align: center;
-      display: none;
-      position: absolute;
-      overflow: auto;
-      border-radius:5px;
-      box-shadow: 0 10px 10px 0 rgba(0,0,0,0.4);
-    }
-    .dropdown-options a{
-      z-index: 1;
-      display: block;
-      color: #000000;
-      text-decoration: none;
-      padding:17px 10px;
-    }
-
-    .dropdown-options a:hover {
-      color: #0a0a23;
-      background-color: white;
-    }
-
-    .dropdown:hover .dropdown-options {
-      display: block;
-      background-color: rgba(0, 136, 169, 0.8);
-      text-align: center;
-    }
-    /*****************************************************************/
     .form-box {
-      z-index: -1;
+      z-index: 0;
       width: 380px;
       height: 510px;
       position: relative;
-      margin: 6% auto;
+      margin: 150px auto 1% auto; /*yüzde 6'ydı*/
       background-color: #ffff;
       padding: 5px;
       overflow: hidden;
@@ -165,7 +77,6 @@
       transition: 0.5s;
     }
     .input-group {
-      top: 100px;
       position: absolute;
       width: 280px;
       transition: 0.5s;
@@ -207,7 +118,6 @@
     .title {
       width: 85%;
       text-align: center;
-      padding: 40px 0;
       display: block;
       margin: auto;
       color: #777;
@@ -224,37 +134,71 @@
       outline: none;
       background: transparent;
     }
+
+    .nav li a{
+      color: whitesmoke;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+    .nav li a:hover,
+    .nav li a:checked,
+    .nav li a:active{
+      background-color: transparent;
+    }
+
+    .navbar-header{
+      margin-top: 5px;
+    }
+
+    header{
+      height: 55px;
+    }
+
   </style>
   <body>
     <div class="hero">
-      <header>
-        <img src="logo-yeni-2.png" alt="logo" />
-        <nav>
-          <ul class="nav__links">
-            <div sec:authorize="hasAnyAuthority('ROLE_USER')">
-              <li><a th:href="@{/api/v1/product/categoryListByUsername(username=${#authentication.getName()})}">Product Category List</a></li>
-              <li><a th:href="@{/api/v1/product/showAllProductsByUsername(username=${#authentication.getName()})}">Product Details List</a></li>
-              <li><a th:href="@{/api/v1/inquiry/addNewProductInquiry(username=${#authentication.getName()})}">Product Inquiry</a></li>
-              <li><a th:href="@{/api/v1/complaint/addNewComplaint(username=${#authentication.getName()})}">Raise Complaint</a></li>
-              <li><a th:href="@{/api/v1/complaint/showComplaintsByUsername(username=${#authentication.getName()})}">Complaint List</a></li>
-              <li><a th:href="@{/api/v1/inquiry/showAllProductInquiriesByName(username=${#authentication.getName()})}">Product Inquiry List</a></li>
+      <header class="nav-area navbar-fixed-top">
+        <div class="container">
+          <div class="row">
+            <!--main menu starts-->
+            <div class="col-md-12">
+              <div class="main-menu">
+                <div class="navbar navbar-cus">
+                  <div class="navbar-header">
+                    <img th:src="@{/images/logoNewLast4.png}" alt="logo" height="75px" width="75px"/>
+                  </div>
+
+                  <div class="navbar-collapse collapse">
+                    <nav>
+                      <!--ADMIN NAVBAR-->
+                      <div sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                        <ul class="nav navbar-nav navbar-right">
+                          <li class="active"><a class="smooth-menu" th:href="@{/api/v1/product/categoryList}">Category List</a></li>
+                          <li><a class="smooth-menu" th:href="@{/api/v1/product/showAllProducts}">Details List</a></li>
+                          <li><a class="smooth-menu" th:href="@{/api/v1/complaint/showList}">Complaint List</a></li>
+                          <li><a class="smooth-menu" th:href="@{/api/v1/inquiry/showList}">Inquiry List</a></li>
+                          <li><a class="smooth-menu" th:href="@{/api/v1/product/addNewProduct}">Add Product</a></li>
+                        </ul>
+                      </div>
+
+                      <!--ADMIN NAVBAR-->
+                      <div sec:authorize="hasAnyAuthority('ROLE_USER')">
+                        <ul class="nav navbar-nav navbar-right">
+                          <li><a th:href="@{/api/v1/product/categoryListByUsername(username=${#authentication.getName()})}">Category List</a></li>
+                          <li><a th:href="@{/api/v1/product/showAllProductsByUsername(username=${#authentication.getName()})}">Details List</a></li>
+                          <li><a th:href="@{/api/v1/inquiry/addNewProductInquiry(username=${#authentication.getName()})}">Product Inquiry</a></li>
+                          <li><a th:href="@{/api/v1/complaint/addNewComplaint(username=${#authentication.getName()})}">Raise Complaint</a></li>
+                          <li><a th:href="@{/api/v1/complaint/showComplaintsByUsername(username=${#authentication.getName()})}">Complaint List</a></li>
+                          <li><a th:href="@{/api/v1/inquiry/showAllProductInquiriesByName(username=${#authentication.getName()})}">Inquiry List</a></li>
+                        </ul>
+                      </div>
+                    </nav>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
-              <li><a th:href="@{/api/v1/product/categoryList}">Product Category List</a></li>
-              <li><a th:href="@{/api/v1/product/showAllProducts}">Product Details List</a></li>
-              <li><a th:href="@{/api/v1/complaint/showList}">Complaint List</a></li>
-              <li><a th:href="@{/api/v1/inquiry/showList}">Product Inquiry List</a></li>
-              <li><a th:href="@{/api/v1/product/addNewProduct}">Add new Product</a></li>
-            </div>
-          </ul>
-        </nav>
-        <div class="dropdown">
-          <a>Hello, User</a>
-          <div class="dropdown-options">
-            <a href="#">Dashboard</a>
-            <a href="#">Setting</a>
-            <a th:href="@{/logout}">Logout</a>
+            <!--main menu ends-->
           </div>
         </div>
       </header>
