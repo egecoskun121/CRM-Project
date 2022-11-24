@@ -62,6 +62,7 @@ public class UserController {
     }
 
 
+    @PreAuthorize("hasRole('ROLE_USER') OR hasRole('ROLE_ADMIN')")
     @RequestMapping("/changePassword")
     public ModelAndView changePassword(@RequestParam String username){
         ModelAndView mav = new ModelAndView("change-password");
@@ -72,6 +73,7 @@ public class UserController {
         return mav;
     }
 
+    @PreAuthorize("hasRole('ROLE_USER') OR hasRole('ROLE_ADMIN')")
     @RequestMapping("/submitPassword/{username}")
     public RedirectView submitChangedPassword(@PathVariable("username") String username, @ModelAttribute PasswordDTO passwordDTO){
         userService.changePassword(username, passwordDTO.getOldPassword(), passwordDTO.getNewPassword());

@@ -123,6 +123,7 @@ public class ProductController {
         return mav;
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(path = "/addProductToUser")
     public ModelAndView addProductToUser(){
         ModelAndView mav = new ModelAndView("add-product-to-user");
@@ -135,6 +136,7 @@ public class ProductController {
         return mav;
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(path = "/saveProductToUser")
     //RegisterObject holds username and product name
     //This way we can send that RegisterObject to controller
