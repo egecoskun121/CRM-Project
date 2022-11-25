@@ -7,10 +7,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login and Refistration Form</title>
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jq-3.6.0/dt-1.12.1/datatables.min.css"/>
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-        crossorigin="anonymous">
+
+  <link
+          href="https://fonts.googleapis.com/css?family=Poppins:400,400i,600,700,800"
+          rel="stylesheet"
+  />
+
+  <!--Bootstrap css-->
+  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+
+  <!--Font Awesome css-->
+  <link rel="stylesheet" th:href="@{/css/fontAwesome.min.css}" />
+
+  <!--Normalizer css-->
+  <link rel="stylesheet" th:href="@{/css/jquery.animatedheadline.css}" />
+
+  <!--Normalizer css-->
+  <link rel="stylesheet" th:href="@{/css/jquery.animatedheadline.css}" />
   <style>
     * {
       margin: 0;
@@ -213,34 +226,48 @@
 
 <body>
 <div class="hero">
-  <header>
-    <img src="../../../../../htmld/navbarWithTable/logo-yeni-2.png" alt="logo" />
-    <nav>
-      <ul class="nav__links">
-        <div sec:authorize="hasAnyAuthority('ROLE_USER')">
-          <li><a th:href="@{/api/v1/product/categoryListByUsername(username=${#authentication.getName()})}">Product Category List</a></li>
-          <li><a th:href="@{/api/v1/product/showAllProductsByUsername(username=${#authentication.getName()})}">Product Details List</a></li>
-          <li><a th:href="@{/api/v1/inquiry/addNewProductInquiry(username=${#authentication.getName()})}">Product Inquiry</a></li>
-          <li><a th:href="@{/api/v1/complaint/addNewComplaint(username=${#authentication.getName()})}">Raise Complaint</a></li>
-          <li><a th:href="@{/api/v1/complaint/showComplaintsByUsername(username=${#authentication.getName()})}">Complaint List</a></li>
-          <li><a th:href="@{/api/v1/inquiry/showAllProductInquiriesByName(username=${#authentication.getName()})}">Product Inquiry List</a></li>
+  <header class="nav-area navbar-fixed-top">
+    <div class="container">
+      <div class="row">
+        <!--main menu starts-->
+        <div class="col-md-12">
+          <div class="main-menu">
+            <div class="navbar navbar-cus">
+              <div class="navbar-header">
+                <img th:src="@{/images/logoNewLast4.png}" alt="logo" height="75px" width="75px"/>
+              </div>
+
+              <div class="navbar-collapse collapse">
+                <nav>
+                  <!--ADMIN NAVBAR-->
+                  <div sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                    <ul class="nav navbar-nav navbar-right">
+                      <li class="active"><a class="smooth-menu" th:href="@{/api/v1/product/categoryList}">Category List</a></li>
+                      <li><a class="smooth-menu" th:href="@{/api/v1/product/showAllProducts}">Details List</a></li>
+                      <li><a class="smooth-menu" th:href="@{/api/v1/complaint/showList}">Complaint List</a></li>
+                      <li><a class="smooth-menu" th:href="@{/api/v1/inquiry/showList}">Inquiry List</a></li>
+                      <li><a class="smooth-menu" th:href="@{/api/v1/product/addNewProduct}">Add Product</a></li>
+                    </ul>
+                  </div>
+
+                  <!--ADMIN NAVBAR-->
+                  <div sec:authorize="hasAnyAuthority('ROLE_USER')">
+                    <ul class="nav navbar-nav navbar-right">
+                      <li><a th:href="@{/api/v1/product/categoryListByUsername(username=${#authentication.getName()})}">Category List</a></li>
+                      <li><a th:href="@{/api/v1/product/showAllProductsByUsername(username=${#authentication.getName()})}">Details List</a></li>
+                      <li><a th:href="@{/api/v1/inquiry/addNewProductInquiry(username=${#authentication.getName()})}">Product Inquiry</a></li>
+                      <li><a th:href="@{/api/v1/complaint/addNewComplaint(username=${#authentication.getName()})}">Raise Complaint</a></li>
+                      <li><a th:href="@{/api/v1/complaint/showComplaintsByUsername(username=${#authentication.getName()})}">Complaint List</a></li>
+                      <li><a th:href="@{/api/v1/inquiry/showAllProductInquiriesByName(username=${#authentication.getName()})}">Inquiry List</a></li>
+                    </ul>
+                  </div>
+                </nav>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
-          <li><a th:href="@{/api/v1/product/categoryList}">Product Category List</a></li>
-          <li><a th:href="@{/api/v1/product/showAllProducts}">Product Details List</a></li>
-          <li><a th:href="@{/api/v1/complaint/showList}">Complaint List</a></li>
-          <li><a th:href="@{/api/v1/inquiry/showList}">Product Inquiry List</a></li>
-          <li><a th:href="@{/api/v1/product/addNewProduct}">Add new Product</a></li>
-        </div>
-      </ul>
-    </nav>
-    <div class="dropdown">
-      <a>Hello, User</a>
-      <div class="dropdown-options">
-        <a href="#">Dashboard</a>
-        <a href="#">Setting</a>
-        <a th:href="@{/logout}">Logout</a>
+        <!--main menu ends-->
       </div>
     </div>
   </header>
