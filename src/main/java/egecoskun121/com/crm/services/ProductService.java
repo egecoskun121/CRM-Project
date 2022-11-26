@@ -119,4 +119,31 @@ public class ProductService {
         return dates;
     }
 
+    public List<String> getProductCategoryCounts(){
+        List<String> categories=new ArrayList<>();
+        for(int i=0;i<productRepository.getCategoryCounts().size();i++) {
+            for(int j=0;j<=1;j++){
+                categories.add(String.valueOf(productRepository.getCategoryCounts().get(i).values().stream().toList().get(j)));
+            }
+        }
+        return categories;
+    }
+
+    public List<Integer> getTotalPriceOfDateAdmin(){
+        List<Integer> dates = new ArrayList<>();
+        for (int i=1;i<=12;i++){
+            if(i<10){
+                dates.add(productRepository.getTotalPriceOfDateAdmin("2022-0"+i));
+            }else{
+                dates.add(productRepository.getTotalPriceOfDateAdmin("2022-"+i));
+            }
+        }
+
+        for(int i = 0;i<=11;i++){
+            if(dates.get(i)==null){
+                dates.set(i,0);
+            }
+        }
+        return dates;
+    }
 }

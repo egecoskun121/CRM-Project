@@ -623,26 +623,27 @@
           <h2>Recent Inquiry</h2>
           <a href="#" class="btn">View All</a>
         </div>
-        <table>
+        <table >
           <thead>
           <tr>
             <th>Id</th>
+            <th>Complaint Subject</th>
             <th>Product Name</th>
             <th>Details</th>
-            <th>E-Mail</th>
-            <th>Result</th>
+            <th>Answer</th>
+
           </tr>
           </thead>
           <tbody>
-          <tr th:each="productInquiryList:${productInquiryList}">
-            <td  th:text="${productInquiryList.id}">1</td>
-            <td  th:text="${productInquiryList.productName}">1</td>
-            <td  th:text="${productInquiryList.details}">1</td>
-            <td  th:text="${productInquiryList.mail}">1</td>
-            <td  th:text="${productInquiryList.productInquiryAnswer}">1</td>
+          <tr th:each="complaintList:${complaintList}">
+            <td th:text="${complaintList.id}"/>
+            <td th:text="${complaintList.complaintSubject}"/>
+            <td th:text="${complaintList.productName}"/>
+            <td th:text="${complaintList.details}"/>
+            <td th:text="${complaintList.answer}"/>
           </tr>
-          </tbody>
 
+          </tbody>
         </table>
       </div>
       <div class="chart">
@@ -719,7 +720,7 @@
 
       new Chart(ctx, {
 
-        type: "doughnut",
+        type: "bar",
         data: {
           labels: labels,
           datasets: [
