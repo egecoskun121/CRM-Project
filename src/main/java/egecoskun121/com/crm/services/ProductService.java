@@ -97,4 +97,26 @@ public class ProductService {
         return productRepository.getAllProductsWithIdNull();
     }
 
+    public List<Product> getMaxCategoryListOfProduct(String username){
+        return productRepository.getProductsByMaxCategory(productRepository.getMaxCountProductCategory(username));
+    }
+
+    public List<Integer> getTotalPriceOfDate(String username){
+        List<Integer> dates = new ArrayList<>();
+        for (int i=1;i<=12;i++){
+            if(i<10){
+                dates.add(productRepository.getTotalPriceOfDate("2022-0"+i,username));
+            }else{
+                dates.add(productRepository.getTotalPriceOfDate("2022-"+i,username));
+            }
+        }
+
+        for(int i = 0;i<=11;i++){
+            if(dates.get(i)==null){
+                dates.set(i,0);
+            }
+        }
+        return dates;
+    }
+
 }
