@@ -214,7 +214,7 @@
     }
 
     .container-3 .content .content-2 {
-      min-height: 60vh;
+      min-height: 50vh;
       display: flex;
       justify-content: space-around;
       align-items: flex-start;
@@ -223,7 +223,7 @@
 
     .container-3 .content .content-2 .recent-payments {
       min-height: 50vh;
-      flex: 5;
+      flex: 4;
       background: #EEEEEE;
       margin: 0 25px 25px 25px;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -241,7 +241,8 @@
     .container-3 .content .content-2 .new-students {
       flex: 2;
       background: #EEEEEE;
-      min-height: 50vh;
+      min-height: 40vh;
+      max: 45vh;
       margin: 0 25px;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       display: flex;
@@ -514,7 +515,7 @@
       <div class="new-students">
 
         <div>
-          <canvas id="myChart2" width="250px" height="500px"></canvas>
+          <canvas id="myChart2" width="100%" height="78%"></canvas>
         </div>
 
         <script th:inline="javascript">
@@ -581,7 +582,7 @@
 
       new Chart(ctx, {
 
-        type: "doughnut",
+        type: "bar",
         data: {
           labels: labels,
           datasets: [
@@ -646,7 +647,7 @@
       </div>
       <div class="chart">
         <div>
-          <canvas id="myChart" width="100%" height="100%"></canvas>
+          <canvas id="myChart" width="100%" height="80%"></canvas>
         </div>
       </div>
       <div class="new-students">
