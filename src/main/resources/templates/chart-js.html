@@ -22,35 +22,29 @@
       integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA=="
       crossorigin="anonymous"
     ></script>
+
     <script th:inline="javascript">
       document.addEventListener("DOMContentLoaded", function () {
-        const ctx = document.getElementById("myChart");
-        var categories = [[${categoryList}]];
-        var labels=new Array();
-        var values=new Array();
-        for (let index = 0; index < categories.length/2; index++) {
-              labels[index]=categories[2*index];
-              values[index]=categories[2*index+1];
-          }
+        const ctx = document.getElementById("myChart2");
+        var categories = [[${totalPrices}]];
+
+
+        const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
 
         new Chart(ctx, {
 
-          type: "bar",
+          type: "line",
           data: {
-            labels: labels,
+            labels: months,
             datasets: [
               {
-                label: "Category",
-                data: values,
-                borderWidth: 1,
-                backgroundColor: [
-                  "red",
-                  "Blue",
-                  "Yellow",
-                  "Green",
-                  "Purple",
-                  "Orange",
-                ],
+                label: "Total price of products",
+                data:  categories,
+                borderColor:'rgb(75,192,192)',
+                tension:0.1,
+                fill:false,
+                pointBackgroundColor:["black"],
               },
             ],
           },

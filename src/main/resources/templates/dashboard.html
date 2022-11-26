@@ -223,7 +223,7 @@
 
     .container-3 .content .content-2 .recent-payments {
       min-height: 50vh;
-      flex: 2;
+      flex: 5;
       background: #EEEEEE;
       margin: 0 25px 25px 25px;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -512,26 +512,42 @@
         </table>
       </div>
       <div class="new-students">
-        <div class="title">
-          <h2>New Users</h2>
-          <a href="#" class="btn">View All</a>
+
+        <div>
+          <canvas id="myChart2" width="250px" height="500px"></canvas>
         </div>
-        <table>
-          <thead>
-          <tr>
-            <th>Id</th>
-            <th>Mail</th>
-            <th>Username</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr  th:each="userList:${userList}">
-            <td th:text="${userList.id}">1</td>
-            <td th:text="${userList.userName}">John Steve Doe</td>
-            <td th:text="${userList.email}">45</td>
-          </tr>
-          </tbody>
-        </table>
+
+        <script th:inline="javascript">
+          document.addEventListener("DOMContentLoaded", function () {
+            const ctx = document.getElementById("myChart2");
+            var categories = [[${totalPrices}]];
+
+
+            const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+
+            new Chart(ctx, {
+
+              type: "line",
+              data: {
+                labels: months,
+                datasets: [
+                  {
+                    label: "Total price of products",
+                    data:  categories,
+                    borderColor:'rgb(75,192,192)',
+                    tension:0.1,
+                    fill:false,
+                    pointBackgroundColor:["black"],
+                  },
+                ],
+              },
+              options: {},
+            });
+          });
+        </script>
+
+
       </div>
     </div>
   </div>
@@ -723,8 +739,6 @@
                 "rgb(86, 43, 8)",
                 "rgb(100, 126, 104)",
                 "rgb(216, 216, 216)",
-
-
               ],
             },
           ],
