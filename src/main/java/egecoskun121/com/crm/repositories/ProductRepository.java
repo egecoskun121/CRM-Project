@@ -32,6 +32,8 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
     @Query(value = "SELECT SUM (PRICE) FROM PRODUCT WHERE USER_ID = {SELECT ID FROM USERS WHERE USER_NAME= (:username)}  ",nativeQuery = true)
     Double getSumOfPricesWithUsername(@Param("username")String username );
 
+    @Query(value = "SELECT new map (productCategory, COUNT(productCategory) as pcounter) FROM Product GROUP BY productCategory")
+    List<Map<Integer, Integer>> getCategoryCounts();
 
     @Query(value = "SELECT new map (productCategory, COUNT(productCategory) as pcounter) FROM Product WHERE user.id=(SELECT id FROM User WHERE userName=(:username)) GROUP BY productCategory")
     List<Map<Integer, Integer>> getCategoryCountsWithUsername(@Param("username")String username);
@@ -50,4 +52,8 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
 
      @Query(value = "SELECT SUM(PRICE) FROM PRODUCT WHERE CREATED_DATE LIKE (:date%) AND USER_ID = {SELECT ID FROM USERS WHERE USER_NAME= (:username)} ",nativeQuery = true)
      Integer getTotalPriceOfDate(@Param("date") String date,@Param("username") String username);
+
+    @Query(value = "SELECT SUM(PRICE) FROM PRODUCT WHERE CREATED_DATE LIKE (:date%) ",nativeQuery = true)
+    Integer getTotalPriceOfDateAdmin(@Param("date") String date);
+
 }
