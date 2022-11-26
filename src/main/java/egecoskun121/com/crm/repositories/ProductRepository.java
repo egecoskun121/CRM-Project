@@ -44,7 +44,7 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
      @Query(value = "SELECT PRODUCT_CATEGORY FROM PRODUCT WHERE USER_ID = (SELECT ID FROM USERS WHERE USER_NAME=(:username)) GROUP BY PRODUCT_CATEGORY ORDER BY COUNT(PRODUCT_CATEGORY) DESC LIMIT 1",nativeQuery = true)
       int getMaxCountProductCategory(@Param("username")String username);
 
-     @Query(value = "SELECT * FROM PRODUCT WHERE PRODUCT_CATEGORY = (:productCategory) AND USER_ID IS NULL",nativeQuery = true)
+     @Query(value = "SELECT * FROM PRODUCT WHERE PRODUCT_CATEGORY = (:productCategory) AND USER_ID IS NULL LIMIT 5",nativeQuery = true)
       List<Product> getProductsByMaxCategory(@Param("productCategory") int productCategory);
 
 
