@@ -51,6 +51,8 @@ public class DashboardController {
         mav.addObject("totalPrice",totalPrice);
         mav.addObject("productInquiryList",productInquiryList);
         mav.addObject("userList",userList);
+        mav.addObject("totalPrices",productService.getTotalPriceOfDate("egecoskun"));
+
         User user = userService.getUserByUsername("burak123");
 
         List<String> categories=new ArrayList<>();
@@ -108,15 +110,14 @@ public class DashboardController {
     public ModelAndView chart(@RequestParam String username){
         ModelAndView mav = new ModelAndView("chart-js");
 
-        List<String> categories=new ArrayList<>();
-        for(int i=0;i<productService.getProductCategoryCountsWithUsername(username).size();i++) {
-           for(int j=0;j<=1;j++){
-                   categories.add(String.valueOf(productService.getProductCategoryCountsWithUsername(username).get(i).values().stream().toList().get(j)));
-           }
-        }
-        mav.addObject("categoryList",categories);
+        List<Integer> totalPrices=productService.getTotalPriceOfDate(username);
+
+        mav.addObject("totalPrices",totalPrices);
+
 
         return mav;
     }
+
+
 
 }
