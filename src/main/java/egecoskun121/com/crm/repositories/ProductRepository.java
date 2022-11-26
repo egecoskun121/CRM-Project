@@ -1,6 +1,7 @@
 package egecoskun121.com.crm.repositories;
 
 import egecoskun121.com.crm.model.entity.Product;
+import egecoskun121.com.crm.model.entity.ProductCategory;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -39,4 +40,14 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
     List<Product> getAllProductsWithIdNull();
 
 
+
+     @Query(value = "SELECT PRODUCT_CATEGORY FROM PRODUCT WHERE USER_ID = (SELECT ID FROM USERS WHERE USER_NAME=(:username)) GROUP BY PRODUCT_CATEGORY ORDER BY COUNT(PRODUCT_CATEGORY) DESC LIMIT 1",nativeQuery = true)
+      int getMaxCountProductCategory(@Param("username")String username);
+
+     @Query(value = "SELECT * FROM PRODUCT WHERE PRODUCT_CATEGORY = (:productCategory) AND USER_ID IS NULL",nativeQuery = true)
+      List<Product> getProductsByMaxCategory(@Param("productCategory") int productCategory);
+
+
+     @Query(value = "SELECT SUM(PRICE) FROM PRODUCT WHERE CREATED_DATE LIKE (:date%) AND USER_ID = {SELECT ID FROM USERS WHERE USER_NAME= (:username)} ",nativeQuery = true)
+     Integer getTotalPriceOfDate(@Param("date") String date,@Param("username") String username);
 }
