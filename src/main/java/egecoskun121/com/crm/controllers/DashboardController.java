@@ -53,6 +53,13 @@ public class DashboardController {
         mav.addObject("userList",userList);
         User user = userService.getUserByUsername("burak123");
 
+        List<String> categories=new ArrayList<>();
+        for(int i=0;i<productService.getProductCategoryCountsWithUsername("egecoskun").size();i++) {
+            for(int j=0;j<=1;j++){
+                categories.add(String.valueOf(productService.getProductCategoryCountsWithUsername("egecoskun").get(i).values().stream().toList().get(j)));
+            }
+        }
+        mav.addObject("categoryList",categories);
         mav.addObject("user",user);
 
         return mav;
@@ -102,11 +109,11 @@ public class DashboardController {
         ModelAndView mav = new ModelAndView("chart-js");
 
         List<String> categories=new ArrayList<>();
-       for(int i=0;i<productService.getProductCategoryCountsWithUsername(username).size();i++) {
+        for(int i=0;i<productService.getProductCategoryCountsWithUsername(username).size();i++) {
            for(int j=0;j<=1;j++){
                    categories.add(String.valueOf(productService.getProductCategoryCountsWithUsername(username).get(i).values().stream().toList().get(j)));
            }
-       }
+        }
         mav.addObject("categoryList",categories);
 
         return mav;
