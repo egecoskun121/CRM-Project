@@ -38,31 +38,16 @@ public class DashboardController {
     @RequestMapping(path = "")
     public ModelAndView getDashboard(){
         ModelAndView mav = new ModelAndView("dashboard");
-        int productCount=productService.getAllProducts().size();
-        int userCount=userService.getAllUsers().size();
-        int productCategoryCount= ProductCategory.values().length;
-        double totalPrice=productService.getSumOfPrices();
-        List<ProductInquiry> productInquiryList = productInquiryService.getAllProductInquiriesOrderedById();
-        List<User> userList = userService.getAllUsersOrderedById();
 
-        mav.addObject("productCount",productCount);
-        mav.addObject("userCount",userCount);
-        mav.addObject("productCategoryCount",productCategoryCount);
-        mav.addObject("totalPrice",totalPrice);
-        mav.addObject("productInquiryList",productInquiryList);
-        mav.addObject("userList",userList);
-        mav.addObject("totalPrices",productService.getTotalPriceOfDate("egecoskun"));
-
-        User user = userService.getUserByUsername("burak123");
-
-        List<String> categories=new ArrayList<>();
-        for(int i=0;i<productService.getProductCategoryCountsWithUsername("egecoskun").size();i++) {
-            for(int j=0;j<=1;j++){
-                categories.add(String.valueOf(productService.getProductCategoryCountsWithUsername("egecoskun").get(i).values().stream().toList().get(j)));
-            }
-        }
-        mav.addObject("categoryList",categories);
-        mav.addObject("user",user);
+        mav.addObject("totalPrices",productService.getTotalPriceOfDateAdmin());
+        mav.addObject("categoryList",productService.getProductCategoryCounts());
+        mav.addObject("productCount",productService.getAllProducts().size());
+        mav.addObject("userCount",userService.getAllUsers().size());
+        mav.addObject("productCategoryCount",ProductCategory.values().length);
+        mav.addObject("totalPrice",productService.getSumOfPrices());
+        mav.addObject("productInquiryList",productInquiryService.getAllProductInquiriesOrderedById());
+        mav.addObject("userList",userService.getAllUsersOrderedById());
+        mav.addObject("complaintList",complaintService.getAllComplaints());
 
         return mav;
     }
@@ -71,15 +56,21 @@ public class DashboardController {
     @RequestMapping(path = "/dashboardForUser")
     public ModelAndView getDashboardForUser(@RequestParam String username){
         ModelAndView mav = new ModelAndView("dashboard-for-user");
-        int productCount=productService.getAllProductsByUsername(username).size();
-        double totalPrice=productService.getSumOfPricesWithUsername(username);
-        List<ProductInquiry> productInquiryList = productInquiryService.getAllProductInquiriesByUsername(username);
-        List<Complaint> complaintList = complaintService.getAllComplaintsByUsername(username);
 
-        mav.addObject("complaintList",complaintList);
-        mav.addObject("productInquiryList",productInquiryList);
-        mav.addObject("totalPrice",totalPrice);
-        mav.addObject("productCount",productCount);
+        List<String> categories=new ArrayList<>();
+        for(int i=0;i<productService.getProductCategoryCountsWithUsername(username).size();i++) {
+            for(int j=0;j<=1;j++){
+                categories.add(String.valueOf(productService.getProductCategoryCountsWithUsername(username).get(i).values().stream().toList().get(j)));
+            }
+        }
+        mav.addObject("totalPrices",productService.getTotalPriceOfDate(username));
+        mav.addObject("categoryList",categories);
+        mav.addObject("complaintList",complaintService.getAllComplaintsByUsername(username));
+        mav.addObject("productInquiryList",productInquiryService.getAllProductInquiriesByUsername(username));
+        mav.addObject("totalPrice",productService.getSumOfPricesWithUsername(username));
+        mav.addObject("productCount",productService.getAllProductsByUsername(username).size());
+
+
         return mav;
     }
 
