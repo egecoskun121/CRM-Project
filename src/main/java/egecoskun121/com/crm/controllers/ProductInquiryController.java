@@ -43,7 +43,7 @@ public class ProductInquiryController {
 
     @PreAuthorize("hasRole('ROLE_USER')")
     @RequestMapping(path = "/addNewProductInquiry")
-    public ModelAndView addNewProductInquiry(@ModelAttribute ProductInquiryDTO productInquiryDTO,@RequestParam String username){
+    public ModelAndView addNewProductInquiry(@RequestParam String username){
         ModelAndView mav = new ModelAndView("product-inquiry");
         ProductInquiry productInquiry = new ProductInquiry();
         List<Product> productList = productService.getAllProductsWithNullId();
