@@ -70,6 +70,7 @@ public class DashboardController {
         mav.addObject("totalPrice",productService.getSumOfPricesWithUsername(username));
         mav.addObject("productCount",productService.getAllProductsByUsername(username).size());
 
+        mav.addObject("user",userService.getUserByUsername(username));
 
         return mav;
     }
