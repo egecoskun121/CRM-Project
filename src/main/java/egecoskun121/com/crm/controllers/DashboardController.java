@@ -17,7 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.*;
 
 @Controller
-@RequestMapping(path = "/dashboard")
+@RequestMapping(path = "/api/v1/dashboard")
 public class DashboardController {
 
     private final ProductService productService;
@@ -63,10 +63,14 @@ public class DashboardController {
                 categories.add(String.valueOf(productService.getProductCategoryCountsWithUsername(username).get(i).values().stream().toList().get(j)));
             }
         }
+        List<Complaint> complaintList= complaintService.getAllComplaintsByUsername(username);
+        List<ProductInquiry> productInquiryList= productInquiryService.getAllProductInquiriesByUsername(username);
+        mav.addObject("complaintCount",complaintList.size());
+        mav.addObject("inquiryCount",productInquiryList.size());
         mav.addObject("totalPrices",productService.getTotalPriceOfDate(username));
         mav.addObject("categoryList",categories);
-        mav.addObject("complaintList",complaintService.getAllComplaintsByUsername(username));
-        mav.addObject("productInquiryList",productInquiryService.getAllProductInquiriesByUsername(username));
+        mav.addObject("complaintList",complaintList);
+        mav.addObject("productInquiryList",productInquiryList);
         mav.addObject("totalPrice",productService.getSumOfPricesWithUsername(username));
         mav.addObject("productCount",productService.getAllProductsByUsername(username).size());
 

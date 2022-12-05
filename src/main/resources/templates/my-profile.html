@@ -82,15 +82,17 @@
         transition: 0.5s;
       }
       .input-field {
+        text-align: center;
         width: 100%;
         padding: 10px 0;
         margin: 5px 0;
-        border-left: 0;
         border-top: 0;
         border-right: 0;
-        border-bottom: 1px solid #999;
+        border-left: 0;
+        border-bottom: 1px solid #999999;
         outline: none;
         background: transparent;
+
       }
       .submit-btn {
         width: 85%;
@@ -117,7 +119,7 @@
       }
       .title {
         width: 85%;
-        padding: 30px 110px;
+        padding: 30px 65px;
         display: block;
         margin: auto;
         color: #777;
@@ -129,10 +131,10 @@
         text-decoration: none;
         font-family: sans-serif;
         font-size: 13.3px;
-        padding: 10px 30px;
+        padding: 20px 30px;
         cursor: pointer;
         display: block;
-        margin: 225px 85px 5px auto;
+        margin: 240px auto 5px auto;
         background: linear-gradient(to right, #ff105f, #ffad06);
         border: 0;
         outline: none;
@@ -156,6 +158,18 @@
 
       header{
         height: 55px;
+      }
+
+      .col-25 {
+        float: left;
+        width: 25%;
+        margin-top: 15px;
+      }
+
+      .col-75 {
+        float: left;
+        width: 75%;
+        margin-top: 6px;
       }
 
     </style>
@@ -212,30 +226,54 @@
           <h2>CRM System</h2>
         </div>
         <form th:object="${user}" id="register" class="input-group">
-          <input
-            type="text"
-            th:field="*{userName}"
-            class="input-field"
-            placeholder="User Name"
-            readonly
-          />
-          <input
-            type="email"
-            th:field="*{email}"
-            class="input-field"
-            placeholder="Email"
-            readonly
-          />
-          <input type="text" th:field="*{role}" class="input-field" placeholder="Role" readonly
-          />
+          <div class="col-25">
+            <label for="username">Username</label>
+          </div>
+          <div class="col-75">
+            <input id="username"
+                   style="margin-top: 0px"
+                   type="text"
+                   th:field="*{userName}"
+                   class="input-field"
+                   placeholder="User Name"
+                   readonly
+            />
+          </div>
 
-          <input
-                  type="text"
-                  th:field="*{phoneNumber}"
-                  class="input-field"
-                  placeholder="Phone Number"
-                  disabled
-          />
+          <div class="col-25" style="margin-top: 25px">
+            <label for="email">Email</label>
+          </div>
+          <div class="col-75">
+            <input
+                    id="email"
+                    type="email"
+                    th:field="*{email}"
+                    class="input-field"
+                    placeholder="Email"
+                    readonly
+            />
+          </div>
+          <div class="col-25" style="margin-top: 25px">
+            <label for="role">Role</label>
+          </div>
+          <div class="col-75">
+            <input id="role" type="text" th:field="*{role}" class="input-field" placeholder="Role" readonly
+            />
+          </div>
+
+          <div class="col-25" style="margin-top: 25px">
+            <label for="phoneNumber">Mobile</label>
+          </div>
+          <div class="col-75">
+            <input
+                    id="phoneNumber"
+                    type="text"
+                    th:field="*{phoneNumber}"
+                    class="input-field"
+                    placeholder="Phone Number"
+                    disabled
+            />
+          </div>
 
 
           <a th:action="@{/api/v1/product/showAllProductsByUsername(username=${#authentication.getName()})}"  class="submit-btn-2">Back</a>

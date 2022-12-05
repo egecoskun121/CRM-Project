@@ -94,34 +94,34 @@ public class ProductController {
         return redirectView;
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @RequestMapping(path = "/categoryList")
-    public ModelAndView showCategoryList(){
-        Map<String,Integer> map = new LinkedHashMap<>();
-        int categoryCounter=0;
-        for (ProductCategory  a: ProductCategory.values()) {
-            map.put(a.toString(),productService.getProductCategoryCounts(categoryCounter++));
-        }
-
-        ModelAndView mav = new ModelAndView("product-category-list");
-        mav.addObject("categoryCountList",map);
-
-        return mav;
-    }
-
-    @PreAuthorize("hasRole('ROLE_USER') OR hasRole('ROLE_ADMIN')")
-    @RequestMapping(path ="/categoryListByUsername")
-    public ModelAndView showCategoryListByUsername(@RequestParam String username){
-        Map<String, Integer> map = new LinkedHashMap<>();
-        int categoryCounter=0;
-        for (ProductCategory  a: ProductCategory.values()) {
-            map.put(a.toString(),productService.getProductCategoryCountsByUsername(categoryCounter++,username));
-        }
-        ModelAndView mav =new ModelAndView("product-category-list-by-username");
-        mav.addObject("categoryCountList",map);
-
-        return mav;
-    }
+//    @PreAuthorize("hasRole('ROLE_ADMIN')")
+//    @RequestMapping(path = "/categoryList")
+//    public ModelAndView showCategoryList(){
+//        Map<String,Integer> map = new LinkedHashMap<>();
+//        int categoryCounter=0;
+//        for (ProductCategory  a: ProductCategory.values()) {
+//            map.put(a.toString(),productService.getProductCategoryCounts(categoryCounter++));
+//        }
+//
+//        ModelAndView mav = new ModelAndView("product-category-list");
+//        mav.addObject("categoryCountList",map);
+//
+//        return mav;
+//    }
+//
+//    @PreAuthorize("hasRole('ROLE_USER') OR hasRole('ROLE_ADMIN')")
+//    @RequestMapping(path ="/categoryListByUsername")
+//    public ModelAndView showCategoryListByUsername(@RequestParam String username){
+//        Map<String, Integer> map = new LinkedHashMap<>();
+//        int categoryCounter=0;
+//        for (ProductCategory  a: ProductCategory.values()) {
+//            map.put(a.toString(),productService.getProductCategoryCountsByUsername(categoryCounter++,username));
+//        }
+//        ModelAndView mav =new ModelAndView("product-category-list-by-username");
+//        mav.addObject("categoryCountList",map);
+//
+//        return mav;
+//    }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(path = "/addProductToUser")

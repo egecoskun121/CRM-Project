@@ -414,23 +414,24 @@
                 <!--ADMIN NAVBAR-->
                 <div sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
                   <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a class="smooth-menu" th:href="@{/api/v1/product/categoryList}">Category List</a></li>
+                    <li class="active"><a class="smooth-menu" th:href="@{/api/v1/product/addProductToUser}">Give Product</a></li>
                     <li><a class="smooth-menu" th:href="@{/api/v1/product/showAllProducts}">Details List</a></li>
                     <li><a class="smooth-menu" th:href="@{/api/v1/complaint/showList}">Complaint List</a></li>
                     <li><a class="smooth-menu" th:href="@{/api/v1/inquiry/showList}">Inquiry List</a></li>
                     <li><a class="smooth-menu" th:href="@{/api/v1/product/addNewProduct}">Add Product</a></li>
+                    <li><i style="color: whitesmoke; margin-top: 5px" class="fa-regular fa-user fa-1x"></i></li>
                   </ul>
                 </div>
 
                 <!--ADMIN NAVBAR-->
                 <div sec:authorize="hasAnyAuthority('ROLE_USER')">
                   <ul class="nav navbar-nav navbar-right">
-                    <li><a th:href="@{/api/v1/product/categoryListByUsername(username=${#authentication.getName()})}">Category List</a></li>
                     <li><a th:href="@{/api/v1/product/showAllProductsByUsername(username=${#authentication.getName()})}">Details List</a></li>
                     <li><a th:href="@{/api/v1/inquiry/addNewProductInquiry(username=${#authentication.getName()})}">Product Inquiry</a></li>
                     <li><a th:href="@{/api/v1/complaint/addNewComplaint(username=${#authentication.getName()})}">Raise Complaint</a></li>
                     <li><a th:href="@{/api/v1/complaint/showComplaintsByUsername(username=${#authentication.getName()})}">Complaint List</a></li>
                     <li><a th:href="@{/api/v1/inquiry/showAllProductInquiriesByName(username=${#authentication.getName()})}">Inquiry List</a></li>
+                    <li><i class="fa-regular fa-user"></i></li>
                   </ul>
                 </div>
               </nav>
@@ -453,7 +454,7 @@
           <h3>Products</h3>
         </div>
         <div class="icon-case">
-          <i class="fa-sharp fa-solid fa-tags fa-3x icons"></i>
+          <i class="fa-sharp fa-solid fa-tags fa-2x icons"></i>
         </div>
       </div>
       <div class="card">
