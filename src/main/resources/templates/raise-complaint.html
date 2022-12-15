@@ -42,7 +42,7 @@
 
     .form-box {
       width: 380px;
-      height: 480px;
+      height: 520px;
       position: relative;
       margin: 150px auto 1% auto; /*yüzde 6'ydı*/
       background-color: #ffff;
@@ -123,16 +123,11 @@
     .title {
       height: 150px;
       right: 300px;
-      width: 55%;
-      padding: 20px 80px;
+      width: 100%;
+      padding: 5px 70px;
       display: block;
       margin: 30px 15px 30px 0;
       color: #777;
-    }
-
-    #h2-title {
-      width: 100%;
-      padding: 0px 8px;
     }
 
     #h3-title {
@@ -177,6 +172,22 @@
     }
     .navbar-brand span {
       color: #ec3642;
+    }
+
+    .input-opt-select {
+      color: #777;
+      width: 100%;
+      padding: 10px 0px;
+      margin: 5px 0;
+      border-left: 0;
+      border-top: 0;
+      border-right: 0;
+      border-bottom: 1px solid #999;
+      outline: none;
+      background: transparent;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease 0s;
     }
 
   </style>
@@ -229,7 +240,7 @@
           <h2 id="h2-title">Raise Complaint</h2>
         </div>
         <form  th:action="@{/api/v1/complaint/saveNewComplaint/{username}(username=${#authentication.getName()})}" th:object="${complaint}" id="login" class="input-group">
-          <select th:field="*{productName}"  class="input-opt">
+          <select th:field="*{productName}"  class="input-opt-select">
             <option th:each="a,iterStatus : ${productList}" th:text="${a.productName}" th:value="${a.productName}" id="opt">Choose a Product</option>
           </select >
 

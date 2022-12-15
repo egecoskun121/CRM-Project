@@ -39,7 +39,7 @@
 
   .form-box {
     width: 380px;
-    height: 510px;
+    height: 540px;
     position: relative;
     margin: 150px auto 1% auto; /*yüzde 6'ydı*/
     background-color: #ffff;
@@ -108,7 +108,7 @@
   .title {
     width: 85%;
     text-align: center;
-    padding: 40px 0;
+    padding: 15px 0;
     display: block;
     margin: auto;
     color: #777;
@@ -227,12 +227,6 @@
                 th:value="${productCategoryOpt}" th:text="${productCategoryOpt}"></option>
       </select>
 
-      <input
-              type="text"
-              class="input-field"
-              placeholder=" Image Url"
-              required
-      />
       <button th:href="@{/api/v1/product/showAllProducts}" type="submit" class="submit-btn">Update</button>
 
     </form>

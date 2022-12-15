@@ -111,7 +111,7 @@
   .title {
     width: 85%;
     text-align: center;
-    padding: 40px 0;
+    padding: 25px 0;
     display: block;
     margin: auto;
     color: #777;
@@ -213,7 +213,7 @@
   </header>
   <div class="form-box">
     <div class="title">
-      <h2>Update Product Inquiry</h2>
+      <h2>Update Inquiry</h2>
     </div>
     <form sec:authorize="hasAnyAuthority('ROLE_USER')" th:action="@{/api/v1/inquiry/updateInquiryByUsername/{id}/{username}(id=${productInquiry.id},username=${#authentication.getName()})}" th:object="${productInquiry}"
           method="put" id="register" class="input-group">
