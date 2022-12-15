@@ -147,17 +147,14 @@
         <div class="col-md-12">
           <div class="main-menu">
             <div class="navbar navbar-cus">
-              <div class="navbar-header">
-                <img th:src="@{/images/logoNewLast4.png}" alt="logo" height="75px" width="75px"/>
-              </div>
+              <a href="index.html" class="navbar-brand">ZE<span>CRM</span></a>
 
               <div class="navbar-collapse collapse">
                 <nav>
                   <!--ADMIN NAVBAR-->
                   <div sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
                     <ul class="nav navbar-nav navbar-right">
-                      <li class="active"><a class="smooth-menu" th:href="@{/api/v1/product/categoryList}">Category List</a></li>
-                      <li><a class="smooth-menu" th:href="@{/api/v1/product/showAllProducts}">Details List</a></li>
+                      <li><a class="smooth-menu" th:href="@{/api/v1/product/showAllProducts}">Product List</a></li>
                       <li><a class="smooth-menu" th:href="@{/api/v1/complaint/showList}">Complaint List</a></li>
                       <li><a class="smooth-menu" th:href="@{/api/v1/inquiry/showList}">Inquiry List</a></li>
                       <li><a class="smooth-menu" th:href="@{/api/v1/product/addNewProduct}">Add Product</a></li>
@@ -167,8 +164,7 @@
                   <!--ADMIN NAVBAR-->
                   <div sec:authorize="hasAnyAuthority('ROLE_USER')">
                     <ul class="nav navbar-nav navbar-right">
-                      <li><a th:href="@{/api/v1/product/categoryListByUsername(username=${#authentication.getName()})}">Category List</a></li>
-                      <li><a th:href="@{/api/v1/product/showAllProductsByUsername(username=${#authentication.getName()})}">Details List</a></li>
+                      <li><a th:href="@{/api/v1/product/showAllProductsByUsername(username=${#authentication.getName()})}">Product List</a></li>
                       <li><a th:href="@{/api/v1/inquiry/addNewProductInquiry(username=${#authentication.getName()})}">Product Inquiry</a></li>
                       <li><a th:href="@{/api/v1/complaint/addNewComplaint(username=${#authentication.getName()})}">Raise Complaint</a></li>
                       <li><a th:href="@{/api/v1/complaint/showComplaintsByUsername(username=${#authentication.getName()})}">Complaint List</a></li>
