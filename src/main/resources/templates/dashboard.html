@@ -407,7 +407,7 @@
       <div class="col-md-12">
         <div class="main-menu">
           <div class="navbar navbar-cus">
-            <a href="index.html" class="navbar-brand">ZE<span>CRM</span></a>
+            <a th:href="@{/api/v1/dashboard/main}" class="navbar-brand">ZE<span>CRM</span></a>
 
             <div class="navbar-collapse collapse">
               <nav>
@@ -424,12 +424,13 @@
                 <!--ADMIN NAVBAR-->
                 <div sec:authorize="hasAnyAuthority('ROLE_USER')">
                   <ul class="nav navbar-nav navbar-right">
-                    <li><a th:href="@{/api/v1/product/showAllProductsByUsername(username=${#authentication.getName()})}">Product List</a></li>
-                    <li><a th:href="@{/api/v1/inquiry/addNewProductInquiry(username=${#authentication.getName()})}">Product Inquiry</a></li>
-                    <li><a th:href="@{/api/v1/complaint/addNewComplaint(username=${#authentication.getName()})}">Raise Complaint</a></li>
-                    <li><a th:href="@{/api/v1/complaint/showComplaintsByUsername(username=${#authentication.getName()})}">Complaint List</a></li>
-                    <li><a th:href="@{/api/v1/inquiry/showAllProductInquiriesByName(username=${#authentication.getName()})}">Inquiry List</a></li>
-                  </ul>
+                      <li><a th:href="@{/api/v1/product/showAllProductsByUsername(username=${#authentication.getName()})}">Product List</a></li>
+                      <li><a th:href="@{/api/v1/inquiry/addNewProductInquiry(username=${#authentication.getName()})}">Product Inquiry</a></li>
+                      <li><a th:href="@{/api/v1/complaint/addNewComplaint(username=${#authentication.getName()})}">Raise Complaint</a></li>
+                      <li><a th:href="@{/api/v1/complaint/showComplaintsByUsername(username=${#authentication.getName()})}">Complaint List</a></li>
+                      <li><a th:href="@{/api/v1/inquiry/showAllProductInquiriesByName(username=${#authentication.getName()})}">Inquiry List</a></li>
+                      <li><a th:href="@{/api/v1/recommendation(username=${#authentication.getName()})}">Product Recommendation</a></li>
+                    </ul>
                 </div>
               </nav>
             </div>
