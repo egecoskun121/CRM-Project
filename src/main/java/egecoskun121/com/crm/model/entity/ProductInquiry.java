@@ -74,6 +74,6 @@ public class ProductInquiry {
     private ProductInquiryAnswer productInquiryAnswer;
 
     @JoinColumn(name = "user_id")
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 }

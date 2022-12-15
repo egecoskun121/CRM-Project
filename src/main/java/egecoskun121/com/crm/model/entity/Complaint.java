@@ -63,7 +63,7 @@ public class Complaint {
     private String productName;
 
     @JoinColumn(name = "user_id")
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
 }
