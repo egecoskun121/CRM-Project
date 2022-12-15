@@ -79,7 +79,7 @@ public class DashboardController {
         return mav;
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_USER') OR hasRole('ROLE_ADMIN')")
     @RequestMapping(path = "/main")
     public ModelAndView getMainPage(){
         ModelAndView mav = new ModelAndView("main");
