@@ -53,12 +53,6 @@
             overflow-x: hidden;
             overflow-y: auto;
         }
-        span {
-            color: #777;
-            font-size: 12px;
-            bottom: 66px;
-            position: absolute;
-        }
 
         .title {
             text-align: center;
@@ -133,7 +127,24 @@
         header{
             height: 55px;
         }
+        .navbar-brand {
+            padding: 15px 0;
+            text-transform: uppercase;
+            font-size: 25px;
+            display: block;
+            color: #ffffff;
+            font-weight: 800;
+        }
 
+        .navbar-brand:focus,
+        .navbar-brand:hover {
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        .navbar-brand span {
+            color: #ec3642;
+        }
     </style>
 
 
@@ -164,14 +175,26 @@
 
                                     <!--ADMIN NAVBAR-->
                                     <div sec:authorize="hasAnyAuthority('ROLE_USER')">
-<ul class="nav navbar-nav navbar-right">
-                      <li><a th:href="@{/api/v1/product/showAllProductsByUsername(username=${#authentication.getName()})}">Product List</a></li>
-                      <li><a th:href="@{/api/v1/inquiry/addNewProductInquiry(username=${#authentication.getName()})}">Product Inquiry</a></li>
-                      <li><a th:href="@{/api/v1/complaint/addNewComplaint(username=${#authentication.getName()})}">Raise Complaint</a></li>
-                      <li><a th:href="@{/api/v1/complaint/showComplaintsByUsername(username=${#authentication.getName()})}">Complaint List</a></li>
-                      <li><a th:href="@{/api/v1/inquiry/showAllProductInquiriesByName(username=${#authentication.getName()})}">Inquiry List</a></li>
-                      <li><a th:href="@{/api/v1/recommendation(username=${#authentication.getName()})}">Product Recommendation</a></li>
-                    </ul>
+                                        <ul class="nav navbar-nav navbar-right">
+                                            <li>
+                                                <a th:href="@{/api/v1/product/showAllProductsByUsername(username=${#authentication.getName()})}">Product
+                                                    List</a></li>
+                                            <li>
+                                                <a th:href="@{/api/v1/inquiry/addNewProductInquiry(username=${#authentication.getName()})}">Product
+                                                    Inquiry</a></li>
+                                            <li>
+                                                <a th:href="@{/api/v1/complaint/addNewComplaint(username=${#authentication.getName()})}">Raise
+                                                    Complaint</a></li>
+                                            <li>
+                                                <a th:href="@{/api/v1/complaint/showComplaintsByUsername(username=${#authentication.getName()})}">Complaint
+                                                    List</a></li>
+                                            <li>
+                                                <a th:href="@{/api/v1/inquiry/showAllProductInquiriesByName(username=${#authentication.getName()})}">Inquiry
+                                                    List</a></li>
+                                            <li>
+                                                <a th:href="@{/api/v1/recommendation(username=${#authentication.getName()})}">Product
+                                                    Recommendation</a></li>
+                                        </ul>
                                     </div>
                                 </nav>
                             </div>
