@@ -90,6 +90,10 @@ img {
   height: auto;
 }
 
+#image-f{
+  min-height: 210px;
+}
+
 .section-padding {
   padding: 80px 0;
 }

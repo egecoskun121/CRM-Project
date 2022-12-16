@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/8345e13c5c.js"></script>
   <title>Login and Refistration Form</title>
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jq-3.6.0/dt-1.12.1/datatables.min.css"/>
 
@@ -126,11 +127,12 @@
     background: transparent;
   }
 
-  .nav li a{
-    color: whitesmoke;
-    font-weight: bold;
-    font-size: 1.2em;
-  }
+      .nav li a{
+      color: whitesmoke;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 13px;
+    }
   .nav li a:hover,
   .nav li a:checked,
   .nav li a:active{
@@ -176,45 +178,35 @@
               <a th:href="@{/api/v1/dashboard/main}" class="navbar-brand">ZE<span>CRM</span></a>
 
               <div class="navbar-collapse collapse">
-                <nav>
-                                    <!--ADMIN NAVBAR-->
-                                    <div sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
-                                        <ul class="nav navbar-nav navbar-right">
-                                            <li><a class="smooth-menu" th:href="@{/api/v1/product/showAllProducts}">Product List</a></li>
-                                            <li><a class="smooth-menu" th:href="@{/api/v1/complaint/showList}">Complaint List</a></li>
-                                            <li><a class="smooth-menu" th:href="@{/api/v1/inquiry/showList}">Inquiry List</a></li>
-                                            <li><a class="smooth-menu" th:href="@{/api/v1/product/addNewProduct}">Add Product</a></li>
-                                            <li><a th:href="@{/showUserDetails(username=${#authentication.getName()})}"><i class="fa-solid fa-user fa-1x"></i></a></li>
-                                            <li><a th:href="@{/logout}"><i class="fa-solid fa-arrow-right-from-bracket fa-1x"></i></a></li>
-                                        </ul>
-                                    </div>
+                  <nav>
+                      <!--ADMIN NAVBAR-->
+                      <div sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                          <ul class="nav navbar-nav navbar-right">
+                              <li><a th:href="@{/api/v1/dashboard}">Dashboard</a></li>
+                              <li><a class="smooth-menu" th:href="@{/api/v1/product/showAllProducts}">Product List</a></li>
+                              <li><a class="smooth-menu" th:href="@{/api/v1/complaint/showList}">Complaint List</a></li>
+                              <li><a class="smooth-menu" th:href="@{/api/v1/inquiry/showList}">Inquiry List</a></li>
+                              <li><a class="smooth-menu" th:href="@{/api/v1/product/addNewProduct}">Add Product</a></li>
+                              <li><a th:href="@{/showUserDetails(username=${#authentication.getName()})}"><i class="fa-solid fa-user fa-1x"></i></a></li>
+                              <li><a th:href="@{/logout}"><i class="fa-solid fa-arrow-right-from-bracket fa-1x"></i></a></li>
+                          </ul>
+                      </div>
 
-                                    <!--ADMIN NAVBAR-->
-                                    <div sec:authorize="hasAnyAuthority('ROLE_USER')">
-                                        <ul class="nav navbar-nav navbar-right">
-                                            <li>
-                                                <a th:href="@{/api/v1/product/showAllProductsByUsername(username=${#authentication.getName()})}">Product
-                                                    List</a></li>
-                                            <li>
-                                                <a th:href="@{/api/v1/inquiry/addNewProductInquiry(username=${#authentication.getName()})}">Product
-                                                    Inquiry</a></li>
-                                            <li>
-                                                <a th:href="@{/api/v1/complaint/addNewComplaint(username=${#authentication.getName()})}">Raise
-                                                    Complaint</a></li>
-                                            <li>
-                                                <a th:href="@{/api/v1/complaint/showComplaintsByUsername(username=${#authentication.getName()})}">Complaint
-                                                    List</a></li>
-                                            <li>
-                                                <a th:href="@{/api/v1/inquiry/showAllProductInquiriesByName(username=${#authentication.getName()})}">Inquiry
-                                                    List</a></li>
-                                            <li>
-                                                <a th:href="@{/api/v1/recommendation(username=${#authentication.getName()})}">Product
-                                                    Recommendation</a></li>
-                                            <li><a th:href="@{/showUserDetails(username=${#authentication.getName()})}"><i class="fa-solid fa-user fa-1x"></i></a></li>
-                                            <li><a th:href="@{/logout}"><i class="fa-solid fa-arrow-right-from-bracket fa-1x"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </nav>
+                      <!--USER NAVBAR-->
+                      <div sec:authorize="hasAnyAuthority('ROLE_USER')">
+                          <ul class="nav navbar-nav navbar-right">
+                              <li><a th:href="@{/api/v1/dashboard/dashboardForUser(username=${#authentication.getName()})}">Dashboard</a></li>
+                              <li><a th:href="@{/api/v1/product/showAllProductsByUsername(username=${#authentication.getName()})}">Product List</a></li>
+                              <li><a th:href="@{/api/v1/inquiry/addNewProductInquiry(username=${#authentication.getName()})}">Inquiry</a></li>
+                              <li><a th:href="@{/api/v1/complaint/addNewComplaint(username=${#authentication.getName()})}">Raise Complaint</a></li>
+                              <li><a th:href="@{/api/v1/complaint/showComplaintsByUsername(username=${#authentication.getName()})}">Complaint List</a></li>
+                              <li><a th:href="@{/api/v1/inquiry/showAllProductInquiriesByName(username=${#authentication.getName()})}">Inquiry List</a></li>
+                              <li><a th:href="@{/api/v1/recommendation(username=${#authentication.getName()})}">Recommendation</a></li>
+                              <li><a th:href="@{/showUserDetails(username=${#authentication.getName()})}"><i class="fa-solid fa-user fa-1x"></i></a></li>
+                              <li><a th:href="@{/logout}"><i class="fa-solid fa-arrow-right-from-bracket fa-1x"></i></a></li>
+                          </ul>
+                      </div>
+                  </nav>
               </div>
             </div>
           </div>

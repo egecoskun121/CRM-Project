@@ -41,7 +41,7 @@ public class EmailSenderService {
         mailSender.send(message);
     }
 
-    @Scheduled(cron = "* * * */15 * *")
+    @Scheduled(cron = "* * * */30 * *")
     @Async
     public void sendMail(){
         for (User user: userService.getAllUsers()) {

@@ -24,6 +24,7 @@
 
   <!--Normalizer css-->
   <link rel="stylesheet" th:href="@{/css/jquery.animatedheadline.css}" />
+
   <style>
     * {
       margin: 0;
@@ -350,8 +351,9 @@
 
     .nav li a{
       color: whitesmoke;
-      font-weight: bold;
-      font-size: 1.2em;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 13px;
     }
     .nav li a:hover,
     .nav li a:checked,
@@ -391,9 +393,53 @@
       font-weight: 600;
       font-size: 13px;
     }
-
     #myChart {
+    }
+    .nav-area.sticky_navigation {
+      background: #ffffff;
+      height: 55px;
+    }
 
+    .sticky_navigation {
+      -webkit-transition: all 0.4s ease-out;
+      -moz-transition: all 0.4s ease-out;
+      -ms-transition: all 0.4s ease-out;
+      -o-transition: all 0.4s ease-out;
+      transition: all 0.4s ease-out;
+      -webkit-box-shadow: 0px 3px 4.6px 0.3px rgba(0, 0, 0, 0.25);
+      -moz-box-shadow: 0px 3px 4.6px 0.3px rgba(0, 0, 0, 0.25);
+      box-shadow: 0px 3px 4.6px 0.3px rgba(0, 0, 0, 0.25);
+    }
+
+    .sticky_navigation .main-menu {
+      margin-top: 0;
+    }
+    .navbar-brand span {
+      color: #ec3642;
+    }
+
+    .sticky_navigation .navbar-brand,
+    .sticky_navigation .navbar-brand span {
+      color: #000;
+    }
+
+    .sticky_navigation .navbar-brand:hover,
+    .sticky_navigation .navbar-brand:focus,
+    .sticky_navigation .navbar-brand span {
+      color: #ec3642;
+    }
+
+    .sticky_navigation .nav li a {
+      color: #333333;
+      font-size: 13px;
+    }
+
+    .sticky_navigation .nav li.active a {
+      color: #ec3642;
+    }
+
+    .sticky_navigation .navbar-brand:hover {
+      color: #333333;
     }
 
   </style>
@@ -411,44 +457,34 @@
 
             <div class="navbar-collapse collapse">
               <nav>
-                                    <!--ADMIN NAVBAR-->
-                                    <div sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
-                                        <ul class="nav navbar-nav navbar-right">
-                                            <li><a class="smooth-menu" th:href="@{/api/v1/product/showAllProducts}">Product List</a></li>
-                                            <li><a class="smooth-menu" th:href="@{/api/v1/complaint/showList}">Complaint List</a></li>
-                                            <li><a class="smooth-menu" th:href="@{/api/v1/inquiry/showList}">Inquiry List</a></li>
-                                            <li><a class="smooth-menu" th:href="@{/api/v1/product/addNewProduct}">Add Product</a></li>
-                                            <li><a th:href="@{/showUserDetails(username=${#authentication.getName()})}"><i class="fa-solid fa-user fa-1x"></i></a></li>
-                                            <li><a th:href="@{/logout}"><i class="fa-solid fa-arrow-right-from-bracket fa-1x"></i></a></li>
-                                        </ul>
-                                    </div>
+                <!--ADMIN NAVBAR-->
+                <div sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                  <ul class="nav navbar-nav navbar-right">
+                    <li><a th:href="@{/api/v1/dashboard}">Dashboard</a></li>
+                    <li><a class="smooth-menu" th:href="@{/api/v1/product/showAllProducts}">Product List</a></li>
+                    <li><a class="smooth-menu" th:href="@{/api/v1/complaint/showList}">Complaint List</a></li>
+                    <li><a class="smooth-menu" th:href="@{/api/v1/inquiry/showList}">Inquiry List</a></li>
+                    <li><a class="smooth-menu" th:href="@{/api/v1/product/addNewProduct}">Add Product</a></li>
+                    <li><a th:href="@{/showUserDetails(username=${#authentication.getName()})}"><i class="fa-solid fa-user fa-1x"></i></a></li>
+                    <li><a th:href="@{/logout}"><i class="fa-solid fa-arrow-right-from-bracket fa-1x"></i></a></li>
+                  </ul>
+                </div>
 
-                                    <!--ADMIN NAVBAR-->
-                                    <div sec:authorize="hasAnyAuthority('ROLE_USER')">
-                                        <ul class="nav navbar-nav navbar-right">
-                                            <li>
-                                                <a th:href="@{/api/v1/product/showAllProductsByUsername(username=${#authentication.getName()})}">Product
-                                                    List</a></li>
-                                            <li>
-                                                <a th:href="@{/api/v1/inquiry/addNewProductInquiry(username=${#authentication.getName()})}">Product
-                                                    Inquiry</a></li>
-                                            <li>
-                                                <a th:href="@{/api/v1/complaint/addNewComplaint(username=${#authentication.getName()})}">Raise
-                                                    Complaint</a></li>
-                                            <li>
-                                                <a th:href="@{/api/v1/complaint/showComplaintsByUsername(username=${#authentication.getName()})}">Complaint
-                                                    List</a></li>
-                                            <li>
-                                                <a th:href="@{/api/v1/inquiry/showAllProductInquiriesByName(username=${#authentication.getName()})}">Inquiry
-                                                    List</a></li>
-                                            <li>
-                                                <a th:href="@{/api/v1/recommendation(username=${#authentication.getName()})}">Product
-                                                    Recommendation</a></li>
-                                            <li><a th:href="@{/showUserDetails(username=${#authentication.getName()})}"><i class="fa-solid fa-user fa-1x"></i></a></li>
-                                            <li><a th:href="@{/logout}"><i class="fa-solid fa-arrow-right-from-bracket fa-1x"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </nav>
+                <!--USER NAVBAR-->
+                <div sec:authorize="hasAnyAuthority('ROLE_USER')">
+                  <ul class="nav navbar-nav navbar-right">
+                    <li><a th:href="@{/api/v1/dashboard/dashboardForUser(username=${#authentication.getName()})}">Dashboard</a></li>
+                    <li><a th:href="@{/api/v1/product/showAllProductsByUsername(username=${#authentication.getName()})}">Product List</a></li>
+                    <li><a th:href="@{/api/v1/inquiry/addNewProductInquiry(username=${#authentication.getName()})}">Inquiry</a></li>
+                    <li><a th:href="@{/api/v1/complaint/addNewComplaint(username=${#authentication.getName()})}">Raise Complaint</a></li>
+                    <li><a th:href="@{/api/v1/complaint/showComplaintsByUsername(username=${#authentication.getName()})}">Complaint List</a></li>
+                    <li><a th:href="@{/api/v1/inquiry/showAllProductInquiriesByName(username=${#authentication.getName()})}">Inquiry List</a></li>
+                    <li><a th:href="@{/api/v1/recommendation(username=${#authentication.getName()})}">Recommendation</a></li>
+                    <li><a th:href="@{/showUserDetails(username=${#authentication.getName()})}"><i class="fa-solid fa-user fa-1x"></i></a></li>
+                    <li><a th:href="@{/logout}"><i class="fa-solid fa-arrow-right-from-bracket fa-1x"></i></a></li>
+                  </ul>
+                </div>
+              </nav>
             </div>
           </div>
         </div>
@@ -701,22 +737,6 @@
       </form>
     </form>
   </div>
-<!--  <div th:if="${!user.getIsPopupShowed()}" th:object="${user}">-->
-<!--    <script>-->
-<!--      function openForm() {-->
-<!--        document.getElementById("myForm").style.display = "block";-->
-<!--      }-->
-
-<!--      setTimeout("openForm()", 5000);-->
-
-
-<!--      function closeForm() {-->
-<!--        document.getElementById("myForm").style.display = "none";-->
-<!--      }-->
-<!--    </script>-->
-
-<!--  </div>-->
-
   <script
           src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"
           integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA=="
@@ -766,5 +786,31 @@
   </script>
 
 </div>
+<!-- JQuery-->
+<script th:src="@{/js/jquery.min.js}"></script>
+
+<!--Magnific popup js-->
+<script th:src="@{/js/jquery.magnific-popup.js}"></script>
+
+<!--Magnific popup js-->
+<script th:src="@{/js/venobox.min.js}"></script>
+
+<!--Owl Carousel js-->
+<script th:src="@{/js/owl.carousel.js}"></script>
+
+<!--Animated headline js-->
+<script th:src="@{/js/jquery.animatedheadline.js}"></script>
+
+<!--Validator js-->
+<script th:src="@{/js/validator.js}"></script>
+
+<!--Contact js-->
+<script th:src="@{/js/contact.js}"></script>
+
+<!--waypoint js-->
+<script th:src="@{/js/waypoints.min.js}"></script>
+
+<!--Main js-->
+<script th:src="@{/js/main.js}"></script>
 </body>
 </html>
