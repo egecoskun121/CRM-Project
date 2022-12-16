@@ -168,19 +168,35 @@
                                             <li><a class="smooth-menu" th:href="@{/api/v1/complaint/showList}">Complaint List</a></li>
                                             <li><a class="smooth-menu" th:href="@{/api/v1/inquiry/showList}">Inquiry List</a></li>
                                             <li><a class="smooth-menu" th:href="@{/api/v1/product/addNewProduct}">Add Product</a></li>
+                                            <li><a th:href="@{/showUserDetails(username=${#authentication.getName()})}"><i class="fa-solid fa-user fa-1x"></i></a></li>
+                                            <li><a th:href="@{/logout}"><i class="fa-solid fa-arrow-right-from-bracket fa-1x"></i></a></li>
                                         </ul>
                                     </div>
 
                                     <!--ADMIN NAVBAR-->
                                     <div sec:authorize="hasAnyAuthority('ROLE_USER')">
                                         <ul class="nav navbar-nav navbar-right">
-                                            <li><a th:href="@{/api/v1/product/showAllProductsByUsername(username=${#authentication.getName()})}">Product List</a></li>
-                                            <li><a th:href="@{/api/v1/inquiry/addNewProductInquiry(username=${#authentication.getName()})}">Product Inquiry</a></li>
-                                            <li><a th:href="@{/api/v1/complaint/addNewComplaint(username=${#authentication.getName()})}">Raise Complaint</a></li>
-                      <li><a th:href="@{/api/v1/complaint/showComplaintsByUsername(username=${#authentication.getName()})}">Complaint List</a></li>
-                      <li><a th:href="@{/api/v1/inquiry/showAllProductInquiriesByName(username=${#authentication.getName()})}">Inquiry List</a></li>
-                      <li><a th:href="@{/api/v1/recommendation(username=${#authentication.getName()})}">Product Recommendation</a></li>
-                    </ul>
+                                            <li>
+                                                <a th:href="@{/api/v1/product/showAllProductsByUsername(username=${#authentication.getName()})}">Product
+                                                    List</a></li>
+                                            <li>
+                                                <a th:href="@{/api/v1/inquiry/addNewProductInquiry(username=${#authentication.getName()})}">Product
+                                                    Inquiry</a></li>
+                                            <li>
+                                                <a th:href="@{/api/v1/complaint/addNewComplaint(username=${#authentication.getName()})}">Raise
+                                                    Complaint</a></li>
+                                            <li>
+                                                <a th:href="@{/api/v1/complaint/showComplaintsByUsername(username=${#authentication.getName()})}">Complaint
+                                                    List</a></li>
+                                            <li>
+                                                <a th:href="@{/api/v1/inquiry/showAllProductInquiriesByName(username=${#authentication.getName()})}">Inquiry
+                                                    List</a></li>
+                                            <li>
+                                                <a th:href="@{/api/v1/recommendation(username=${#authentication.getName()})}">Product
+                                                    Recommendation</a></li>
+                                            <li><a th:href="@{/showUserDetails(username=${#authentication.getName()})}"><i class="fa-solid fa-user fa-1x"></i></a></li>
+                                            <li><a th:href="@{/logout}"><i class="fa-solid fa-arrow-right-from-bracket fa-1x"></i></a></li>
+                                        </ul>
                                     </div>
                                 </nav>
                             </div>

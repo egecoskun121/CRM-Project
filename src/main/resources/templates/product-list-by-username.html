@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/8345e13c5c.js"></script>
     <title>Login and Refistration Form</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jq-3.6.0/dt-1.12.1/datatables.min.css"/>
 
@@ -12,7 +13,7 @@
             href="https://fonts.googleapis.com/css?family=Poppins:400,400i,600,700,800"
             rel="stylesheet"
     />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css%22%3E">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" type="text/css" />
 
     <!--Bootstrap css-->
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
@@ -169,6 +170,8 @@
                                             <li><a class="smooth-menu" th:href="@{/api/v1/complaint/showList}">Complaint List</a></li>
                                             <li><a class="smooth-menu" th:href="@{/api/v1/inquiry/showList}">Inquiry List</a></li>
                                             <li><a class="smooth-menu" th:href="@{/api/v1/product/addNewProduct}">Add Product</a></li>
+                                            <li><a th:href="@{/showUserDetails(username=${#authentication.getName()})}"><i class="fa-solid fa-user fa-1x"></i></a></li>
+                                            <li><a th:href="@{/logout}"><i class="fa-solid fa-arrow-right-from-bracket fa-1x"></i></a></li>
                                         </ul>
                                     </div>
 
@@ -193,7 +196,8 @@
                                             <li>
                                                 <a th:href="@{/api/v1/recommendation(username=${#authentication.getName()})}">Product
                                                     Recommendation</a></li>
-                                            <li><a><i class="fa-solid fa-user fa-3x"></i></a></li>
+                                            <li><a th:href="@{/showUserDetails(username=${#authentication.getName()})}"><i class="fa-solid fa-user fa-1x"></i></a></li>
+                                            <li><a th:href="@{/logout}"><i class="fa-solid fa-arrow-right-from-bracket fa-1x"></i></a></li>
                                         </ul>
                                     </div>
                                 </nav>
