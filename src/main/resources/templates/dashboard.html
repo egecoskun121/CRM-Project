@@ -726,17 +726,7 @@
       </div>
     </div>
   </div>
-  <div class="form-popup" id="myForm">
-    <form class="form-container">
-      <label>Are you happy with your products?</label>
-      <form th:action="@{/dashboard/isUserHappyTrue(username=${#authentication.getName()})}" th:method="post" >
-        <button type="submit" class="btn yes" onclick="closeForm()">Yes</button>
-      </form>
-      <form th:action="@{/dashboard/isUserHappyFalse(username=${#authentication.getName()})}" th:method="post">
-        <button type="submit" class="btn no" onclick="closeForm()">No</button>
-      </form>
-    </form>
-  </div>
+
   <script
           src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"
           integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA=="

@@ -610,15 +610,17 @@
         </div>
     </div>
     <div class="form-popup" id="myForm">
-        <form class="form-container">
+        <div class="form-container">
             <label>Are you happy with your products?</label>
-            <form th:action="@{/dashboard/isUserHappyTrue(username=${#authentication.getName()})}" th:method="post">
+            <form th:action="@{/api/v1/dashboard/isUserHappyTrue(username=${#authentication.getName()})}" th:method="post">
                 <button type="submit" class="btn yes" onclick="closeForm()">Yes</button>
             </form>
-            <form th:action="@{/dashboard/isUserHappyFalse(username=${#authentication.getName()})}" th:method="post">
-                <button type="submit" class="btn no" onclick="closeForm()">No</button>
-            </form>
-        </form>
+
+
+         <form th:action="@{/api/v1/dashboard/isUserHappyFalse(username=${#authentication.getName()})}" th:method="post">
+               <button type="submit" class="btn no" onclick="closeForm()">No</button>
+          </form>
+        </div>
     </div>
 
     <script
