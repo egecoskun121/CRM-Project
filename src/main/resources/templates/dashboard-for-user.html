@@ -290,6 +290,7 @@
             bottom: 0;
             right: 15px;
             border: 3px solid #f1f1f1;
+            background-color: whitesmoke;
             z-index: 9;
             margin-bottom: 30px;
             margin-right: 20px;
@@ -299,7 +300,6 @@
         .form-container {
             max-width: 240px;
             padding: 10px;
-            background-color: whitesmoke;
         }
 
         /* Full-width input fields */
@@ -612,14 +612,13 @@
     <div class="form-popup" id="myForm">
         <div class="form-container">
             <label>Are you happy with your products?</label>
-            <form th:action="@{/api/v1/dashboard/isUserHappyTrue(username=${#authentication.getName()})}" th:method="post">
+            <form th:action="@{/api/v1/dashboard/isUserHappyTrue(username=${#authentication.getName()})}" th:method="post" style="display: inline">
                 <button type="submit" class="btn yes" onclick="closeForm()">Yes</button>
             </form>
 
-
-         <form th:action="@{/api/v1/dashboard/isUserHappyFalse(username=${#authentication.getName()})}" th:method="post">
+            <form th:action="@{/api/v1/dashboard/isUserHappyFalse(username=${#authentication.getName()})}" th:method="post" style="display: inline">
                <button type="submit" class="btn no" onclick="closeForm()">No</button>
-          </form>
+            </form>
         </div>
     </div>
 
@@ -711,17 +710,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="form-popup" id="myForm">
-        <form class="form-container">
-            <label>Are you happy with your products?</label>
-            <form th:action="@{/dashboard/isUserHappyTrue(username=${#authentication.getName()})}" th:method="post">
-                <button type="submit" class="btn yes" onclick="closeForm()">Yes</button>
-            </form>
-            <form th:action="@{/dashboard/isUserHappyFalse(username=${#authentication.getName()})}" th:method="post">
-                <button type="submit" class="btn no" onclick="closeForm()">No</button>
-            </form>
-        </form>
     </div>
     <script
             src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"
