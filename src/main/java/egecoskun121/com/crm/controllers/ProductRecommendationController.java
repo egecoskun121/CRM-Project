@@ -22,7 +22,7 @@ public class ProductRecommendationController {
     }
 
 
-    @PreAuthorize("hasRole('ROLE_USER') OR hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_USER')")
     @RequestMapping(value = "")
     public ModelAndView getRecommendations(@RequestParam String username){
         ModelAndView modelAndView = new ModelAndView("product-recommendation");

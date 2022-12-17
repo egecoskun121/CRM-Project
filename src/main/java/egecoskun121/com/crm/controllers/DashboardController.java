@@ -15,6 +15,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
+
 import java.util.*;
 
 @Controller
@@ -87,20 +89,30 @@ public class DashboardController {
         return mav;
     }
 
+    @PreAuthorize("hasRole('ROLE_USER')")
     @RequestMapping(path = "/isUserHappyTrue")
-    public void isUserHappyTrue(@RequestParam String username){
+    public RedirectView isUserHappyTrue(@RequestParam String username){
         User user = userService.getUserByUsername(username);
         user.setIsUserHappy(true);
         user.setIsPopupShowed(true);
         userService.update(user);
+        RedirectView redirectView = new RedirectView();
+        redirectView.setUrl("http://localhost:8093/api/v1/dashboard/dashboardForUser?username="+username);
+
+        return redirectView;
     }
 
+    @PreAuthorize("hasRole('ROLE_USER')")
     @RequestMapping(path = "/isUserHappyFalse")
-    public void isUserHappyFalse(@RequestParam String username){
+    public RedirectView isUserHappyFalse(@RequestParam String username){
         User user = userService.getUserByUsername(username);
         user.setIsUserHappy(false);
         user.setIsPopupShowed(true);
         userService.update(user);
+        RedirectView redirectView = new RedirectView();
+        redirectView.setUrl("http://localhost:8093/api/v1/dashboard/dashboardForUser?username="+username);
+
+        return redirectView;
     }
 
     @RequestMapping("/chart")
