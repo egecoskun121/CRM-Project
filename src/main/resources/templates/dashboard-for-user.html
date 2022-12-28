@@ -93,7 +93,7 @@
         }
 
         .container-2 {
-            margin-top: 750px;
+            margin-top: 900px;
             position: absolute;
             right: 0;
             width: 100vw;
@@ -545,7 +545,7 @@
             <div class="recent-payments">
                 <div class="title">
                     <h2>Recent Inquiry</h2>
-                    <a href="#" class="btn">View All</a>
+                    <a th:href="@{/api/v1/inquiry/showAllProductInquiriesByName(username=${#authentication.getName()})}" class="btn">View All</a>
                 </div>
                 <table>
                     <thead>
@@ -679,7 +679,7 @@
             <div class="recent-payments">
                 <div class="title">
                     <h2>Recent Complaints</h2>
-                    <a href="#" class="btn">View All</a>
+                    <a th:href="@{/api/v1/complaint/showComplaintsByUsername(username=${#authentication.getName()})}" class="btn">View All</a>
                 </div>
                 <table>
                     <thead>
