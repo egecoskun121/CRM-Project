@@ -46,7 +46,7 @@
     .form-box {
       z-index: 0;
       width: 380px;
-      height: 510px;
+      height: 400px;
       position: relative;
       margin: 150px auto 1% auto; /*yüzde 6'ydı*/
       background-color: #ffff;
@@ -79,7 +79,7 @@
       transition: 0.5s;
     }
     .input-group {
-      top: 100px;
+      top: 120px;
       position: absolute;
       width: 280px;
       transition: 0.5s;
@@ -223,7 +223,7 @@
       </header>
       <div class="form-box">
         <div class="title">
-          <h2>Add Product</h2>
+          <h2>Product Assignment</h2>
         </div>
         <form th:action="@{/api/v1/product/saveProductToUser}" th:object="${dummy}"   id="register" class="input-group" method="post">
 
