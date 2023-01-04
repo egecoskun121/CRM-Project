@@ -1,6 +1,5 @@
 package egecoskun121.com.crm.model.DTO;
 
-import egecoskun121.com.crm.model.entity.ProductCategory;
 import egecoskun121.com.crm.model.entity.ProductInquiryAnswer;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,10 +21,10 @@ public class ProductInquiryDTO {
     @Email
     private String mail;
 
-    @Size(min = 5,max = 100)
+    @Size(min = 5, max = 100)
     private String details;
 
-    @Size(min = 5,max = 100)
+    @Size(min = 5, max = 100)
     private String answer;
 
     private String productName;

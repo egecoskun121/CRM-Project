@@ -5,14 +5,15 @@ import egecoskun121.com.crm.exception.NotFoundException;
 import egecoskun121.com.crm.model.DTO.ProductDTO;
 import egecoskun121.com.crm.model.entity.Product;
 import egecoskun121.com.crm.model.entity.User;
-import egecoskun121.com.crm.model.mapper.ProductMapper;
 import egecoskun121.com.crm.model.mapper.ProductMapperImpl;
 import egecoskun121.com.crm.repositories.ProductRepository;
 import egecoskun121.com.crm.repositories.UserRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.collections4.map.MultiKeyMap;
 import org.springframework.stereotype.Service;
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @Service
@@ -31,24 +32,25 @@ public class ProductService {
         this.userService = userService;
     }
 
-    public Product getById(Long productId){
+    public Product getById(Long productId) {
         return productRepository.findById(productId).orElseThrow(NotFoundException::new);
     }
 
-    public Product saveNewProduct(ProductDTO productDTO){
+    public Product saveNewProduct(ProductDTO productDTO) {
         return productRepository.save(productMapperImpl.toProduct(productDTO));
     }
 
-    public List<Product> getAllProducts(){
+    public List<Product> getAllProducts() {
         return productRepository.findAll();
     }
 
-    public List<Product> getAllProductsByUsername(String username){
-        List<Product> list =  productRepository.findAllProductsByName(username);;
+    public List<Product> getAllProductsByUsername(String username) {
+        List<Product> list = productRepository.findAllProductsByName(username);
+        ;
         return list;
     }
 
-    public Product updateProductById(Long productId,ProductDTO productDTO){
+    public Product updateProductById(Long productId, ProductDTO productDTO) {
         Product product = productRepository.findById(productId).orElseThrow(NotFoundException::new);
         product.setProductName(productDTO.getProductName());
         product.setProductCategory(productDTO.getProductCategory());
@@ -59,19 +61,19 @@ public class ProductService {
         return productRepository.save(product);
     }
 
-    public void deleteProductById(Long productId){
+    public void deleteProductById(Long productId) {
         productRepository.delete(productRepository.findById(productId).orElseThrow(NotFoundException::new));
     }
 
-    public Integer getProductCategoryCounts(int categoryNumber){
-     return productRepository.findByProductCategory(categoryNumber);
+    public Integer getProductCategoryCounts(int categoryNumber) {
+        return productRepository.findByProductCategory(categoryNumber);
     }
 
-    public Integer getProductCategoryCountsByUsername(int categoryNumber,String username){
-        return productRepository.findProductCategoryByUsername(categoryNumber,username);
+    public Integer getProductCategoryCountsByUsername(int categoryNumber, String username) {
+        return productRepository.findProductCategoryByUsername(categoryNumber, username);
     }
 
-    public void addProductToUser(String productName,String username){
+    public void addProductToUser(String productName, String username) {
         Product product = productRepository.findProductByProductName(productName);
         User user = userService.getUserByUsername(username);
         product.setUser(user);
@@ -81,67 +83,67 @@ public class ProductService {
         userRepository.save(user);
     }
 
-    public double getSumOfPrices(){
+    public double getSumOfPrices() {
         return productRepository.getSumOfPrices();
     }
 
-    public double getSumOfPricesWithUsername(String username){
+    public double getSumOfPricesWithUsername(String username) {
         return productRepository.getSumOfPricesWithUsername(username);
     }
 
-    public List<Map<Integer,Integer>> getProductCategoryCountsWithUsername(String username){
+    public List<Map<Integer, Integer>> getProductCategoryCountsWithUsername(String username) {
         return productRepository.getCategoryCountsWithUsername(username);
     }
 
-    public List<Product> getAllProductsWithNullId(){
+    public List<Product> getAllProductsWithNullId() {
         return productRepository.getAllProductsWithIdNull();
     }
 
-    public List<Product> getMaxCategoryListOfProduct(String username){
+    public List<Product> getMaxCategoryListOfProduct(String username) {
         return productRepository.getProductsByMaxCategory(productRepository.getMaxCountProductCategory(username));
     }
 
-    public List<Integer> getTotalPriceOfDate(String username){
+    public List<Integer> getTotalPriceOfDate(String username) {
         List<Integer> dates = new ArrayList<>();
-        for (int i=1;i<=12;i++){
-            if(i<10){
-                dates.add(productRepository.getTotalPriceOfDate("2022-0"+i,username));
-            }else{
-                dates.add(productRepository.getTotalPriceOfDate("2022-"+i,username));
+        for (int i = 1; i <= 12; i++) {
+            if (i < 10) {
+                dates.add(productRepository.getTotalPriceOfDate("2022-0" + i, username));
+            } else {
+                dates.add(productRepository.getTotalPriceOfDate("2022-" + i, username));
             }
         }
 
-        for(int i = 0;i<=11;i++){
-            if(dates.get(i)==null){
-                dates.set(i,0);
+        for (int i = 0; i <= 11; i++) {
+            if (dates.get(i) == null) {
+                dates.set(i, 0);
             }
         }
         return dates;
     }
 
-    public List<String> getProductCategoryCounts(){
-        List<String> categories=new ArrayList<>();
-        for(int i=0;i<productRepository.getCategoryCounts().size();i++) {
-            for(int j=0;j<=1;j++){
+    public List<String> getProductCategoryCounts() {
+        List<String> categories = new ArrayList<>();
+        for (int i = 0; i < productRepository.getCategoryCounts().size(); i++) {
+            for (int j = 0; j <= 1; j++) {
                 categories.add(String.valueOf(productRepository.getCategoryCounts().get(i).values().stream().toList().get(j)));
             }
         }
         return categories;
     }
 
-    public List<Integer> getTotalPriceOfDateAdmin(){
+    public List<Integer> getTotalPriceOfDateAdmin() {
         List<Integer> dates = new ArrayList<>();
-        for (int i=1;i<=12;i++){
-            if(i<10){
-                dates.add(productRepository.getTotalPriceOfDateAdmin("2022-0"+i));
-            }else{
-                dates.add(productRepository.getTotalPriceOfDateAdmin("2022-"+i));
+        for (int i = 1; i <= 12; i++) {
+            if (i < 10) {
+                dates.add(productRepository.getTotalPriceOfDateAdmin("2022-0" + i));
+            } else {
+                dates.add(productRepository.getTotalPriceOfDateAdmin("2022-" + i));
             }
         }
 
-        for(int i = 0;i<=11;i++){
-            if(dates.get(i)==null){
-                dates.set(i,0);
+        for (int i = 0; i <= 11; i++) {
+            if (dates.get(i) == null) {
+                dates.set(i, 0);
             }
         }
         return dates;

@@ -1,13 +1,14 @@
 package egecoskun121.com.crm.model.entity;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.sql.Timestamp;
 import java.util.List;
@@ -23,7 +24,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true,nullable = false)
+    @Column(unique = true, nullable = false)
     private String phoneNumber;
 
     @Size(min = 5, max = 25, message = "Username length should be between 5 and 25 characters")
@@ -46,14 +47,14 @@ public class User {
     private String password;
 
 
-    @OneToMany(fetch = FetchType.LAZY,orphanRemoval = true,mappedBy = "user")
+    @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "user")
     private List<Product> products;
 
 
-    @OneToMany(fetch = FetchType.LAZY,orphanRemoval = true,mappedBy = "user")
+    @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "user")
     private List<ProductInquiry> productInquiries;
 
-    @OneToMany(fetch = FetchType.LAZY,orphanRemoval = true,mappedBy = "user")
+    @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "user")
     private List<Complaint> complaints;
 
     private Role role;

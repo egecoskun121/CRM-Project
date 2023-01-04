@@ -10,11 +10,11 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ComplaintDTO {
-    @Size(min = 5,max = 100)
+    @Size(min = 5, max = 100)
     private String complaintSubject;
-    @Size(min = 5,max = 100)
+    @Size(min = 5, max = 100)
     private String details;
-    @Size(min = 5,max = 100)
+    @Size(min = 5, max = 100)
     private String answer;
     private String productName;
 }

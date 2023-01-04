@@ -1,9 +1,7 @@
 package egecoskun121.com.crm.controllers;
 
-import egecoskun121.com.crm.model.entity.Product;
 import egecoskun121.com.crm.services.ProductService;
 import egecoskun121.com.crm.services.UserService;
-import org.springframework.boot.Banner;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,9 +22,9 @@ public class ProductRecommendationController {
 
     @PreAuthorize("hasRole('ROLE_USER')")
     @RequestMapping(value = "")
-    public ModelAndView getRecommendations(@RequestParam String username){
+    public ModelAndView getRecommendations(@RequestParam String username) {
         ModelAndView modelAndView = new ModelAndView("product-recommendation");
-        modelAndView.addObject("product",productService.getMaxCategoryListOfProduct(username));
+        modelAndView.addObject("product", productService.getMaxCategoryListOfProduct(username));
         return modelAndView;
     }
 

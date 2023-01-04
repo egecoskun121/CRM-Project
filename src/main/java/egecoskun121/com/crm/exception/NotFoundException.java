@@ -1,4 +1,4 @@
 package egecoskun121.com.crm.exception;
 
-public class NotFoundException extends RuntimeException{
+public class NotFoundException extends RuntimeException {
 }

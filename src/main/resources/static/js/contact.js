@@ -20,8 +20,7 @@ $(function () {
                 type: "POST",
                 url: url,
                 data: $(this).serialize(),
-                success: function (data)
-                {
+                success: function (data) {
                     // data = JSON object that contact.php returns
 
                     // we recieve the type of the message: success x danger and apply it to the 
@@ -30,7 +29,7 @@ $(function () {
 
                     // let's compose Bootstrap alert box HTML
                     var alertBox = '<div class="alert ' + messageAlert + ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + messageText + '</div>';
-                    
+
                     // If we have messageAlert and messageText
                     if (messageAlert && messageText) {
                         // inject the alert to .messages div in our form

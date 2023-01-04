@@ -8,14 +8,14 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface ProductInquiryRepository extends JpaRepository<ProductInquiry,Long> {
+public interface ProductInquiryRepository extends JpaRepository<ProductInquiry, Long> {
 
-    @Query(nativeQuery = true,name="ProductInquiry.productInquiryResult")
-    List<ProductInquiry> findAllProductsInquiriesByName(@Param("username")String name);
+    @Query(nativeQuery = true, name = "ProductInquiry.productInquiryResult")
+    List<ProductInquiry> findAllProductsInquiriesByName(@Param("username") String name);
 
-    @Query(value = "SELECT * FROM PRODUCT_INQUIRY ORDER BY ID DESC",nativeQuery = true)
+    @Query(value = "SELECT * FROM PRODUCT_INQUIRY ORDER BY ID DESC", nativeQuery = true)
     List<ProductInquiry> findAllProductInquiriesOrderedById();
 
-    @Query(value = "SELECT * FROM PRODUCT_INQUIRY WHERE USER_ID = {SELECT ID FROM USERS WHERE USER_NAME= (:username)}  ORDER BY ID DESC  ",nativeQuery = true)
+    @Query(value = "SELECT * FROM PRODUCT_INQUIRY WHERE USER_ID = {SELECT ID FROM USERS WHERE USER_NAME= (:username)}  ORDER BY ID DESC  ", nativeQuery = true)
     List<ProductInquiry> findAllProductInquiriesOrderedByIdWithUsername(@Param("username") String username);
 }

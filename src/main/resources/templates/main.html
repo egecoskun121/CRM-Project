@@ -1,292 +1,315 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
-  <head>
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
     <!--meta tags-->
-    <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta charset="utf-8"/>
+    <meta content="ie=edge" http-equiv="x-ua-compatible"/>
     <meta
-      name="description"
-      content="GetFit Responsive Fitness Club HTML Template"
+            content="GetFit Responsive Fitness Club HTML Template"
+            name="description"
     />
     <meta
-      name="keywords"
-      content="onepage, gym, fitness, business, clean, modern"
+            content="onepage, gym, fitness, business, clean, modern"
+            name="keywords"
     />
-    <meta name="author" content="Mouri Theme" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta content="Mouri Theme" name="author"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
     <script src="https://kit.fontawesome.com/8345e13c5c.js"></script>
 
     <!--template title-->
     <title>Main Page</title>
-    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta content="#ffffff" name="msapplication-TileColor"/>
     <meta
-      name="msapplication-TileImage"
-      content="favicon/ms-icon-144x144.png"
+            content="favicon/ms-icon-144x144.png"
+            name="msapplication-TileImage"
     />
-    <meta name="theme-color" content="#ffffff" />
+    <meta content="#ffffff" name="theme-color"/>
 
-    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta content="#ffffff" name="msapplication-TileColor"/>
     <meta
-      name="msapplication-TileImage"
-      content="favicon/ms-icon-144x144.png"
+            content="favicon/ms-icon-144x144.png"
+            name="msapplication-TileImage"
     />
-    <meta name="theme-color" content="#ffffff" />
+    <meta content="#ffffff" name="theme-color"/>
     <!--========== Theme Fonts ==========-->
 
     <link
-      href="https://fonts.googleapis.com/css?family=Poppins:400,400i,600,700,800"
-      rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Poppins:400,400i,600,700,800"
+            rel="stylesheet"
     />
     <!--Bootstrap css-->
-    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
     <!--Font Awesome css-->
-    <link rel="stylesheet" th:href="@{/css/fontAwesome.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/fontAwesome.min.css}"/>
 
     <!--Normalizer css-->
-    <link rel="stylesheet" th:href="@{/css/jquery.animatedheadline.css}" />
+    <link rel="stylesheet" th:href="@{/css/jquery.animatedheadline.css}"/>
 
     <!--Template css-->
-    <link rel="stylesheet" th:href="@{/css/style.css}" />
-  </head>
-  <body>
-    <!--navigation area starts-->
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<!--navigation area starts-->
 
-    <header class="nav-area navbar-fixed-top">
-      <div class="container">
+<header class="nav-area navbar-fixed-top">
+    <div class="container">
         <div class="row">
-          <!--main menu starts-->
-          <div class="col-md-12">
-            <div class="main-menu">
-              <div class="navbar navbar-cus">
-                <a th:href="@{/api/v1/dashboard/main}" class="navbar-brand">ZE<span>CRM</span></a>
+            <!--main menu starts-->
+            <div class="col-md-12">
+                <div class="main-menu">
+                    <div class="navbar navbar-cus">
+                        <a class="navbar-brand" th:href="@{/api/v1/dashboard/main}">ZE<span>CRM</span></a>
 
-                <div class="navbar-collapse collapse">
-                  <nav>
-                    <!--ADMIN NAVBAR-->
-                    <div sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
-                      <ul class="nav navbar-nav navbar-right">
-                        <li><a th:href="@{/api/v1/dashboard}">Dashboard</a></li>
-                        <li><a th:href="@{/api/v1/product/showAllProducts}">Product List</a></li>
-                        <li><a th:href="@{/api/v1/complaint/showList}">Complaint List</a></li>
-                        <li><a th:href="@{/api/v1/inquiry/showList}">Inquiry List</a></li>
-                        <li><a th:href="@{/api/v1/product/addProductToUser}">Product Assignment</a></li>
-                        <li><a th:href="@{/api/v1/product/addNewProduct}">Add Product</a></li>
-                        <li><a th:href="@{/showUserDetails(username=${#authentication.getName()})}"><i class="fa-solid fa-user fa-1x"></i></a></li>
-                        <li><a th:href="@{/logout}"><i class="fa-solid fa-arrow-right-from-bracket fa-1x"></i></a></li>
-                      </ul>
-                    </div>
+                        <div class="navbar-collapse collapse">
+                            <nav>
+                                <!--ADMIN NAVBAR-->
+                                <div sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                                    <ul class="nav navbar-nav navbar-right">
+                                        <li><a th:href="@{/api/v1/dashboard}">Dashboard</a></li>
+                                        <li><a th:href="@{/api/v1/product/showAllProducts}">Product List</a></li>
+                                        <li><a th:href="@{/api/v1/complaint/showList}">Complaint List</a></li>
+                                        <li><a th:href="@{/api/v1/inquiry/showList}">Inquiry List</a></li>
+                                        <li><a th:href="@{/api/v1/product/addProductToUser}">Product Assignment</a></li>
+                                        <li><a th:href="@{/api/v1/product/addNewProduct}">Add Product</a></li>
+                                        <li><a th:href="@{/showUserDetails(username=${#authentication.getName()})}"><i
+                                                class="fa-solid fa-user fa-1x"></i></a></li>
+                                        <li><a th:href="@{/logout}"><i
+                                                class="fa-solid fa-arrow-right-from-bracket fa-1x"></i></a></li>
+                                    </ul>
+                                </div>
 
-                    <!--USER NAVBAR-->
-                    <div sec:authorize="hasAnyAuthority('ROLE_USER')">
-                      <ul class="nav navbar-nav navbar-right">
-                        <li><a th:href="@{/api/v1/dashboard/dashboardForUser(username=${#authentication.getName()})}">Dashboard</a></li>
-                        <li><a th:href="@{/api/v1/product/showAllProductsByUsername(username=${#authentication.getName()})}">Product List</a></li>
-                        <li><a th:href="@{/api/v1/inquiry/addNewProductInquiry(username=${#authentication.getName()})}">Inquiry</a></li>
-                        <li><a th:href="@{/api/v1/complaint/addNewComplaint(username=${#authentication.getName()})}">Raise Complaint</a></li>
-                        <li><a th:href="@{/api/v1/complaint/showComplaintsByUsername(username=${#authentication.getName()})}">Complaint List</a></li>
-                        <li><a th:href="@{/api/v1/inquiry/showAllProductInquiriesByName(username=${#authentication.getName()})}">Inquiry List</a></li>
-                        <li><a th:href="@{/api/v1/recommendation(username=${#authentication.getName()})}">Recommendation</a></li>
-                        <li><a th:href="@{/showUserDetails(username=${#authentication.getName()})}"><i class="fa-solid fa-user fa-1x"></i></a></li>
-                        <li><a th:href="@{/logout}"><i class="fa-solid fa-arrow-right-from-bracket fa-1x"></i></a></li>
-                      </ul>
+                                <!--USER NAVBAR-->
+                                <div sec:authorize="hasAnyAuthority('ROLE_USER')">
+                                    <ul class="nav navbar-nav navbar-right">
+                                        <li>
+                                            <a th:href="@{/api/v1/dashboard/dashboardForUser(username=${#authentication.getName()})}">Dashboard</a>
+                                        </li>
+                                        <li>
+                                            <a th:href="@{/api/v1/product/showAllProductsByUsername(username=${#authentication.getName()})}">Product
+                                                List</a></li>
+                                        <li>
+                                            <a th:href="@{/api/v1/inquiry/addNewProductInquiry(username=${#authentication.getName()})}">Inquiry</a>
+                                        </li>
+                                        <li>
+                                            <a th:href="@{/api/v1/complaint/addNewComplaint(username=${#authentication.getName()})}">Raise
+                                                Complaint</a></li>
+                                        <li>
+                                            <a th:href="@{/api/v1/complaint/showComplaintsByUsername(username=${#authentication.getName()})}">Complaint
+                                                List</a></li>
+                                        <li>
+                                            <a th:href="@{/api/v1/inquiry/showAllProductInquiriesByName(username=${#authentication.getName()})}">Inquiry
+                                                List</a></li>
+                                        <li>
+                                            <a th:href="@{/api/v1/recommendation(username=${#authentication.getName()})}">Recommendation</a>
+                                        </li>
+                                        <li><a th:href="@{/showUserDetails(username=${#authentication.getName()})}"><i
+                                                class="fa-solid fa-user fa-1x"></i></a></li>
+                                        <li><a th:href="@{/logout}"><i
+                                                class="fa-solid fa-arrow-right-from-bracket fa-1x"></i></a></li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
                     </div>
-                  </nav>
                 </div>
-              </div>
             </div>
-          </div>
 
-          <!--main menu ends-->
+            <!--main menu ends-->
         </div>
-      </div>
-    </header>
+    </div>
+</header>
 
-    <!--navigation area ends-->
+<!--navigation area ends-->
 
-    <!--banner area starts-->
+<!--banner area starts-->
 
-    <div class="banner-area" id="home">
-      <div class="banner-table">
+<div class="banner-area" id="home">
+    <div class="banner-table">
         <div class="banner-table-cell">
-          <div class="welcome-text">
-            <div class="container">
-              <div class="row">
-                <div class="col-md-12">
-                  <section class="intro animate-rotate-3">
-                    <h2>ZE CRM</h2>
-                    <h1 class="ah-headline">
-                      <span>Increase your</span>
-                      <span class="ah-words-wrapper">
+            <div class="welcome-text">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <section class="intro animate-rotate-3">
+                                <h2>ZE CRM</h2>
+                                <h1 class="ah-headline">
+                                    <span>Increase your</span>
+                                    <span class="ah-words-wrapper">
                         <b class="is-visible">Knowledge</b>
-                        <!--edit here-->
+                                        <!--edit here-->
                         <b>Customers</b>
-                        <!--edit here-->
+                                        <!--edit here-->
                         <b>Relations</b>
-                        <!--edit here-->
+                                        <!--edit here-->
                       </span>
-                    </h1>
-                  </section>
-                  <p class="home-btn">
-                    <a href="#" class="active">Get Started</a>
-                    <a href="#blog">Learn More</a>
-                  </p>
+                                </h1>
+                            </section>
+                            <p class="home-btn">
+                                <a class="active" href="#about">Get Started</a>
+                                <a href="#blog">Learn More</a>
+                            </p>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
+</div>
 
-    <!--banner area ends-->
+<!--banner area ends-->
 
-    <!--about area starts-->
+<!--about area starts-->
 
-    <div id="about" class="about-area section-padding">
-      <div class="container">
+<div class="about-area section-padding" id="about">
+    <div class="container">
         <div class="row">
-          <div class="col-md-5 col-sm-12 col-xs-12">
-            <div class="about-video">
-              <div class="single-video">
-                <a
-                  href="https://www.youtube.com/watch?v=SlhESAKF1Tk"
-                >
-                  <!--change video url-->
-                  <i class="fa fa-play"></i>
-                </a>
-                <img th:src="@{/images/about/about1.jpg}" alt="about image" />
-                <!--change image-->
-              </div>
+            <div class="col-md-5 col-sm-12 col-xs-12">
+                <div class="about-video">
+                    <div class="single-video">
+                        <a
+                                href="https://www.youtube.com/watch?v=SlhESAKF1Tk"
+                        >
+                            <!--change video url-->
+                            <i class="fa fa-play"></i>
+                        </a>
+                        <img alt="about image" th:src="@{/images/about/about1.jpg}"/>
+                        <!--change image-->
+                    </div>
+                </div>
             </div>
-          </div>
 
-          <div class="col-md-7 col-sm-12 col-xs-12">
-            <div class="about-main">
-              <br />
-              <h3>
-                About <b>ZE<span>CRM</span></b>
-              </h3>
-              <h2>Welcome to our System</h2>
-              <p class="line1"></p>
-              <div class="single-about">
-                <p>
-                  Customer Relationship Management (CRM) is a strategy that
-                  companies use to manage interactions with customers and
-                  potential customers. CRM helps organisations streamline
-                  processes, build customer relationships, increase sales,
-                  improve customer service, and increase profitability.
-                </p>
-              </div>
+            <div class="col-md-7 col-sm-12 col-xs-12">
+                <div class="about-main">
+                    <br/>
+                    <h3>
+                        About <b>ZE<span>CRM</span></b>
+                    </h3>
+                    <h2>Welcome to our System</h2>
+                    <p class="line1"></p>
+                    <div class="single-about">
+                        <p>
+                            Customer Relationship Management (CRM) is a strategy that
+                            companies use to manage interactions with customers and
+                            potential customers. CRM helps organisations streamline
+                            processes, build customer relationships, increase sales,
+                            improve customer service, and increase profitability.
+                        </p>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
+</div>
 
-    <!--about area ends-->
+<!--about area ends-->
 
-    <!--Blog area starts-->
+<!--Blog area starts-->
 
-    <div id="blog" class="blog-area section-padding">
-      <div class="container">
+<div class="blog-area section-padding" id="blog">
+    <div class="container">
         <div class="row">
-          <div class="col-md-12">
-            <div class="section-header">
-              <h2>Our Features</h2>
-              <p class="line"></p>
+            <div class="col-md-12">
+                <div class="section-header">
+                    <h2>Our Features</h2>
+                    <p class="line"></p>
+                </div>
             </div>
-          </div>
         </div>
         <div class="row">
-          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-            <div class="single-blog-news text-center">
-              <div class="news-img">
-                <img th:src="@{/images/productRecommendation.jpg}" alt="blog image" id="image-f" />
-                <!--edit image-->
-              </div>
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <div class="single-blog-news text-center">
+                    <div class="news-img">
+                        <img alt="blog image" id="image-f" th:src="@{/images/productRecommendation.jpg}"/>
+                        <!--edit image-->
+                    </div>
 
-              <div class="single-post">
-                <h2>Product Recommendation</h2>
-                <p class="line4"></p>
-                <p>
-                  Product recommendations are part of an CRM personalization strategy wherein products are
-                  dynamically populated to a user on a webpage, app, or email based on data such as customer attributes,
-                  browsing behavior, or situational context—providing a personalized shopping experience
-                </p>
-              </div>
+                    <div class="single-post">
+                        <h2>Product Recommendation</h2>
+                        <p class="line4"></p>
+                        <p>
+                            Product recommendations are part of an CRM personalization strategy wherein products are
+                            dynamically populated to a user on a webpage, app, or email based on data such as customer
+                            attributes,
+                            browsing behavior, or situational context—providing a personalized shopping experience
+                        </p>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-            <div class="single-blog-news text-center">
-              <div class="news-img">
-                <img th:src="@{/images/complaint.jpg}" alt="blog image" id="image-f"/>
-                <!--edit image-->
-              </div>
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <div class="single-blog-news text-center">
+                    <div class="news-img">
+                        <img alt="blog image" id="image-f" th:src="@{/images/complaint.jpg}"/>
+                        <!--edit image-->
+                    </div>
 
-              <div class="single-post">
-                <h2>Complaint Panel</h2>
-                <p class="line4"></p>
-                <p>
-                  All in all, complaints management truly is an essential component of customer service and business
-                  success. To gather valuable customer insight, it also helps your company
-                  progress to improvements that lead to reduced costs, increased profitability and increased customer
-                  satisfaction.
-                </p>
-              </div>
+                    <div class="single-post">
+                        <h2>Complaint Panel</h2>
+                        <p class="line4"></p>
+                        <p>
+                            All in all, complaints management truly is an essential component of customer service and
+                            business
+                            success. To gather valuable customer insight, it also helps your company
+                            progress to improvements that lead to reduced costs, increased profitability and increased
+                            customer
+                            satisfaction.
+                        </p>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="col-lg-4 col-md-4 hidden-sm col-xs-12">
-            <div class="single-blog-news last-blog-div text-center">
-              <div class="news-img">
-                <img th:src="@{/images/mail.jpg}" alt="blog image" id="image-f"/>
-                <!--edit image-->
-              </div>
-              <div class="single-post">
-                <h2>Increase relations with mail</h2>
-                <p class="line4"></p>
-                <p>
-                  Business communication can be done easily without any security issues, and it is faster than any other
-                  forms of communication. Also, contacts can be saved easily with the help of emails, and the past
-                  messages can be checked frequently rather than saving the data in the local server.
-                </p>
-              </div>
+            <div class="col-lg-4 col-md-4 hidden-sm col-xs-12">
+                <div class="single-blog-news last-blog-div text-center">
+                    <div class="news-img">
+                        <img alt="blog image" id="image-f" th:src="@{/images/mail.jpg}"/>
+                        <!--edit image-->
+                    </div>
+                    <div class="single-post">
+                        <h2>Increase relations with mail</h2>
+                        <p class="line4"></p>
+                        <p>
+                            Business communication can be done easily without any security issues, and it is faster than
+                            any other
+                            forms of communication. Also, contacts can be saved easily with the help of emails, and the
+                            past
+                            messages can be checked frequently rather than saving the data in the local server.
+                        </p>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
+</div>
 
-    <!--Blog area ends-->
+<!--Blog area ends-->
 
-    <!-- JQuery-->
-    <script th:src="@{/js/jquery.min.js}"></script>
+<!-- JQuery-->
+<script th:src="@{/js/jquery.min.js}"></script>
 
-    <!--Bootstrap js-->
-    <script th:src="@{/js/bootstrap.min.js}"></script>
+<!--Bootstrap js-->
+<script th:src="@{/js/bootstrap.min.js}"></script>
 
-    <!--Magnific popup js-->
-    <script th:src="@{/js/jquery.magnific-popup.js}"></script>
+<!--Magnific popup js-->
+<script th:src="@{/js/jquery.magnific-popup.js}"></script>
 
-    <!--Magnific popup js-->
-    <script th:src="@{/js/venobox.min.js}"></script>
+<!--Magnific popup js-->
+<script th:src="@{/js/venobox.min.js}"></script>
 
-    <!--Owl Carousel js-->
-    <script th:src="@{/js/owl.carousel.js}"></script>
+<!--Owl Carousel js-->
+<script th:src="@{/js/owl.carousel.js}"></script>
 
-    <!--Animated headline js-->
-    <script th:src="@{/js/jquery.animatedheadline.js}"></script>
+<!--Animated headline js-->
+<script th:src="@{/js/jquery.animatedheadline.js}"></script>
 
-    <!--Validator js-->
-    <script th:src="@{/js/validator.js}"></script>
+<!--Validator js-->
+<script th:src="@{/js/validator.js}"></script>
 
-    <!--Contact js-->
-    <script th:src="@{/js/contact.js}"></script>
+<!--Contact js-->
+<script th:src="@{/js/contact.js}"></script>
 
-    <!--waypoint js-->
-    <script th:src="@{/js/waypoints.min.js}"></script>
+<!--waypoint js-->
+<script th:src="@{/js/waypoints.min.js}"></script>
 
-    <!--Main js-->
-    <script th:src="@{/js/main.js}"></script>
-  </body>
+<!--Main js-->
+<script th:src="@{/js/main.js}"></script>
+</body>
 </html>

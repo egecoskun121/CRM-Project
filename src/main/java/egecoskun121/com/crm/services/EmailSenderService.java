@@ -19,18 +19,16 @@ import java.time.format.DateTimeFormatter;
 @EnableAsync
 public class EmailSenderService {
 
+    @Value("mail.sender")
+    String senderEmail;
     @Autowired
     private JavaMailSender mailSender;
     @Autowired
     private UserService userService;
 
-    @Value("mail.sender")
-    String senderEmail;
-
-
     public void sendEmail(String toEmail,
                           String subject,
-                          String body){
+                          String body) {
         SimpleMailMessage message = new SimpleMailMessage();
 
         message.setFrom(senderEmail);
@@ -43,15 +41,15 @@ public class EmailSenderService {
 
     @Scheduled(cron = "* * * */30 * *")
     @Async
-    public void sendMail(){
-        for (User user: userService.getAllUsers()) {
-            if(!user.getIsUserHappy()){
-                sendEmail(user.getEmail(),"Are you happy with our products?","Hey there," +
+    public void sendMail() {
+        for (User user : userService.getAllUsers()) {
+            if (!user.getIsUserHappy()) {
+                sendEmail(user.getEmail(), "Are you happy with our products?", "Hey there," +
                         "We just wanted to say hi and ask if you need any help about our products." +
                         "Just let us know if you need any help ! :)");
-                DateTimeFormatter formatter=DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
                 String formattedDate = LocalDateTime.now().format(formatter);
-                System.out.println("Mail gonderildi"+ formattedDate);
+                System.out.println("Mail gonderildi" + formattedDate);
             }
             user.setIsPopupShowed(false);
         }

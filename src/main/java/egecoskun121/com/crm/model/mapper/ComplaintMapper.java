@@ -7,5 +7,6 @@ import org.mapstruct.Mapper;
 @Mapper
 public interface ComplaintMapper {
     ComplaintDTO toComplaintDTO(Complaint complaint);
+
     Complaint toComplaint(ComplaintDTO complaintDTO);
 }

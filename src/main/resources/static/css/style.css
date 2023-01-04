@@ -32,17 +32,17 @@ Table of content
 
 html,
 body {
-  height: 100%;
+    height: 100%;
 }
 
 body {
-  font-family: "Poppins", sans-serif;
-  width: 100%;
-  height: 100%;
-  font-size: 15px;
-  line-height: 1.7;
-  color: #333333;
-  font-weight: 400;
+    font-family: "Poppins", sans-serif;
+    width: 100%;
+    height: 100%;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #333333;
+    font-weight: 400;
 }
 
 h1,
@@ -51,72 +51,72 @@ h3,
 h4,
 h5,
 h6 {
-  color: #333333;
-  font-weight: 600;
+    color: #333333;
+    font-weight: 600;
 }
 
 h3 {
-  font-size: 20px;
-  text-transform: none;
+    font-size: 20px;
+    text-transform: none;
 }
 
 p {
-  letter-spacing: 0;
-  line-height: 1.8;
+    letter-spacing: 0;
+    line-height: 1.8;
 }
 
 a {
-  text-decoration: none;
-  -webkit-transition: all 0.4s;
-  -moz-transition: all 0.4s;
-  -ms-transition: all 0.4s;
-  -o-transition: all 0.4s;
-  transition: all 0.4s;
+    text-decoration: none;
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    -ms-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    transition: all 0.4s;
 }
 
 a:focus {
-  outline: none;
-  text-decoration: none;
+    outline: none;
+    text-decoration: none;
 }
 
 ul,
 li {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 img {
-  max-width: 100%;
-  height: auto;
+    max-width: 100%;
+    height: auto;
 }
 
-#image-f{
-  min-height: 210px;
+#image-f {
+    min-height: 210px;
 }
 
 .section-padding {
-  padding: 80px 0;
+    padding: 80px 0;
 }
 
 .section-header {
-  margin-bottom: 60px;
-  text-align: center;
+    margin-bottom: 60px;
+    text-align: center;
 }
 
 .section-header .line {
-  height: 2px;
-  width: 70px;
-  background: #ec3642;
-  margin: auto;
+    height: 2px;
+    width: 70px;
+    background: #ec3642;
+    margin: auto;
 }
 
 .section-header h2 {
-  margin-bottom: 20px;
-  color: #fff;
+    margin-bottom: 20px;
+    color: #fff;
 }
 
 .mb-30 {
-  margin-bottom: 30px;
+    margin-bottom: 30px;
 }
 
 /*---------- default css ends ------------*/
@@ -124,110 +124,111 @@ img {
 /*---------- 2. Nav area css starts -------------*/
 
 .nav-area {
-  height: 65px;
+    height: 65px;
 }
 
 .nav-area.sticky_navigation {
-  background: #ffffff;
-  height: 55px;
+    background: #ffffff;
+    height: 55px;
 }
 
 .sticky_navigation {
-  -webkit-transition: all 0.4s ease-out;
-  -moz-transition: all 0.4s ease-out;
-  -ms-transition: all 0.4s ease-out;
-  -o-transition: all 0.4s ease-out;
-  transition: all 0.4s ease-out;
-  -webkit-box-shadow: 0px 3px 4.6px 0.3px rgba(0, 0, 0, 0.25);
-  -moz-box-shadow: 0px 3px 4.6px 0.3px rgba(0, 0, 0, 0.25);
-  box-shadow: 0px 3px 4.6px 0.3px rgba(0, 0, 0, 0.25);
+    -webkit-transition: all 0.4s ease-out;
+    -moz-transition: all 0.4s ease-out;
+    -ms-transition: all 0.4s ease-out;
+    -o-transition: all 0.4s ease-out;
+    transition: all 0.4s ease-out;
+    -webkit-box-shadow: 0px 3px 4.6px 0.3px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0px 3px 4.6px 0.3px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 3px 4.6px 0.3px rgba(0, 0, 0, 0.25);
 }
 
 .sticky_navigation .main-menu {
-  margin-top: 0;
+    margin-top: 0;
 }
+
 .navbar-brand span {
-  color: #ec3642;
+    color: #ec3642;
 }
 
 .sticky_navigation .navbar-brand,
 .sticky_navigation .navbar-brand span {
-  color: #000;
+    color: #000;
 }
 
 .sticky_navigation .navbar-brand:hover,
 .sticky_navigation .navbar-brand:focus,
 .sticky_navigation .navbar-brand span {
-  color: #ec3642;
+    color: #ec3642;
 }
 
 .sticky_navigation .nav li a {
-  color: #333333;
-  font-size: 13px;
+    color: #333333;
+    font-size: 13px;
 }
 
 .sticky_navigation .nav li.active a {
-  color: #ec3642;
+    color: #ec3642;
 }
 
 .sticky_navigation .navbar-brand:hover {
-  color: #333333;
+    color: #333333;
 }
 
 .main-menu {
-  -webkit-transition: all 0.4s ease-out;
-  -moz-transition: all 0.4s ease-out;
-  -ms-transition: all 0.4s ease-out;
-  -o-transition: all 0.4s ease-out;
-  transition: all 0.4s ease-out;
-  margin-top: 10px;
+    -webkit-transition: all 0.4s ease-out;
+    -moz-transition: all 0.4s ease-out;
+    -ms-transition: all 0.4s ease-out;
+    -o-transition: all 0.4s ease-out;
+    transition: all 0.4s ease-out;
+    margin-top: 10px;
 }
 
 .navbar {
-  border: 0;
-  margin-bottom: 0;
+    border: 0;
+    margin-bottom: 0;
 }
 
 .navbar-brand {
-  padding: 15px 0;
-  text-transform: uppercase;
-  font-size: 25px;
-  display: block;
-  color: #ffffff;
-  font-weight: 800;
+    padding: 15px 0;
+    text-transform: uppercase;
+    font-size: 25px;
+    display: block;
+    color: #ffffff;
+    font-weight: 800;
 }
 
 .navbar-brand:focus,
 .navbar-brand:hover {
-  text-decoration: none;
-  color: #ffffff;
+    text-decoration: none;
+    color: #ffffff;
 }
 
 .navbar-right li {
-  display: inline-block;
-  float: none;
+    display: inline-block;
+    float: none;
 }
 
 .navbar-right li a {
-  color: #ffffff;
-  text-transform: uppercase;
-  font-weight: 600;
-  font-size: 13px;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 13px;
 }
 
 .navbar-right li.active a {
-  font-weight: bold;
-  color: #ffffff;
+    font-weight: bold;
+    color: #ffffff;
 }
 
 .nav > li > a:hover,
 .nav > li > a:active,
 .nav > li > a:focus {
-  background: none;
+    background: none;
 }
 
 .navbar-toggle .icon-bar {
-  background: #777777;
+    background: #777777;
 }
 
 /*---------- Nav area css ends -------------*/
@@ -235,88 +236,90 @@ img {
 /* --------- 3. Banner area css starts -----------*/
 
 .banner-area {
-  background-image: url(../images/home/1.jpg);
-  background-position: center;
-  -webkit-background-size: cover;
-  background-size: cover;
-  position: relative;
-  height: 100%;
-  z-index: 1;
+    background-image: url(../images/home/1.jpg);
+    background-position: center;
+    -webkit-background-size: cover;
+    background-size: cover;
+    position: relative;
+    height: 100%;
+    z-index: 1;
 }
+
 .banner-area:before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.8);
-  z-index: -1;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: -1;
 }
 
 .banner-table {
-  display: table;
-  margin: 0;
-  position: relative;
-  height: 100%;
-  width: 100%;
-  z-index: 1;
+    display: table;
+    margin: 0;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
 }
 
 .banner-table-cell {
-  display: table-cell;
-  vertical-align: middle;
-  text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
 }
 
 .intro.animate-rotate-3 h1 {
-  font-size: 35px;
-  margin: 10px 0;
-  text-transform: uppercase;
+    font-size: 35px;
+    margin: 10px 0;
+    text-transform: uppercase;
 }
 
 .ah-headline.letters.rotate-3 span {
-  color: #fff;
-  font-weight: 100;
+    color: #fff;
+    font-weight: 100;
 }
 
 .ah-words-wrapper b {
-  color: #ec3642;
+    color: #ec3642;
 }
 
 .home-btn a {
-  border: 1px solid #ec3642;
-  color: #fff;
-  text-decoration: none;
-  padding: 7px 20px;
-  margin-right: 15px;
-  display: inline-block;
-  margin-top: 15px;
+    border: 1px solid #ec3642;
+    color: #fff;
+    text-decoration: none;
+    padding: 7px 20px;
+    margin-right: 15px;
+    display: inline-block;
+    margin-top: 15px;
 }
+
 .home-btn a.active {
-  background: #ec3642;
+    background: #ec3642;
 }
 
 .welcome-text {
-  color: #ffffff;
-  text-align: left;
+    color: #ffffff;
+    text-align: left;
 }
 
 .welcome-text h2 {
-  font-size: 3.8em;
-  font-weight: 300;
-  color: #ffffff;
+    font-size: 3.8em;
+    font-weight: 300;
+    color: #ffffff;
 }
 
 .banner-btn a {
-  background-color: #11abb0;
-  color: #ffffff;
-  padding: 10px 35px;
-  display: inline-block;
-  margin-top: 25px;
-  border-radius: 25px;
-  text-decoration: none;
-  letter-spacing: 2px;
+    background-color: #11abb0;
+    color: #ffffff;
+    padding: 10px 35px;
+    display: inline-block;
+    margin-top: 25px;
+    border-radius: 25px;
+    text-decoration: none;
+    letter-spacing: 2px;
 }
 
 /* --------------  Banner area css ends --------------- */
@@ -324,138 +327,138 @@ img {
 /*---------------4. About area css starts ----------------*/
 
 .about-area {
-  background: #101010;
+    background: #101010;
 }
 
 .line1 {
-  height: 2px;
-  width: 100px;
-  background: #ec3642;
-  display: inline-block;
-  margin-top: 15px;
+    height: 2px;
+    width: 100px;
+    background: #ec3642;
+    display: inline-block;
+    margin-top: 15px;
 }
 
 .about-main {
-  padding-left: 30px;
+    padding-left: 30px;
 }
 
 .about-main h3 {
-  color: #fff;
+    color: #fff;
 }
 
 .about-main h3 b {
-  text-transform: uppercase;
+    text-transform: uppercase;
 }
 
 .about-main h3 b span {
-  color: #ec3642;
+    color: #ec3642;
 }
 
 .about-main h2 {
-  font-size: 26px;
-  text-transform: none;
-  line-height: 1.3;
-  font-weight: 600;
-  word-spacing: 0.25px;
-  margin: 0;
-  color: #fff;
+    font-size: 26px;
+    text-transform: none;
+    line-height: 1.3;
+    font-weight: 600;
+    word-spacing: 0.25px;
+    margin: 0;
+    color: #fff;
 }
 
 .about-area .single-about p {
-  margin: 12px 0;
-  color: #fff;
+    margin: 12px 0;
+    color: #fff;
 }
 
 .about-area .about-main .button {
-  margin-top: 15px;
+    margin-top: 15px;
 }
 
 .about-area .about-main .button i {
-  margin-left: 10px;
-  font-size: 15px;
+    margin-left: 10px;
+    font-size: 15px;
 }
 
 .about-video .single-video {
-  position: relative;
+    position: relative;
 }
 
 .about-video .single-video img {
-  width: 100%;
+    width: 100%;
 }
 
 .about-video .single-video::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.8);
-  opacity: 0.9;
-  visibility: visible;
-  transition: 0.7s;
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    opacity: 0.9;
+    visibility: visible;
+    transition: 0.7s;
 }
 
 .about-video .single-video:hover:before {
-  opacity: 0;
-  visibility: hidden;
+    opacity: 0;
+    visibility: hidden;
 }
 
 .about-video .single-video i {
-  background: #ec3642;
+    background: #ec3642;
 }
 
 .about-video .single-video:hover:after {
-  margin-left: 0;
-  margin-top: 0;
+    margin-left: 0;
+    margin-top: 0;
 }
 
 .about-video .single-video i {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  border-radius: 100%;
-  margin-left: -25px;
-  margin-top: -25px;
-  color: #fff;
-  cursor: pointer;
-  width: 50px;
-  transition: 0.9s;
-  height: 50px;
-  text-align: center;
-  line-height: 2.5;
-  font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 100%;
+    margin-left: -25px;
+    margin-top: -25px;
+    color: #fff;
+    cursor: pointer;
+    width: 50px;
+    transition: 0.9s;
+    height: 50px;
+    text-align: center;
+    line-height: 2.5;
+    font-size: 20px;
 }
 
 .about-video .single-video:hover i {
-  -webkit-transform: scale(1.2);
-  -moz-transform: scale(1.2);
-  transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    transform: scale(1.2);
 }
 
 .list-area ul {
-  list-style: none;
+    list-style: none;
 }
 
 .list-area li {
-  line-height: 1.8;
+    line-height: 1.8;
 }
 
 .list-area li i {
-  margin-right: 15px;
+    margin-right: 15px;
 }
 
 .about-main a {
-  background-color: #ec3642;
-  color: #ffffff;
-  padding: 7px 20px;
-  display: inline-block;
-  text-decoration: none;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  font-size: 14px;
-  font-weight: 600;
-  margin-top: 5px;
+    background-color: #ec3642;
+    color: #ffffff;
+    padding: 7px 20px;
+    display: inline-block;
+    text-decoration: none;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 5px;
 }
 
 /*------- About area ends ----------------*/
@@ -463,39 +466,39 @@ img {
 /*------- 5. Trainer area css starts ----------*/
 
 .trainer-area {
-  background: #101010;
+    background: #101010;
 }
 
 .single-team {
-  overflow: hidden;
-  position: relative;
-  transition: 0.5s;
+    overflow: hidden;
+    position: relative;
+    transition: 0.5s;
 }
 
 .single-team .team-text {
-  position: absolute;
-  bottom: 25px;
-  left: 10%;
-  visibility: hidden;
+    position: absolute;
+    bottom: 25px;
+    left: 10%;
+    visibility: hidden;
 }
 
 .single-team:hover .team-text {
-  visibility: visible;
+    visibility: visible;
 }
 
 .single-team:hover img {
-  opacity: 0.3;
-  transition: 0.7s;
+    opacity: 0.3;
+    transition: 0.7s;
 }
 
 .team-text h2 {
-  color: #fff;
-  font-size: 25px;
+    color: #fff;
+    font-size: 25px;
 }
 
 .team-text h5 {
-  color: #ec3642;
-  text-transform: uppercase;
+    color: #ec3642;
+    text-transform: uppercase;
 }
 
 /*------- Trainer area ends ----------*/
@@ -503,48 +506,50 @@ img {
 /*---------- 6. Services area css starts ---------------*/
 
 .services-area {
-  background: #161616;
+    background: #161616;
 }
 
 .single-service {
-  text-align: center;
-  color: #fff;
+    text-align: center;
+    color: #fff;
 }
+
 .service-icon {
-  width: 60px;
-  height: 60px;
-  display: inline-block;
-  border: 1px solid #ec3642;
-  border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: inline-block;
+    border: 1px solid #ec3642;
+    border-radius: 50%;
 }
+
 .service-icon span:before {
-  font-size: 30px;
-  margin-left: 0;
+    font-size: 30px;
+    margin-left: 0;
 }
 
 .services-text h2 {
-  color: #fff;
-  text-transform: uppercase;
-  font-size: 18px;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 18px;
 }
 
 .services-text a {
-  text-decoration: none;
-  display: inline-block;
-  border: 1px solid #ec3642;
-  padding: 7px 15px;
-  color: #fff;
-  margin-top: 15px;
+    text-decoration: none;
+    display: inline-block;
+    border: 1px solid #ec3642;
+    padding: 7px 15px;
+    color: #fff;
+    margin-top: 15px;
 }
 
 .single-service:hover .service-icon {
-  background: #ec3642;
-  transition: 0.5s;
+    background: #ec3642;
+    transition: 0.5s;
 }
 
 .single-service:hover .services-text a {
-  background: #ec3642;
-  transition: 0.5s;
+    background: #ec3642;
+    transition: 0.5s;
 }
 
 /*---------- Services area ends ---------------*/
@@ -552,98 +557,101 @@ img {
 /*------ 7. Testimonial area css starts ---------*/
 
 .testimonial-area {
-  background-image: url(../images/testimonial/1.jpg);
-  -webkit-background-size: cover;
-  background-size: cover;
-  background-position: center center;
-  position: relative;
-  z-index: 1;
+    background-image: url(../images/testimonial/1.jpg);
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+    z-index: 1;
 }
 
 .testimonial-area:before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.9);
-  z-index: -1;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: -1;
 }
 
 .single-testimonial {
-  background: #222222;
-  border-radius: 5px;
-  padding: 30px;
+    background: #222222;
+    border-radius: 5px;
+    padding: 30px;
 }
+
 .single-testimonial:hover {
-  background: #ec3642;
-  transition: 0.5s;
+    background: #ec3642;
+    transition: 0.5s;
 }
+
 .single-testimonial:hover i {
-  color: #fff;
+    color: #fff;
 }
+
 .single-testimonial:hover h3 {
-  color: #fff;
+    color: #fff;
 }
 
 .single-testimonial p {
-  margin-bottom: 30px;
-  color: #eee;
+    margin-bottom: 30px;
+    color: #eee;
 }
 
 .single-testimonial h2 {
-  margin: 10px 0 0;
-  font-size: 18px;
-  color: #fff;
+    margin: 10px 0 0;
+    font-size: 18px;
+    color: #fff;
 }
 
 .testi-comment i {
-  font-size: 30px;
-  color: #ec3642;
+    font-size: 30px;
+    color: #ec3642;
 }
 
 .single-testimonial h3 {
-  margin: 10px 0 0;
-  font-weight: 100;
-  font-size: 15px;
-  color: #ec3642;
+    margin: 10px 0 0;
+    font-weight: 100;
+    font-size: 15px;
+    color: #ec3642;
 }
 
 .testi-img {
-  height: 70px;
-  width: 70px;
-  border-radius: 50%;
-  overflow: hidden;
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    overflow: hidden;
 }
 
 .testi-img img {
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 .owl-theme .owl-controls {
-  margin-top: 50px;
-  margin-left: 30px;
+    margin-top: 50px;
+    margin-left: 30px;
 }
 
 .owl-dots {
-  text-align: center;
-  margin-top: 30px;
+    text-align: center;
+    margin-top: 30px;
 }
 
 .owl-dot {
-  display: inline-block;
-  height: 15px !important;
-  width: 15px !important;
-  background-color: #ffffff !important;
-  opacity: 0.8;
-  border-radius: 50%;
-  margin: 0 5px;
+    display: inline-block;
+    height: 15px !important;
+    width: 15px !important;
+    background-color: #ffffff !important;
+    opacity: 0.8;
+    border-radius: 50%;
+    margin: 0 5px;
 }
 
 .owl-dot.active {
-  background-color: #ec3642 !important;
+    background-color: #ec3642 !important;
 }
 
 /*------ Testimonial area ends ---------*/
@@ -651,78 +659,94 @@ img {
 /*----- 8. Pricing area css starts -------*/
 
 .pricing-area {
-  background: #111;
+    background: #111;
 }
+
 .single-pricing {
-  text-align: center;
-  border: 2px solid #2e2e2e;
-  padding: 25px 50px;
-  color: #fff;
-  transition: 0.7s;
+    text-align: center;
+    border: 2px solid #2e2e2e;
+    padding: 25px 50px;
+    color: #fff;
+    transition: 0.7s;
 }
+
 .single-pricing h2 {
-  color: #fff;
-  text-transform: uppercase;
-  font-size: 20px;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 20px;
 }
+
 .line3 {
-  display: inline-block;
-  height: 2px;
-  width: 60px;
-  background: #ec3642;
+    display: inline-block;
+    height: 2px;
+    width: 60px;
+    background: #ec3642;
 }
+
 .price-section {
-  font-size: 40px;
+    font-size: 40px;
 }
+
 .price-section sup {
-  font-size: 18px;
+    font-size: 18px;
 }
+
 .price-section sub {
-  font-size: 18px;
+    font-size: 18px;
 }
+
 .deals {
-  list-style: none;
+    list-style: none;
 }
+
 .deals li {
-  border-bottom: 1px solid #4c4c4c;
-  padding: 15px 0;
+    border-bottom: 1px solid #4c4c4c;
+    padding: 15px 0;
 }
+
 .deals li:last-child {
-  border-bottom: none;
+    border-bottom: none;
 }
+
 .single-pricing.active {
-  background: #ec3642;
+    background: #ec3642;
 }
+
 .single-pricing.active .line3 {
-  background: #fff;
+    background: #fff;
 }
+
 .single-pricing.active .deals li {
-  border-color: #fff;
+    border-color: #fff;
 }
+
 .single-pricing a {
-  text-decoration: none;
-  padding: 7px 15px;
-  display: inline-block;
-  margin-top: 15px;
-  border: 2px solid #ec3642;
-  color: #fff;
+    text-decoration: none;
+    padding: 7px 15px;
+    display: inline-block;
+    margin-top: 15px;
+    border: 2px solid #ec3642;
+    color: #fff;
 }
+
 .single-pricing.active a {
-  border-color: #fff;
+    border-color: #fff;
 }
 
 .single-pricing:hover {
-  background: #ec3642;
+    background: #ec3642;
 }
+
 .single-pricing:hover .line3 {
-  background: #fff;
+    background: #fff;
 }
+
 .single-pricing:hover .deals li {
-  border-color: #fff;
+    border-color: #fff;
 }
 
 .single-pricing:hover a {
-  border-color: #fff;
+    border-color: #fff;
 }
 
 /*-----  Pricing area ends -------*/
@@ -730,80 +754,81 @@ img {
 /*---- 9. Blog Area css Starts ------*/
 
 .blog-single {
-  margin-bottom: 30px;
+    margin-bottom: 30px;
 }
 
 .blog-news-area .header-text > h2 {
-  left: 33%;
+    left: 33%;
 }
 
 .blog-news-area .header-text {
-  margin-bottom: 100px;
+    margin-bottom: 100px;
 }
 
 .news-img {
-  position: relative;
-  overflow: hidden;
+    position: relative;
+    overflow: hidden;
 }
 
 .news-img img {
-  width: 100%;
+    width: 100%;
 }
 
 .single-post > h2 {
-  color: #fff;
-  font-size: 16px;
-  font-weight: 700;
-  text-transform: uppercase;
-  line-height: 25px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 25px;
 }
 
 .single-post > h5 {
-  font-size: 13px;
-  font-weight: 600;
-  color: #555555;
+    font-size: 13px;
+    font-weight: 600;
+    color: #555555;
 }
 
 .single-post h5 span {
-  color: #3498db;
-  font-size: 35px;
-  margin: 5px;
-  padding: 0;
+    color: #3498db;
+    font-size: 35px;
+    margin: 5px;
+    padding: 0;
 }
 
 .single-post > p {
-  font-size: 14px;
-  text-align: left;
+    font-size: 14px;
+    text-align: left;
 }
 
 .single-post > a {
-  display: inline-block;
-  font-size: 13px;
-  margin: 25px 0;
-  text-transform: uppercase;
-  padding: 7px 15px;
-  border: 1px solid #ec3642;
-  background: #ec3642;
-  color: #ffffff;
-  font-weight: 600;
-  border-radius: 0;
+    display: inline-block;
+    font-size: 13px;
+    margin: 25px 0;
+    text-transform: uppercase;
+    padding: 7px 15px;
+    border: 1px solid #ec3642;
+    background: #ec3642;
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: 0;
 }
 
 .single-post {
-  padding: 10px 20px;
-  text-align: left;
+    padding: 10px 20px;
+    text-align: left;
 }
 
 .post-date span {
-  color: #fff;
-  font-weight: 600;
-  letter-spacing: 1px;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 1px;
 }
+
 .line4 {
-  display: inline-block;
-  width: 60px;
-  height: 2px;
-  background: #ec3642;
+    display: inline-block;
+    width: 60px;
+    height: 2px;
+    background: #ec3642;
 }
 
 /*---- Blog News Area Ends ----*/
@@ -811,347 +836,354 @@ img {
 /*---10. single Blog Page css starts---*/
 
 .blog-area {
-  background: #161616;
+    background: #161616;
 }
 
 .blog-img-area {
-  position: relative;
-  -webkit-background-size: cover;
-  background-size: cover;
-  background-repeat: no-repeat;
-  z-index: 1;
-  text-align: center;
-  color: #ffffff;
-  background-image: url(../images/blog/1.jpg);
-  background-position: center center;
-  background-attachment: fixed;
+    position: relative;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 1;
+    text-align: center;
+    color: #ffffff;
+    background-image: url(../images/blog/1.jpg);
+    background-position: center center;
+    background-attachment: fixed;
 }
 
 .blog-img-area::before {
-  background-color: #000;
-  content: "";
-  height: 100%;
-  left: 0;
-  opacity: 0.9;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: -1;
+    background-color: #000;
+    content: "";
+    height: 100%;
+    left: 0;
+    opacity: 0.9;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -1;
 }
 
 .blog-img-area h1 {
-  font-size: 46px;
-  color: #fff;
-  text-transform: capitalize;
-  font-weight: 700;
-  margin-top: 0;
+    font-size: 46px;
+    color: #fff;
+    text-transform: capitalize;
+    font-weight: 700;
+    margin-top: 0;
 }
 
 .blog-head-area h2 {
-  color: #ffffff;
+    color: #ffffff;
 }
 
 .breadcroumb {
-  color: #fff;
-  font-size: 16px;
+    color: #fff;
+    font-size: 16px;
 }
 
 .single-blog-area {
-  background: #161616;
+    background: #161616;
 }
 
 .single-blog h2 {
-  font-size: 20px;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  font-weight: 400;
-  margin-bottom: 15px;
+    font-size: 20px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-weight: 400;
+    margin-bottom: 15px;
 }
 
 .single-blog-news {
-  border: 2px solid #2e2e2e;
-  color: #fff;
-  transition: 0.7s;
+    border: 2px solid #2e2e2e;
+    color: #fff;
+    transition: 0.7s;
 }
+
 .single-blog-news:hover {
-  border-color: #ec3642;
+    border-color: #ec3642;
 }
 
 .single-blog-img-area {
-  text-align: center;
+    text-align: center;
 }
 
 .blog-text-area {
-  margin-top: 15%;
+    margin-top: 15%;
 }
 
 .blog-table {
-  display: table;
-  width: 100%;
-  height: 100%;
-  text-align: center;
+    display: table;
+    width: 100%;
+    height: 100%;
+    text-align: center;
 }
+
 .blog-table-cell {
-  display: table-cell;
-  vertical-align: middle;
+    display: table-cell;
+    vertical-align: middle;
 }
 
 .breadcrumb {
-  background-color: transparent;
-  color: #ffffff;
+    background-color: transparent;
+    color: #ffffff;
 }
 
 .breadcrumb a {
-  color: #ffffff;
-  text-decoration: none;
+    color: #ffffff;
+    text-decoration: none;
 }
 
 .single-blog img {
-  width: 100%;
+    width: 100%;
 }
 
 .single-blog h2 {
-  font-size: 20px;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  font-weight: 400;
-  margin-bottom: 15px;
+    font-size: 20px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-weight: 400;
+    margin-bottom: 15px;
 }
 
 .single-post-text {
-  padding: 20px;
-  color: #8d8d8d;
+    padding: 20px;
+    color: #8d8d8d;
 }
 
 .single-post-blog img {
-  width: 100%;
+    width: 100%;
 }
 
 .com-right {
-  float: right;
+    float: right;
 }
 
 .discussion-area ul.discussion-tally {
-  list-style: outside none none;
-  margin: 0;
-  padding: 0;
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
 }
 
 .row.discussion-reply {
-  margin-left: 120px;
-  margin-top: 40px;
+    margin-left: 120px;
+    margin-top: 40px;
 }
 
 h3.discussion-title {
-  margin-bottom: 30px;
-  font-weight: 400;
-  text-transform: uppercase;
-  font-size: 18px;
-  letter-spacing: 1px;
-  color: #fff;
+    margin-bottom: 30px;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: 18px;
+    letter-spacing: 1px;
+    color: #fff;
 }
 
 h3.dis-form-title {
-  margin-bottom: 20px;
-  font-weight: 600;
+    margin-bottom: 20px;
+    font-weight: 600;
 }
 
 .single-post-details {
-  margin-bottom: 50px;
+    margin-bottom: 50px;
 }
 
 .discussion-metadata h5 {
-  text-transform: uppercase;
-  color: #fff;
-  margin-top: 0;
+    text-transform: uppercase;
+    color: #fff;
+    margin-top: 0;
 }
 
 .discussion-contents p {
-  color: #7e7e7e;
-  font-size: 14px;
-  font-weight: normal;
-  line-height: 24px;
+    color: #7e7e7e;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 24px;
 }
 
 .dis-button {
-  font-weight: 700;
-  color: #555555;
+    font-weight: 700;
+    color: #555555;
 }
 
 .dis-button:hover {
-  color: #555555;
+    color: #555555;
 }
 
 .discussion-items {
-  border-bottom: 1px solid #323232;
-  margin-bottom: 40px;
-  padding-bottom: 25px;
+    border-bottom: 1px solid #323232;
+    margin-bottom: 40px;
+    padding-bottom: 25px;
 }
 
 .discussion-items:last-child {
-  border-bottom: 0px solid;
+    border-bottom: 0px solid;
 }
 
 h3.dis-form-title {
-  text-transform: uppercase;
-  font-size: 18px;
-  font-weight: 400;
-  letter-spacing: 1px;
-  color: #fff;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    color: #fff;
 }
 
 .discussion-form-area .form-control {
-  background-color: rgba(0, 0, 0, 0);
-  border: 1px solid #ddd;
-  border-radius: 0;
-  box-shadow: none;
-  height: 45px;
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px solid #ddd;
+    border-radius: 0;
+    box-shadow: none;
+    height: 45px;
 }
 
 .discussion-form-area .form-control:focus {
-  background-color: rgba(0, 0, 0, 0);
-  border: 1px solid #ddd;
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px solid #ddd;
 }
 
 .discussion-form-area textarea.form-control {
-  height: 150px;
-  resize: none;
+    height: 150px;
+    resize: none;
 }
 
 .filled-btn.btn-comment {
-  border: 0 solid;
-  margin-top: 10px;
+    border: 0 solid;
+    margin-top: 10px;
 }
 
 .discussion-area .custom-button-4 {
-  color: #fff;
+    color: #fff;
 }
 
 .com-left span {
-  color: #3498db;
-  font-weight: 600;
+    color: #3498db;
+    font-weight: 600;
 }
 
 .com-left span i {
-  color: #555555;
+    color: #555555;
 }
 
 .com-right a {
-  color: #3498db;
-  text-decoration: none;
-  font-weight: 600;
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 600;
 }
 
 blockquote {
-  border-left: 5px solid #ec3642;
+    border-left: 5px solid #ec3642;
 }
 
 .single-post-text h2 {
-  font-size: 30px;
-  line-height: 41px;
-  color: #fff;
-  font-weight: 600;
-  letter-spacing: -1px;
+    font-size: 30px;
+    line-height: 41px;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: -1px;
 }
 
 .single-post-text h4 {
-  font-size: 13px;
-  color: #b9b9b9;
-  margin-bottom: 30px;
+    font-size: 13px;
+    color: #b9b9b9;
+    margin-bottom: 30px;
 }
 
 .single-post-text h4 span {
-  color: #ec3642;
-  margin: 0 5px;
+    color: #ec3642;
+    margin: 0 5px;
 }
 
 .discussion-metadata p {
-  color: #ec3642;
+    color: #ec3642;
 }
+
 /*------Blog Page ends-------------*/
 
 /*-------------11. Contact area css starts -------------*/
 
 .contact-area {
-  background-image: url(../images/contact/1.jpg);
-  -webkit-background-size: cover;
-  background-size: cover;
-  background-position: center center;
-  background-attachment: fixed;
-  position: relative;
-  z-index: 1;
+    background-image: url(../images/contact/1.jpg);
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    position: relative;
+    z-index: 1;
 }
+
 .contact-area:before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.9);
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.9);
 }
+
 .single-left h2 {
-  font-size: 15px;
+    font-size: 15px;
 }
+
 .single-left h2 span {
-  float: right;
-  padding-right: 45px;
-  text-transform: none;
+    float: right;
+    padding-right: 45px;
+    text-transform: none;
 }
 
 .contact-area .form-control {
-  border: 1px solid #fff;
-  box-shadow: none;
-  padding: 6px;
-  border-radius: 0;
-  margin-bottom: 30px;
-  background: transparent;
+    border: 1px solid #fff;
+    box-shadow: none;
+    padding: 6px;
+    border-radius: 0;
+    margin-bottom: 30px;
+    background: transparent;
 }
+
 .single-left h2 {
-  color: #fff;
-  text-transform: uppercase;
+    color: #fff;
+    text-transform: uppercase;
 }
 
 .right-contact-text {
-  margin-bottom: 25px;
+    margin-bottom: 25px;
 }
 
 .right-contact-text i {
-  color: #11abb0;
-  font-size: 25px;
-  margin-bottom: 10px;
+    color: #11abb0;
+    font-size: 25px;
+    margin-bottom: 10px;
 }
 
 .contact-area textarea.form-control {
-  border: 1px solid #ddd;
-  padding: 6px;
-  height: 180px;
-  margin-bottom: 30px;
+    border: 1px solid #ddd;
+    padding: 6px;
+    height: 180px;
+    margin-bottom: 30px;
 }
 
 .btn.btn-send {
-  background: #ec3642;
-  color: #ffffff;
-  border-radius: 0;
-  padding: 7px 15px;
-  text-transform: uppercase;
-  font-weight: 600;
+    background: #ec3642;
+    color: #ffffff;
+    border-radius: 0;
+    padding: 7px 15px;
+    text-transform: uppercase;
+    font-weight: 600;
 }
 
 .right-contact-text h2 {
-  margin-top: 2px;
-  margin-bottom: 5px;
-  text-transform: uppercase;
-  font-weight: 600;
-  font-size: 12px;
-  letter-spacing: 3px;
+    margin-top: 2px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 3px;
 }
 
 .right-contact-text p {
-  line-height: 21px;
-  letter-spacing: 2px;
-  font-size: 11px;
-  color: #777;
+    line-height: 21px;
+    letter-spacing: 2px;
+    font-size: 11px;
+    color: #777;
 }
 
 /*------------- Contact area css ends -------------*/
@@ -1159,57 +1191,66 @@ blockquote {
 /*--------------12. Footer top area starts -------------*/
 
 .footer-top-area {
-  background: #111;
+    background: #111;
 }
+
 .single-footer p {
-  color: #bdc3c7;
-  padding-right: 55px;
+    color: #bdc3c7;
+    padding-right: 55px;
 }
+
 .single-footer h2 {
-  color: #fff;
-  text-transform: uppercase;
-  font-size: 25px;
-  margin: 0;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 25px;
+    margin: 0;
 }
+
 .single-footer h2 span {
-  color: #ec3642;
+    color: #ec3642;
 }
+
 .single-footer h5 {
-  font-size: 15px;
-  text-transform: uppercase;
-  color: #fff;
-  margin: 20px 0;
+    font-size: 15px;
+    text-transform: uppercase;
+    color: #fff;
+    margin: 20px 0;
 }
+
 .socials b {
-  width: 40px;
-  height: 40px;
-  display: inline-block;
-  border: 1px solid #bdc3c7;
-  margin-right: 10px;
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    border: 1px solid #bdc3c7;
+    margin-right: 10px;
 }
+
 .socials b:hover {
-  border-color: #ec3642;
+    border-color: #ec3642;
 }
+
 .socials b i {
-  padding: 10px 12px;
+    padding: 10px 12px;
 }
 
 .line5 {
-  display: inline-block;
-  background: #ec3642;
-  height: 2px;
-  width: 50px;
-  margin: 15px 0;
+    display: inline-block;
+    background: #ec3642;
+    height: 2px;
+    width: 50px;
+    margin: 15px 0;
 }
 
 .single-footer ul {
-  list-style: none;
+    list-style: none;
 }
+
 .single-footer li {
-  padding: 5px 0;
+    padding: 5px 0;
 }
+
 .single-footer li a {
-  color: #fff;
+    color: #fff;
 }
 
 /*--------------- Footer top area ends -------------*/
@@ -1217,10 +1258,10 @@ blockquote {
 /*------ 13. Footer bottom area css starts ------*/
 
 .footer-bottom-area {
-  background: #090909;
-  text-align: center;
-  padding: 30px 0;
-  color: #fff;
+    background: #090909;
+    text-align: center;
+    padding: 30px 0;
+    color: #fff;
 }
 
 /*------ Footer bottom area ends ------*/

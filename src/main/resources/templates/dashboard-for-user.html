@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <script src="https://kit.fontawesome.com/8345e13c5c.js"></script>
     <title>Admin Panel</title>
 
@@ -420,6 +420,7 @@
         .sticky_navigation .main-menu {
             margin-top: 0;
         }
+
         .navbar-brand span {
             color: #ec3642;
         }
@@ -459,7 +460,7 @@
             <div class="col-md-12">
                 <div class="main-menu">
                     <div class="navbar navbar-cus">
-                        <a th:href="@{/api/v1/dashboard/main}" class="navbar-brand">ZE<span>CRM</span></a>
+                        <a class="navbar-brand" th:href="@{/api/v1/dashboard/main}">ZE<span>CRM</span></a>
 
                         <div class="navbar-collapse collapse">
                             <nav>
@@ -467,28 +468,51 @@
                                 <div sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
                                     <ul class="nav navbar-nav navbar-right">
                                         <li><a th:href="@{/api/v1/dashboard}">Dashboard</a></li>
-                                        <li><a class="smooth-menu" th:href="@{/api/v1/product/showAllProducts}">Product List</a></li>
-                                        <li><a class="smooth-menu" th:href="@{/api/v1/complaint/showList}">Complaint List</a></li>
-                                        <li><a class="smooth-menu" th:href="@{/api/v1/inquiry/showList}">Inquiry List</a></li>
-                                        <li><a class="smooth-menu" th:href="@{/api/v1/product/addProductToUser}">Product Assignment</a></li>
-                                        <li><a class="smooth-menu" th:href="@{/api/v1/product/addNewProduct}">Add Product</a></li>
-                                        <li><a th:href="@{/showUserDetails(username=${#authentication.getName()})}"><i class="fa-solid fa-user fa-1x"></i></a></li>
-                                        <li><a th:href="@{/logout}"><i class="fa-solid fa-arrow-right-from-bracket fa-1x"></i></a></li>
+                                        <li><a class="smooth-menu" th:href="@{/api/v1/product/showAllProducts}">Product
+                                            List</a></li>
+                                        <li><a class="smooth-menu" th:href="@{/api/v1/complaint/showList}">Complaint
+                                            List</a></li>
+                                        <li><a class="smooth-menu" th:href="@{/api/v1/inquiry/showList}">Inquiry
+                                            List</a></li>
+                                        <li><a class="smooth-menu" th:href="@{/api/v1/product/addProductToUser}">Product
+                                            Assignment</a></li>
+                                        <li><a class="smooth-menu" th:href="@{/api/v1/product/addNewProduct}">Add
+                                            Product</a></li>
+                                        <li><a th:href="@{/showUserDetails(username=${#authentication.getName()})}"><i
+                                                class="fa-solid fa-user fa-1x"></i></a></li>
+                                        <li><a th:href="@{/logout}"><i
+                                                class="fa-solid fa-arrow-right-from-bracket fa-1x"></i></a></li>
                                     </ul>
                                 </div>
 
                                 <!--USER NAVBAR-->
                                 <div sec:authorize="hasAnyAuthority('ROLE_USER')">
                                     <ul class="nav navbar-nav navbar-right">
-                                        <li><a th:href="@{/api/v1/dashboard/dashboardForUser(username=${#authentication.getName()})}">Dashboard</a></li>
-                                        <li><a th:href="@{/api/v1/product/showAllProductsByUsername(username=${#authentication.getName()})}">Product List</a></li>
-                                        <li><a th:href="@{/api/v1/inquiry/addNewProductInquiry(username=${#authentication.getName()})}">Inquiry</a></li>
-                                        <li><a th:href="@{/api/v1/complaint/addNewComplaint(username=${#authentication.getName()})}">Raise Complaint</a></li>
-                                        <li><a th:href="@{/api/v1/complaint/showComplaintsByUsername(username=${#authentication.getName()})}">Complaint List</a></li>
-                                        <li><a th:href="@{/api/v1/inquiry/showAllProductInquiriesByName(username=${#authentication.getName()})}">Inquiry List</a></li>
-                                        <li><a th:href="@{/api/v1/recommendation(username=${#authentication.getName()})}">Recommendation</a></li>
-                                        <li><a th:href="@{/showUserDetails(username=${#authentication.getName()})}"><i class="fa-solid fa-user fa-1x"></i></a></li>
-                                        <li><a th:href="@{/logout}"><i class="fa-solid fa-arrow-right-from-bracket fa-1x"></i></a></li>
+                                        <li>
+                                            <a th:href="@{/api/v1/dashboard/dashboardForUser(username=${#authentication.getName()})}">Dashboard</a>
+                                        </li>
+                                        <li>
+                                            <a th:href="@{/api/v1/product/showAllProductsByUsername(username=${#authentication.getName()})}">Product
+                                                List</a></li>
+                                        <li>
+                                            <a th:href="@{/api/v1/inquiry/addNewProductInquiry(username=${#authentication.getName()})}">Inquiry</a>
+                                        </li>
+                                        <li>
+                                            <a th:href="@{/api/v1/complaint/addNewComplaint(username=${#authentication.getName()})}">Raise
+                                                Complaint</a></li>
+                                        <li>
+                                            <a th:href="@{/api/v1/complaint/showComplaintsByUsername(username=${#authentication.getName()})}">Complaint
+                                                List</a></li>
+                                        <li>
+                                            <a th:href="@{/api/v1/inquiry/showAllProductInquiriesByName(username=${#authentication.getName()})}">Inquiry
+                                                List</a></li>
+                                        <li>
+                                            <a th:href="@{/api/v1/recommendation(username=${#authentication.getName()})}">Recommendation</a>
+                                        </li>
+                                        <li><a th:href="@{/showUserDetails(username=${#authentication.getName()})}"><i
+                                                class="fa-solid fa-user fa-1x"></i></a></li>
+                                        <li><a th:href="@{/logout}"><i
+                                                class="fa-solid fa-arrow-right-from-bracket fa-1x"></i></a></li>
                                     </ul>
                                 </div>
                             </nav>
@@ -546,7 +570,8 @@
             <div class="recent-payments">
                 <div class="title">
                     <h2>Recent Inquiry</h2>
-                    <a th:href="@{/api/v1/inquiry/showAllProductInquiriesByName(username=${#authentication.getName()})}" class="btn">View All</a>
+                    <a class="btn"
+                       th:href="@{/api/v1/inquiry/showAllProductInquiriesByName(username=${#authentication.getName()})}">View All</a>
                 </div>
                 <table>
                     <thead>
@@ -573,7 +598,7 @@
             <div class="new-students">
 
                 <div>
-                    <canvas id="myChart2" width="100%" height="78%"></canvas>
+                    <canvas height="78%" id="myChart2" width="100%"></canvas>
                 </div>
 
                 <script th:inline="javascript">
@@ -613,20 +638,22 @@
     <div class="form-popup" id="myForm">
         <div class="form-container">
             <label>Are you happy with your products?</label>
-            <form th:action="@{/api/v1/dashboard/isUserHappyTrue(username=${#authentication.getName()})}" th:method="post" style="display: inline">
-                <button type="submit" class="btn yes" onclick="closeForm()">Yes</button>
+            <form style="display: inline"
+                  th:action="@{/api/v1/dashboard/isUserHappyTrue(username=${#authentication.getName()})}" th:method="post">
+                <button class="btn yes" onclick="closeForm()" type="submit">Yes</button>
             </form>
 
-            <form th:action="@{/api/v1/dashboard/isUserHappyFalse(username=${#authentication.getName()})}" th:method="post" style="display: inline">
-               <button type="submit" class="btn no" onclick="closeForm()">No</button>
+            <form style="display: inline"
+                  th:action="@{/api/v1/dashboard/isUserHappyFalse(username=${#authentication.getName()})}" th:method="post">
+                <button class="btn no" onclick="closeForm()" type="submit">No</button>
             </form>
         </div>
     </div>
 
     <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"
-            integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA=="
             crossorigin="anonymous"
+            integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA=="
+            src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"
     ></script>
     <script th:inline="javascript">
         document.addEventListener("DOMContentLoaded", function () {
@@ -680,7 +707,8 @@
             <div class="recent-payments">
                 <div class="title">
                     <h2>Recent Complaints</h2>
-                    <a th:href="@{/api/v1/complaint/showComplaintsByUsername(username=${#authentication.getName()})}" class="btn">View All</a>
+                    <a class="btn"
+                       th:href="@{/api/v1/complaint/showComplaintsByUsername(username=${#authentication.getName()})}">View All</a>
                 </div>
                 <table>
                     <thead>
@@ -707,15 +735,15 @@
             </div>
             <div class="chart">
                 <div>
-                    <canvas id="myChart" width="100%" height="78%"></canvas>
+                    <canvas height="78%" id="myChart" width="100%"></canvas>
                 </div>
             </div>
         </div>
     </div>
     <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"
-            integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA=="
             crossorigin="anonymous"
+            integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA=="
+            src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"
     ></script>
     <script th:inline="javascript">
         document.addEventListener("DOMContentLoaded", function () {

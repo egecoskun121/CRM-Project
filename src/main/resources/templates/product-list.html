@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8"/>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <script src="https://kit.fontawesome.com/8345e13c5c.js"></script>
     <title>Login and Refistration Form</title>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jq-3.6.0/dt-1.12.1/datatables.min.css"/>
+    <link href="https://cdn.datatables.net/v/bs4/jq-3.6.0/dt-1.12.1/datatables.min.css" rel="stylesheet"
+          type="text/css"/>
 
     <link
             href="https://fonts.googleapis.com/css?family=Poppins:400,400i,600,700,800"
@@ -15,13 +16,13 @@
     />
 
     <!--Bootstrap css-->
-    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
 
     <!--Font Awesome css-->
-    <link rel="stylesheet" th:href="@{/css/fontAwesome.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/fontAwesome.min.css}"/>
 
     <!--Normalizer css-->
-    <link rel="stylesheet" th:href="@{/css/jquery.animatedheadline.css}" />
+    <link rel="stylesheet" th:href="@{/css/jquery.animatedheadline.css}"/>
 
     <style>
         * {
@@ -29,6 +30,7 @@
             padding: 0;
             font-family: sans-serif;
         }
+
         .hero {
             z-index: -2;
             height: 100%;
@@ -65,10 +67,11 @@
             width: 100%;
             padding-bottom: 20px;
         }
+
         .content-table {
             position: relative;
             border-collapse: collapse;
-            margin: auto ;
+            margin: auto;
             width: 100%;
             min-width: 800px;
             max-height: 1000px;
@@ -77,12 +80,14 @@
             overflow: hidden;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
         }
+
         .content-table thead tr {
             background-color: #ffad06;
             color: #fff;
             text-align: left;
             font-weight: bold;
         }
+
         .content-table tbody tr {
             margin: 0%;
             color: #777777;
@@ -99,6 +104,7 @@
         .content-table tbody tr {
             border-bottom: 1px solid #ddd;
         }
+
         .content-table tbody tr:nth-of-type(even) {
             background-color: #f3f3f3;
         }
@@ -107,23 +113,24 @@
             border-bottom: 2px solid #ffad06;
         }
 
-    .nav li a{
-      color: whitesmoke;
-      text-transform: uppercase;
-      font-weight: 600;
-      font-size: 13px;
-    }
+        .nav li a {
+            color: whitesmoke;
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: 13px;
+        }
+
         .nav li a:hover,
         .nav li a:checked,
-        .nav li a:active{
+        .nav li a:active {
             background-color: transparent;
         }
 
-        .navbar-header{
+        .navbar-header {
             margin-top: 5px;
         }
 
-        header{
+        header {
             height: 55px;
         }
 
@@ -142,6 +149,7 @@
             text-decoration: none;
             color: #ffffff;
         }
+
         .navbar-brand span {
             color: #ec3642;
         }
@@ -160,7 +168,7 @@
                 <div class="col-md-12">
                     <div class="main-menu">
                         <div class="navbar navbar-cus">
-                            <a th:href="@{/api/v1/dashboard/main}" class="navbar-brand">ZE<span>CRM</span></a>
+                            <a class="navbar-brand" th:href="@{/api/v1/dashboard/main}">ZE<span>CRM</span></a>
 
                             <div class="navbar-collapse collapse">
                                 <nav>
@@ -168,28 +176,51 @@
                                     <div sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
                                         <ul class="nav navbar-nav navbar-right">
                                             <li><a th:href="@{/api/v1/dashboard}">Dashboard</a></li>
-                                            <li><a class="smooth-menu" th:href="@{/api/v1/product/showAllProducts}">Product List</a></li>
-                                            <li><a class="smooth-menu" th:href="@{/api/v1/complaint/showList}">Complaint List</a></li>
-                                            <li><a class="smooth-menu" th:href="@{/api/v1/inquiry/showList}">Inquiry List</a></li>
-                                            <li><a class="smooth-menu" th:href="@{/api/v1/product/addProductToUser}">Product Assignment</a></li>
-                                            <li><a class="smooth-menu" th:href="@{/api/v1/product/addNewProduct}">Add Product</a></li>
-                                            <li><a th:href="@{/showUserDetails(username=${#authentication.getName()})}"><i class="fa-solid fa-user fa-1x"></i></a></li>
-                                            <li><a th:href="@{/logout}"><i class="fa-solid fa-arrow-right-from-bracket fa-1x"></i></a></li>
+                                            <li><a class="smooth-menu" th:href="@{/api/v1/product/showAllProducts}">Product
+                                                List</a></li>
+                                            <li><a class="smooth-menu" th:href="@{/api/v1/complaint/showList}">Complaint
+                                                List</a></li>
+                                            <li><a class="smooth-menu" th:href="@{/api/v1/inquiry/showList}">Inquiry
+                                                List</a></li>
+                                            <li><a class="smooth-menu" th:href="@{/api/v1/product/addProductToUser}">Product
+                                                Assignment</a></li>
+                                            <li><a class="smooth-menu" th:href="@{/api/v1/product/addNewProduct}">Add
+                                                Product</a></li>
+                                            <li><a th:href="@{/showUserDetails(username=${#authentication.getName()})}"><i
+                                                    class="fa-solid fa-user fa-1x"></i></a></li>
+                                            <li><a th:href="@{/logout}"><i
+                                                    class="fa-solid fa-arrow-right-from-bracket fa-1x"></i></a></li>
                                         </ul>
                                     </div>
 
                                     <!--USER NAVBAR-->
                                     <div sec:authorize="hasAnyAuthority('ROLE_USER')">
                                         <ul class="nav navbar-nav navbar-right">
-                                            <li><a th:href="@{/api/v1/dashboard/dashboardForUser(username=${#authentication.getName()})}">Dashboard</a></li>
-                                            <li><a th:href="@{/api/v1/product/showAllProductsByUsername(username=${#authentication.getName()})}">Product List</a></li>
-                                            <li><a th:href="@{/api/v1/inquiry/addNewProductInquiry(username=${#authentication.getName()})}">Inquiry</a></li>
-                                            <li><a th:href="@{/api/v1/complaint/addNewComplaint(username=${#authentication.getName()})}">Raise Complaint</a></li>
-                                            <li><a th:href="@{/api/v1/complaint/showComplaintsByUsername(username=${#authentication.getName()})}">Complaint List</a></li>
-                                            <li><a th:href="@{/api/v1/inquiry/showAllProductInquiriesByName(username=${#authentication.getName()})}">Inquiry List</a></li>
-                                            <li><a th:href="@{/api/v1/recommendation(username=${#authentication.getName()})}">Recommendation</a></li>
-                                            <li><a th:href="@{/showUserDetails(username=${#authentication.getName()})}"><i class="fa-solid fa-user fa-1x"></i></a></li>
-                                            <li><a th:href="@{/logout}"><i class="fa-solid fa-arrow-right-from-bracket fa-1x"></i></a></li>
+                                            <li>
+                                                <a th:href="@{/api/v1/dashboard/dashboardForUser(username=${#authentication.getName()})}">Dashboard</a>
+                                            </li>
+                                            <li>
+                                                <a th:href="@{/api/v1/product/showAllProductsByUsername(username=${#authentication.getName()})}">Product
+                                                    List</a></li>
+                                            <li>
+                                                <a th:href="@{/api/v1/inquiry/addNewProductInquiry(username=${#authentication.getName()})}">Inquiry</a>
+                                            </li>
+                                            <li>
+                                                <a th:href="@{/api/v1/complaint/addNewComplaint(username=${#authentication.getName()})}">Raise
+                                                    Complaint</a></li>
+                                            <li>
+                                                <a th:href="@{/api/v1/complaint/showComplaintsByUsername(username=${#authentication.getName()})}">Complaint
+                                                    List</a></li>
+                                            <li>
+                                                <a th:href="@{/api/v1/inquiry/showAllProductInquiriesByName(username=${#authentication.getName()})}">Inquiry
+                                                    List</a></li>
+                                            <li>
+                                                <a th:href="@{/api/v1/recommendation(username=${#authentication.getName()})}">Recommendation</a>
+                                            </li>
+                                            <li><a th:href="@{/showUserDetails(username=${#authentication.getName()})}"><i
+                                                    class="fa-solid fa-user fa-1x"></i></a></li>
+                                            <li><a th:href="@{/logout}"><i
+                                                    class="fa-solid fa-arrow-right-from-bracket fa-1x"></i></a></li>
                                         </ul>
                                     </div>
                                 </nav>
@@ -217,7 +248,7 @@
                     <th>Category</th>
                     <th>Details</th>
                     <div sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
-                    <th>Action</th>
+                        <th>Action</th>
                     </div>
                 </tr>
                 </thead>
@@ -230,14 +261,14 @@
                     <td th:text="${productList.productCategory}"/>
                     <td th:text="${productList.details}"/>
 
-                    <div sec:authorize="hasAnyAuthority('ROLE_ADMIN')" >
-                    <td>
+                    <div sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                        <td>
 
-                        <a th:href="@{/api/v1/product/showUpdateForm(id=${productList.id})}" class="btn btn-info">Update</a>
-                        <a th:href="@{/api/v1/product/deleteProduct(id=${productList.id})}" class="btn btn-info">Delete</a>
+                            <a class="btn btn-info" th:href="@{/api/v1/product/showUpdateForm(id=${productList.id})}">Update</a>
+                            <a class="btn btn-info" th:href="@{/api/v1/product/deleteProduct(id=${productList.id})}">Delete</a>
 
-                    </td>
-                     </div>
+                        </td>
+                    </div>
                 </tr>
 
                 </tbody>
@@ -275,9 +306,9 @@
 <!--Main js-->
 <script th:src="@{/js/main.js}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.6.0/dt-1.12.1/datatables.min.js"></script>
+<script src="https://cdn.datatables.net/v/bs4/jq-3.6.0/dt-1.12.1/datatables.min.js" type="text/javascript"></script>
 <script>
-    $(document).ready(function (){
+    $(document).ready(function () {
         $("#productinquiry-table").DataTable();
     })
 </script>

@@ -8,10 +8,10 @@ import egecoskun121.com.crm.model.mapper.ComplaintMapper;
 import egecoskun121.com.crm.repositories.ComplaintRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import java.util.*;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Slf4j
 @Service
@@ -29,20 +29,20 @@ public class ComplaintService {
         this.userService = userService;
     }
 
-    public Complaint getComplaintById(Long id){
+    public Complaint getComplaintById(Long id) {
         return complaintRepository.findById(id).orElseThrow(NotFoundException::new);
     }
 
-    public List<Complaint> getAllComplaints(){
+    public List<Complaint> getAllComplaints() {
         return complaintRepository.findAll();
     }
 
-    public List<Complaint> getAllComplaintsByUsername(String username){
+    public List<Complaint> getAllComplaintsByUsername(String username) {
         List<Complaint> allComplaintsByName = complaintRepository.findAllComplaintsByUsername(username);
         return allComplaintsByName;
     }
 
-    public Complaint saveNewComplaint(ComplaintDTO complaintDTO,String username){
+    public Complaint saveNewComplaint(ComplaintDTO complaintDTO, String username) {
         Complaint complaint = complaintMapper.toComplaint(complaintDTO);
         User user = userService.getUserByUsername(username);
         complaint.setUser(user);
@@ -50,7 +50,7 @@ public class ComplaintService {
         return complaintRepository.save(complaint);
     }
 
-    public Complaint updateComplaintById(ComplaintDTO complaintDTO,Long id){
+    public Complaint updateComplaintById(ComplaintDTO complaintDTO, Long id) {
         Complaint complaint = complaintRepository.findById(id).orElseThrow(NotFoundException::new);
 
         complaint.setComplaintSubject(complaintDTO.getComplaintSubject());
@@ -61,7 +61,7 @@ public class ComplaintService {
         return complaintRepository.save(complaint);
     }
 
-    public void deleteComplaintById(Long id){
+    public void deleteComplaintById(Long id) {
         complaintRepository.delete(complaintRepository.findById(id).orElseThrow(NotFoundException::new));
     }
 

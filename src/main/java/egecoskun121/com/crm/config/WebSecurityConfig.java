@@ -22,16 +22,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
     @Bean
-    public UserDetailsService userDetailsService(){
+    public UserDetailsService userDetailsService() {
         return new UserDetailsServiceImpl();
     }
 
     @Bean
-    public BCryptPasswordEncoder passwordEncoder(){
+    public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
-    public DaoAuthenticationProvider authenticationProvider(){
+    public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
         authenticationProvider.setUserDetailsService(userDetailsService());
         authenticationProvider.setPasswordEncoder(passwordEncoder());
@@ -40,11 +40,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception{
+    protected void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
         authenticationManagerBuilder.authenticationProvider(authenticationProvider());
     }
 
-    protected void configure(HttpSecurity httpSecurity)throws Exception{
+    protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeRequests()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/addUser").permitAll()
@@ -55,10 +55,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/v1/product/categoryList").hasAnyAuthority("ROLE_ADMIN")
                 .antMatchers("/api/v1/product/showAllProductsByUsername").hasAuthority("ROLE_USER")
                 .antMatchers("/h2/**").permitAll()
-                        .and()
-                                .formLogin(form -> form.defaultSuccessUrl("/api/v1/dashboard/main")
-                                        .loginPage("/login")
-                                       );
+                .and()
+                .formLogin(form -> form.defaultSuccessUrl("/api/v1/dashboard/main")
+                        .loginPage("/login")
+                );
 
 
         httpSecurity.csrf().disable();

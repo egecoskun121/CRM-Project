@@ -1,780 +1,811 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="https://kit.fontawesome.com/8345e13c5c.js"></script>
-  <title>Admin Panel</title>
-
-  <link
-          href="https://fonts.googleapis.com/css?family=Poppins:400,400i,600,700,800"
-          rel="stylesheet"
-  />
-
-  <!--Bootstrap css-->
-  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
-
-  <!--Font Awesome css-->
-  <link rel="stylesheet" th:href="@{/css/fontAwesome.min.css}" />
-
-  <!--Normalizer css-->
-  <link rel="stylesheet" th:href="@{/css/jquery.animatedheadline.css}" />
-
-  <!--Normalizer css-->
-  <link rel="stylesheet" th:href="@{/css/jquery.animatedheadline.css}" />
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: sans-serif;
-    }
-
-    body {
-      z-index: -2;
-      min-height: 100vh;
-      background-color: #282A3A;
-      background-position: center;
-      background-size: cover;
-    }
-
-
-    a {
-      text-decoration: none;
-    }
-
-    li {
-      list-style: none;
-    }
-
-    h1,
-    h2 {
-      color: #444;
-
-    }
-
-    h3 {
-      color: #999;
-    }
-
-    .btn {
-      background: #f05462;
-      color: white;
-      padding: 5px 10px;
-      text-align: center;
-    }
-
-    .btn:hover {
-      color: #f05462;
-      background: white;
-      padding: 3px 8px;
-      border: 2px solid #f05462;
-    }
-
-    .title {
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      padding: 15px 10px;
-      border-bottom: 2px solid #999;
-    }
-
-    table {
-      padding: 10px;
-    }
-
-    th,
-    td {
-      text-align: left;
-      padding: 8px;
-    }
-
-    .container-2 {
-      margin-top: 900px;
-      position: absolute;
-      right: 0;
-      width: 100vw;
-      height: 45vh;
-    }
-
-    .container-2 .content {
-      z-index: 0;
-      position: relative;
-      margin-top: 0;
-      min-height: 45vh;
-    }
-
-    .container-2 .content .cards {
-
-      padding: 20px 15px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
-
-    .container-2 .content .cards .card {
-    background:#EEEEEE ;
-      z-index: -1;
-      width: 250px;
-      height: 150px;
-      margin: 20px 10px;
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    }
-
-    .container-2 .content .content-2 {
-      min-height: 60vh;
-      display: flex;
-      justify-content: space-around;
-      align-items: flex-start;
-      flex-wrap: wrap;
-    }
-
-    .container-2 .content .content-2 .recent-payments {
-      min-height: 50vh;
-      flex: 2;
-      background: #EEEEEE;
-      margin: 0 25px 0px 25px;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-      display: flex;
-      flex-direction: column;
-    }
-
-    .container-2 .content .content-2 .recent-payments tbody tr:nth-of-type(even){
-      background: white;
-    }
-    .container-2 .content .content-2 .recent-payments tbody tr:nth-of-type(odd){
-      background: whitesmoke;
-    }
-
-    .container-2 .content .content-2 .new-students {
-      flex: 2;
-      background: #EEEEEE;
-      min-height: 50vh;
-      margin: 0 25px;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-      display: flex;
-      flex-direction: column;
-    }
-
-    .container-2 .content .content-2 .chart {
-      flex: 2;
-      background: #EEEEEE;
-      min-height: 50vh;
-      margin: 0 25px;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-      display: block;
-      flex-direction: column;
-    }
-
-    .container-2 .content .content-2 .new-students table td:nth-child(1) img {
-      height: 40px;
-      width: 40px;
-    }
-
-    .container-3 {
-      margin-top: 50px;
-      position: absolute;
-      right: 0;
-      width: 100vw;
-      height: 45vh;
-    }
-
-    .container-3 .content {
-      z-index: 0;
-      position: relative;
-      margin-top: 0;
-      min-height: 45vh;
-    }
-
-    .container-3 .content .cards {
-
-      padding: 20px 15px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
-
-    .container-3 .content .cards .card {
-      background:#EEEEEE ;
-      z-index: -1;
-      width: 250px;
-      height: 150px;
-      margin: 20px 10px;
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    }
-
-    .container-3 .content .content-2 {
-      min-height: 50vh;
-      display: flex;
-      justify-content: space-around;
-      align-items: flex-start;
-      flex-wrap: wrap;
-    }
-
-    .container-3 .content .content-2 .recent-payments {
-      min-height: 50vh;
-      flex: 4;
-      background: #EEEEEE;
-      margin: 0 25px 25px 25px;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-      display: flex;
-      flex-direction: column;
-    }
-
-    .container-3 .content .content-2 .recent-payments tbody tr:nth-of-type(even){
-      background: white;
-    }
-    .container-3 .content .content-2 .recent-payments tbody tr:nth-of-type(odd){
-      background: whitesmoke;
-    }
-
-    .container-3 .content .content-2 .new-students {
-      flex: 2;
-      background: #EEEEEE;
-      min-height: 40vh;
-      max: 45vh;
-      margin: 0 25px;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-      display: flex;
-      flex-direction: column;
-    }
-
-    .container-3 .content .content-2 .chart {
-      flex: 2;
-      background: #EEEEEE;
-      min-height: 50vh;
-      margin: 0 25px;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-      display: block;
-      flex-direction: column;
-    }
-
-    .container-3 .content .content-2 .new-students table td:nth-child(1) img {
-      height: 40px;
-      width: 40px;
-    }
-
-
-
-    .icons {
-      color: red;
-    }
-
-    table > tbody > tr:nth-child(n + 9) {
-      display: none;
-    }
-
-    label {
-      color: black;
-      padding-left: 1px;
-      font-size: 14px;
-    }
-
-    /* The popup form - hidden by default */
-    .form-popup {
-      display: none;
-      position: fixed;
-      border-radius: 10px;
-      bottom: 0;
-      right: 15px;
-      border: 3px solid #f1f1f1;
-      z-index: 9;
-      margin-bottom: 30px;
-      margin-right: 20px;
-    }
-
-    /* Add styles to the form container */
-    .form-container {
-      max-width: 240px;
-      padding: 10px;
-      background-color: whitesmoke;
-    }
-
-    /* Full-width input fields */
-    .form-container input[type="text"],
-    .form-container input[type="password"] {
-      width: 100%;
-      padding: 15px;
-      margin: 5px 0 22px 0;
-      border: none;
-      background: #f1f1f1;
-    }
-
-    /* When the inputs get focus, do something */
-    .form-container input[type="text"]:focus,
-    .form-container input[type="password"]:focus {
-      background-color: #ddd;
-      outline: none;
-    }
-
-    /* Set a style for the submit/login button */
-    .form-container .btn {
-      background-color: #04aa6d;
-      color: white;
-      padding: 12px 10px;
-      display: inline;
-      border: none;
-      cursor: pointer;
-      width: 30%;
-      margin: 10px 0 2px 29px;
-      border-radius: 20px;
-      opacity: 0.5;
-    }
-
-    /* Add a red background color to the cancel button */
-    .form-container .cancel {
-      background-color: red;
-    }
-    .form-container .yes {
-      background-color: green;
-    }
-    .form-container .no {
-      background-color: red;
-    }
-
-    /* Add some hover effects to buttons */
-    .form-container .btn:hover,
-    .open-button:hover {
-      opacity: 1;
-    }
-
-    .nav li a{
-      color: whitesmoke;
-      text-transform: uppercase;
-      font-weight: 600;
-      font-size: 13px;
-    }
-    .nav li a:hover,
-    .nav li a:checked,
-    .nav li a:active{
-      background-color: transparent;
-    }
-
-    .navbar-header{
-      margin-top: 5px;
-    }
-
-    header{
-      height: 65px;
-    }
-    .navbar-brand span {
-      color: #ec3642;
-    }
-
-    .navbar-brand {
-      padding: 15px 0;
-      text-transform: uppercase;
-      font-size: 25px;
-      display: block;
-      color: #ffffff;
-      font-weight: 800;
-    }
-
-    .navbar-brand:focus,
-    .navbar-brand:hover {
-      text-decoration: none;
-      color: #ffffff;
-    }
-
-    .navbar-right li a {
-      color: #ffffff;
-      text-transform: uppercase;
-      font-weight: 600;
-      font-size: 13px;
-    }
-    #myChart {
-    }
-    .nav-area.sticky_navigation {
-      background: #ffffff;
-      height: 55px;
-    }
-
-    .sticky_navigation {
-      -webkit-transition: all 0.4s ease-out;
-      -moz-transition: all 0.4s ease-out;
-      -ms-transition: all 0.4s ease-out;
-      -o-transition: all 0.4s ease-out;
-      transition: all 0.4s ease-out;
-      -webkit-box-shadow: 0px 3px 4.6px 0.3px rgba(0, 0, 0, 0.25);
-      -moz-box-shadow: 0px 3px 4.6px 0.3px rgba(0, 0, 0, 0.25);
-      box-shadow: 0px 3px 4.6px 0.3px rgba(0, 0, 0, 0.25);
-    }
-
-    .sticky_navigation .main-menu {
-      margin-top: 0;
-    }
-    .navbar-brand span {
-      color: #ec3642;
-    }
-
-    .sticky_navigation .navbar-brand,
-    .sticky_navigation .navbar-brand span {
-      color: #000;
-    }
-
-    .sticky_navigation .navbar-brand:hover,
-    .sticky_navigation .navbar-brand:focus,
-    .sticky_navigation .navbar-brand span {
-      color: #ec3642;
-    }
-
-    .sticky_navigation .nav li a {
-      color: #333333;
-      font-size: 13px;
-    }
-
-    .sticky_navigation .nav li.active a {
-      color: #ec3642;
-    }
-
-    .sticky_navigation .navbar-brand:hover {
-      color: #333333;
-    }
-
-  </style>
+    <meta charset="UTF-8"/>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <script src="https://kit.fontawesome.com/8345e13c5c.js"></script>
+    <title>Admin Panel</title>
+
+    <link
+            href="https://fonts.googleapis.com/css?family=Poppins:400,400i,600,700,800"
+            rel="stylesheet"
+    />
+
+    <!--Bootstrap css-->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+
+    <!--Font Awesome css-->
+    <link rel="stylesheet" th:href="@{/css/fontAwesome.min.css}"/>
+
+    <!--Normalizer css-->
+    <link rel="stylesheet" th:href="@{/css/jquery.animatedheadline.css}"/>
+
+    <!--Normalizer css-->
+    <link rel="stylesheet" th:href="@{/css/jquery.animatedheadline.css}"/>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+        body {
+            z-index: -2;
+            min-height: 100vh;
+            background-color: #282A3A;
+            background-position: center;
+            background-size: cover;
+        }
+
+
+        a {
+            text-decoration: none;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        h1,
+        h2 {
+            color: #444;
+
+        }
+
+        h3 {
+            color: #999;
+        }
+
+        .btn {
+            background: #f05462;
+            color: white;
+            padding: 5px 10px;
+            text-align: center;
+        }
+
+        .btn:hover {
+            color: #f05462;
+            background: white;
+            padding: 3px 8px;
+            border: 2px solid #f05462;
+        }
+
+        .title {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 15px 10px;
+            border-bottom: 2px solid #999;
+        }
+
+        table {
+            padding: 10px;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        .container-2 {
+            margin-top: 900px;
+            position: absolute;
+            right: 0;
+            width: 100vw;
+            height: 45vh;
+        }
+
+        .container-2 .content {
+            z-index: 0;
+            position: relative;
+            margin-top: 0;
+            min-height: 45vh;
+        }
+
+        .container-2 .content .cards {
+
+            padding: 20px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .container-2 .content .cards .card {
+            background: #EEEEEE;
+            z-index: -1;
+            width: 250px;
+            height: 150px;
+            margin: 20px 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        .container-2 .content .content-2 {
+            min-height: 60vh;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .container-2 .content .content-2 .recent-payments {
+            min-height: 50vh;
+            flex: 2;
+            background: #EEEEEE;
+            margin: 0 25px 0px 25px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container-2 .content .content-2 .recent-payments tbody tr:nth-of-type(even) {
+            background: white;
+        }
+
+        .container-2 .content .content-2 .recent-payments tbody tr:nth-of-type(odd) {
+            background: whitesmoke;
+        }
+
+        .container-2 .content .content-2 .new-students {
+            flex: 2;
+            background: #EEEEEE;
+            min-height: 50vh;
+            margin: 0 25px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container-2 .content .content-2 .chart {
+            flex: 2;
+            background: #EEEEEE;
+            min-height: 50vh;
+            margin: 0 25px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            display: block;
+            flex-direction: column;
+        }
+
+        .container-2 .content .content-2 .new-students table td:nth-child(1) img {
+            height: 40px;
+            width: 40px;
+        }
+
+        .container-3 {
+            margin-top: 50px;
+            position: absolute;
+            right: 0;
+            width: 100vw;
+            height: 45vh;
+        }
+
+        .container-3 .content {
+            z-index: 0;
+            position: relative;
+            margin-top: 0;
+            min-height: 45vh;
+        }
+
+        .container-3 .content .cards {
+
+            padding: 20px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .container-3 .content .cards .card {
+            background: #EEEEEE;
+            z-index: -1;
+            width: 250px;
+            height: 150px;
+            margin: 20px 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        .container-3 .content .content-2 {
+            min-height: 50vh;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .container-3 .content .content-2 .recent-payments {
+            min-height: 50vh;
+            flex: 4;
+            background: #EEEEEE;
+            margin: 0 25px 25px 25px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container-3 .content .content-2 .recent-payments tbody tr:nth-of-type(even) {
+            background: white;
+        }
+
+        .container-3 .content .content-2 .recent-payments tbody tr:nth-of-type(odd) {
+            background: whitesmoke;
+        }
+
+        .container-3 .content .content-2 .new-students {
+            flex: 2;
+            background: #EEEEEE;
+            min-height: 40vh;
+            max: 45vh;
+            margin: 0 25px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container-3 .content .content-2 .chart {
+            flex: 2;
+            background: #EEEEEE;
+            min-height: 50vh;
+            margin: 0 25px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            display: block;
+            flex-direction: column;
+        }
+
+        .container-3 .content .content-2 .new-students table td:nth-child(1) img {
+            height: 40px;
+            width: 40px;
+        }
+
+
+        .icons {
+            color: red;
+        }
+
+        table > tbody > tr:nth-child(n + 9) {
+            display: none;
+        }
+
+        label {
+            color: black;
+            padding-left: 1px;
+            font-size: 14px;
+        }
+
+        /* The popup form - hidden by default */
+        .form-popup {
+            display: none;
+            position: fixed;
+            border-radius: 10px;
+            bottom: 0;
+            right: 15px;
+            border: 3px solid #f1f1f1;
+            z-index: 9;
+            margin-bottom: 30px;
+            margin-right: 20px;
+        }
+
+        /* Add styles to the form container */
+        .form-container {
+            max-width: 240px;
+            padding: 10px;
+            background-color: whitesmoke;
+        }
+
+        /* Full-width input fields */
+        .form-container input[type="text"],
+        .form-container input[type="password"] {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            border: none;
+            background: #f1f1f1;
+        }
+
+        /* When the inputs get focus, do something */
+        .form-container input[type="text"]:focus,
+        .form-container input[type="password"]:focus {
+            background-color: #ddd;
+            outline: none;
+        }
+
+        /* Set a style for the submit/login button */
+        .form-container .btn {
+            background-color: #04aa6d;
+            color: white;
+            padding: 12px 10px;
+            display: inline;
+            border: none;
+            cursor: pointer;
+            width: 30%;
+            margin: 10px 0 2px 29px;
+            border-radius: 20px;
+            opacity: 0.5;
+        }
+
+        /* Add a red background color to the cancel button */
+        .form-container .cancel {
+            background-color: red;
+        }
+
+        .form-container .yes {
+            background-color: green;
+        }
+
+        .form-container .no {
+            background-color: red;
+        }
+
+        /* Add some hover effects to buttons */
+        .form-container .btn:hover,
+        .open-button:hover {
+            opacity: 1;
+        }
+
+        .nav li a {
+            color: whitesmoke;
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        .nav li a:hover,
+        .nav li a:checked,
+        .nav li a:active {
+            background-color: transparent;
+        }
+
+        .navbar-header {
+            margin-top: 5px;
+        }
+
+        header {
+            height: 65px;
+        }
+
+        .navbar-brand span {
+            color: #ec3642;
+        }
+
+        .navbar-brand {
+            padding: 15px 0;
+            text-transform: uppercase;
+            font-size: 25px;
+            display: block;
+            color: #ffffff;
+            font-weight: 800;
+        }
+
+        .navbar-brand:focus,
+        .navbar-brand:hover {
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        .navbar-right li a {
+            color: #ffffff;
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        #myChart {
+        }
+
+        .nav-area.sticky_navigation {
+            background: #ffffff;
+            height: 55px;
+        }
+
+        .sticky_navigation {
+            -webkit-transition: all 0.4s ease-out;
+            -moz-transition: all 0.4s ease-out;
+            -ms-transition: all 0.4s ease-out;
+            -o-transition: all 0.4s ease-out;
+            transition: all 0.4s ease-out;
+            -webkit-box-shadow: 0px 3px 4.6px 0.3px rgba(0, 0, 0, 0.25);
+            -moz-box-shadow: 0px 3px 4.6px 0.3px rgba(0, 0, 0, 0.25);
+            box-shadow: 0px 3px 4.6px 0.3px rgba(0, 0, 0, 0.25);
+        }
+
+        .sticky_navigation .main-menu {
+            margin-top: 0;
+        }
+
+        .navbar-brand span {
+            color: #ec3642;
+        }
+
+        .sticky_navigation .navbar-brand,
+        .sticky_navigation .navbar-brand span {
+            color: #000;
+        }
+
+        .sticky_navigation .navbar-brand:hover,
+        .sticky_navigation .navbar-brand:focus,
+        .sticky_navigation .navbar-brand span {
+            color: #ec3642;
+        }
+
+        .sticky_navigation .nav li a {
+            color: #333333;
+            font-size: 13px;
+        }
+
+        .sticky_navigation .nav li.active a {
+            color: #ec3642;
+        }
+
+        .sticky_navigation .navbar-brand:hover {
+            color: #333333;
+        }
+
+    </style>
 </head>
 
 <body>
 <header class="nav-area navbar-fixed-top">
-  <div class="container">
-    <div class="row">
-      <!--main menu starts-->
-      <div class="col-md-12">
-        <div class="main-menu">
-          <div class="navbar navbar-cus">
-            <a th:href="@{/api/v1/dashboard/main}" class="navbar-brand">ZE<span>CRM</span></a>
+    <div class="container">
+        <div class="row">
+            <!--main menu starts-->
+            <div class="col-md-12">
+                <div class="main-menu">
+                    <div class="navbar navbar-cus">
+                        <a class="navbar-brand" th:href="@{/api/v1/dashboard/main}">ZE<span>CRM</span></a>
 
-            <div class="navbar-collapse collapse">
-              <nav>
-                <!--ADMIN NAVBAR-->
-                <div sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
-                  <ul class="nav navbar-nav navbar-right">
-                    <li><a th:href="@{/api/v1/dashboard}">Dashboard</a></li>
-                    <li><a class="smooth-menu" th:href="@{/api/v1/product/showAllProducts}">Product List</a></li>
-                    <li><a class="smooth-menu" th:href="@{/api/v1/complaint/showList}">Complaint List</a></li>
-                    <li><a class="smooth-menu" th:href="@{/api/v1/inquiry/showList}">Inquiry List</a></li>
-                    <li><a class="smooth-menu" th:href="@{/api/v1/product/addProductToUser}">Product Assignment</a></li>
-                    <li><a class="smooth-menu" th:href="@{/api/v1/product/addNewProduct}">Add Product</a></li>
-                    <li><a th:href="@{/showUserDetails(username=${#authentication.getName()})}"><i class="fa-solid fa-user fa-1x"></i></a></li>
-                    <li><a th:href="@{/logout}"><i class="fa-solid fa-arrow-right-from-bracket fa-1x"></i></a></li>
-                  </ul>
-                </div>
+                        <div class="navbar-collapse collapse">
+                            <nav>
+                                <!--ADMIN NAVBAR-->
+                                <div sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                                    <ul class="nav navbar-nav navbar-right">
+                                        <li><a th:href="@{/api/v1/dashboard}">Dashboard</a></li>
+                                        <li><a class="smooth-menu" th:href="@{/api/v1/product/showAllProducts}">Product
+                                            List</a></li>
+                                        <li><a class="smooth-menu" th:href="@{/api/v1/complaint/showList}">Complaint
+                                            List</a></li>
+                                        <li><a class="smooth-menu" th:href="@{/api/v1/inquiry/showList}">Inquiry
+                                            List</a></li>
+                                        <li><a class="smooth-menu" th:href="@{/api/v1/product/addProductToUser}">Product
+                                            Assignment</a></li>
+                                        <li><a class="smooth-menu" th:href="@{/api/v1/product/addNewProduct}">Add
+                                            Product</a></li>
+                                        <li><a th:href="@{/showUserDetails(username=${#authentication.getName()})}"><i
+                                                class="fa-solid fa-user fa-1x"></i></a></li>
+                                        <li><a th:href="@{/logout}"><i
+                                                class="fa-solid fa-arrow-right-from-bracket fa-1x"></i></a></li>
+                                    </ul>
+                                </div>
 
-                <!--USER NAVBAR-->
-                <div sec:authorize="hasAnyAuthority('ROLE_USER')">
-                  <ul class="nav navbar-nav navbar-right">
-                    <li><a th:href="@{/api/v1/dashboard/dashboardForUser(username=${#authentication.getName()})}">Dashboard</a></li>
-                    <li><a th:href="@{/api/v1/product/showAllProductsByUsername(username=${#authentication.getName()})}">Product List</a></li>
-                    <li><a th:href="@{/api/v1/inquiry/addNewProductInquiry(username=${#authentication.getName()})}">Inquiry</a></li>
-                    <li><a th:href="@{/api/v1/complaint/addNewComplaint(username=${#authentication.getName()})}">Raise Complaint</a></li>
-                    <li><a th:href="@{/api/v1/complaint/showComplaintsByUsername(username=${#authentication.getName()})}">Complaint List</a></li>
-                    <li><a th:href="@{/api/v1/inquiry/showAllProductInquiriesByName(username=${#authentication.getName()})}">Inquiry List</a></li>
-                    <li><a th:href="@{/api/v1/recommendation(username=${#authentication.getName()})}">Recommendation</a></li>
-                    <li><a th:href="@{/showUserDetails(username=${#authentication.getName()})}"><i class="fa-solid fa-user fa-1x"></i></a></li>
-                    <li><a th:href="@{/logout}"><i class="fa-solid fa-arrow-right-from-bracket fa-1x"></i></a></li>
-                  </ul>
+                                <!--USER NAVBAR-->
+                                <div sec:authorize="hasAnyAuthority('ROLE_USER')">
+                                    <ul class="nav navbar-nav navbar-right">
+                                        <li>
+                                            <a th:href="@{/api/v1/dashboard/dashboardForUser(username=${#authentication.getName()})}">Dashboard</a>
+                                        </li>
+                                        <li>
+                                            <a th:href="@{/api/v1/product/showAllProductsByUsername(username=${#authentication.getName()})}">Product
+                                                List</a></li>
+                                        <li>
+                                            <a th:href="@{/api/v1/inquiry/addNewProductInquiry(username=${#authentication.getName()})}">Inquiry</a>
+                                        </li>
+                                        <li>
+                                            <a th:href="@{/api/v1/complaint/addNewComplaint(username=${#authentication.getName()})}">Raise
+                                                Complaint</a></li>
+                                        <li>
+                                            <a th:href="@{/api/v1/complaint/showComplaintsByUsername(username=${#authentication.getName()})}">Complaint
+                                                List</a></li>
+                                        <li>
+                                            <a th:href="@{/api/v1/inquiry/showAllProductInquiriesByName(username=${#authentication.getName()})}">Inquiry
+                                                List</a></li>
+                                        <li>
+                                            <a th:href="@{/api/v1/recommendation(username=${#authentication.getName()})}">Recommendation</a>
+                                        </li>
+                                        <li><a th:href="@{/showUserDetails(username=${#authentication.getName()})}"><i
+                                                class="fa-solid fa-user fa-1x"></i></a></li>
+                                        <li><a th:href="@{/logout}"><i
+                                                class="fa-solid fa-arrow-right-from-bracket fa-1x"></i></a></li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
                 </div>
-              </nav>
             </div>
-          </div>
-        </div>
-      </div>
 
-      <!--main menu ends-->
+            <!--main menu ends-->
+        </div>
     </div>
-  </div>
 </header>
 <div class="container-3">
-  <div  class="content">
-    <div class="cards">
-      <div class="card">
-        <div  class="box">
+    <div class="content">
+        <div class="cards">
+            <div class="card">
+                <div class="box">
 
-          <h1  th:text="${productCount}">2194</h1>
-          <h3>Products</h3>
+                    <h1 th:text="${productCount}">2194</h1>
+                    <h3>Products</h3>
+                </div>
+                <div class="icon-case">
+                    <i class="fa-sharp fa-solid fa-tags fa-2x icons"></i>
+                </div>
+            </div>
+            <div class="card">
+                <div class="box">
+                    <h1 th:text="${userCount}">53</h1>
+                    <h3>Users</h3>
+                </div>
+                <div class="icon-case">
+                    <i class="fa-solid fa-users fa-3x icons"></i>
+                </div>
+            </div>
+            <div class="card">
+                <div class="box">
+                    <h1 th:text="${productCategoryCount}"></h1>
+                    <h3>Category</h3>
+                </div>
+                <div class="icon-case">
+                    <i class="fa-solid fa-bars fa-3x icons"></i>
+                </div>
+            </div>
+            <div class="card">
+                <div class="box">
+                    <h1 th:text="${totalPrice}">350000</h1>
+                    <h3>Income</h3>
+                </div>
+                <div class="icon-case">
+                    <i class="fa-solid fa-sack-dollar fa-3x icons"></i>
+                </div>
+            </div>
         </div>
-        <div class="icon-case">
-          <i class="fa-sharp fa-solid fa-tags fa-2x icons"></i>
+        <div class="content-2">
+            <div class="recent-payments">
+                <div class="title">
+                    <h2>Recent Inquiry</h2>
+                    <a class="btn" th:href="@{/api/v1/inquiry/showList}">View All</a>
+                </div>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Product Name</th>
+                        <th>Details</th>
+                        <th>E-Mail</th>
+                        <th>Result</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="productInquiryList:${productInquiryList}">
+                        <td th:text="${productInquiryList.id}">1</td>
+                        <td th:text="${productInquiryList.productName}">1</td>
+                        <td th:text="${productInquiryList.details}">1</td>
+                        <td th:text="${productInquiryList.mail}">1</td>
+                        <td th:text="${productInquiryList.productInquiryAnswer}">1</td>
+                    </tr>
+                    </tbody>
+
+                </table>
+            </div>
+            <div class="new-students">
+
+                <div>
+                    <canvas height="78%" id="myChart2" width="100%"></canvas>
+                </div>
+
+                <script th:inline="javascript">
+                    document.addEventListener("DOMContentLoaded", function () {
+                        const ctx = document.getElementById("myChart2");
+                        var categories = [[${totalPrices}]];
+
+
+                        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+
+                        new Chart(ctx, {
+
+                            type: "line",
+                            data: {
+                                labels: months,
+                                datasets: [
+                                    {
+                                        label: "Total price of products",
+                                        data: categories,
+                                        borderColor: 'rgb(75,192,192)',
+                                        tension: 0.1,
+                                        fill: false,
+                                        pointBackgroundColor: ["black"],
+                                    },
+                                ],
+                            },
+                            options: {},
+                        });
+                    });
+                </script>
+
+
+            </div>
         </div>
-      </div>
-      <div class="card">
-        <div class="box">
-          <h1 th:text="${userCount}">53</h1>
-          <h3>Users</h3>
-        </div>
-        <div class="icon-case">
-          <i class="fa-solid fa-users fa-3x icons"></i>
-        </div>
-      </div>
-      <div class="card">
-        <div class="box">
-          <h1 th:text="${productCategoryCount}"></h1>
-          <h3>Category</h3>
-        </div>
-        <div class="icon-case">
-          <i class="fa-solid fa-bars fa-3x icons"></i>
-        </div>
-      </div>
-      <div class="card">
-        <div class="box">
-          <h1 th:text="${totalPrice}">350000</h1>
-          <h3>Income</h3>
-        </div>
-        <div class="icon-case">
-          <i class="fa-solid fa-sack-dollar fa-3x icons"></i>
-        </div>
-      </div>
     </div>
-    <div class="content-2">
-      <div class="recent-payments">
-        <div class="title">
-          <h2>Recent Inquiry</h2>
-          <a th:href="@{/api/v1/inquiry/showList}" class="btn">View All</a>
-        </div>
-        <table>
-          <thead>
-          <tr>
-            <th>Id</th>
-            <th>Product Name</th>
-            <th>Details</th>
-            <th>E-Mail</th>
-            <th>Result</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr th:each="productInquiryList:${productInquiryList}">
-            <td  th:text="${productInquiryList.id}">1</td>
-            <td  th:text="${productInquiryList.productName}">1</td>
-            <td  th:text="${productInquiryList.details}">1</td>
-            <td  th:text="${productInquiryList.mail}">1</td>
-            <td  th:text="${productInquiryList.productInquiryAnswer}">1</td>
-          </tr>
-          </tbody>
+    <div class="form-popup" id="myForm">
+        <form class="form-container">
+            <label>Are you happy with your products?</label>
+            <form th:action="@{/dashboard/isUserHappyTrue(username=${#authentication.getName()})}" th:method="post">
+                <button class="btn yes" onclick="closeForm()" type="submit">Yes</button>
+            </form>
+            <form th:action="@{/dashboard/isUserHappyFalse(username=${#authentication.getName()})}" th:method="post">
+                <button class="btn no" onclick="closeForm()" type="submit">No</button>
+            </form>
+        </form>
+    </div>
 
-        </table>
-      </div>
-      <div class="new-students">
-
-        <div>
-          <canvas id="myChart2" width="100%" height="78%"></canvas>
-        </div>
-
-        <script th:inline="javascript">
-          document.addEventListener("DOMContentLoaded", function () {
-            const ctx = document.getElementById("myChart2");
-            var categories = [[${totalPrices}]];
-
-
-            const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-
+    <script
+            crossorigin="anonymous"
+            integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA=="
+            src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"
+    ></script>
+    <script th:inline="javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+            const ctx = document.getElementById("myChart");
+            var categories = [[${categoryList}]];
+            var labels = new Array();
+            var values = new Array();
+            for (let index = 0; index < categories.length / 2; index++) {
+                labels[index] = categories[2 * index];
+                values[index] = categories[2 * index + 1];
+            }
 
             new Chart(ctx, {
 
-              type: "line",
-              data: {
-                labels: months,
-                datasets: [
-                  {
-                    label: "Total price of products",
-                    data:  categories,
-                    borderColor:'rgb(75,192,192)',
-                    tension:0.1,
-                    fill:false,
-                    pointBackgroundColor:["black"],
-                  },
-                ],
-              },
-              options: {},
+                type: "bar",
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: "Category",
+                            data: values,
+                            borderWidth: 1,
+                            backgroundColor: [
+                                "rgb(42, 57, 144)",
+                                "rgb(156, 37, 77)",
+                                "rgb(210, 51, 105)",
+                                "rgb(107, 114, 142)",
+                                "rgb(240, 98, 146)",
+                                "rgb(0, 0, 92)",
+                                "rgb(192, 96, 161)",
+                                "rgb(240, 202, 163)",
+                                "rgb(64, 66, 88)",
+                                "rgb(86, 43, 8)",
+                                "rgb(100, 126, 104)",
+                                "rgb(216, 216, 216)",
+
+
+                            ],
+                        },
+                    ],
+                },
+                options: {},
             });
-          });
-        </script>
-
-
-      </div>
-    </div>
-  </div>
-  <div class="form-popup" id="myForm">
-    <form class="form-container">
-      <label>Are you happy with your products?</label>
-      <form th:action="@{/dashboard/isUserHappyTrue(username=${#authentication.getName()})}" th:method="post" >
-        <button type="submit" class="btn yes" onclick="closeForm()">Yes</button>
-      </form>
-      <form th:action="@{/dashboard/isUserHappyFalse(username=${#authentication.getName()})}" th:method="post">
-        <button type="submit" class="btn no" onclick="closeForm()">No</button>
-      </form>
-    </form>
-  </div>
-
-  <script
-          src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"
-          integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA=="
-          crossorigin="anonymous"
-  ></script>
-  <script th:inline="javascript">
-    document.addEventListener("DOMContentLoaded", function () {
-      const ctx = document.getElementById("myChart");
-      var categories = [[${categoryList}]];
-      var labels=new Array();
-      var values=new Array();
-      for (let index = 0; index < categories.length/2; index++) {
-        labels[index]=categories[2*index];
-        values[index]=categories[2*index+1];
-      }
-
-      new Chart(ctx, {
-
-        type: "bar",
-        data: {
-          labels: labels,
-          datasets: [
-            {
-              label: "Category",
-              data: values,
-              borderWidth: 1,
-              backgroundColor: [
-                "rgb(42, 57, 144)",
-                "rgb(156, 37, 77)",
-                "rgb(210, 51, 105)",
-                "rgb(107, 114, 142)",
-                "rgb(240, 98, 146)",
-                "rgb(0, 0, 92)",
-                "rgb(192, 96, 161)",
-                "rgb(240, 202, 163)",
-                "rgb(64, 66, 88)",
-                "rgb(86, 43, 8)",
-                "rgb(100, 126, 104)",
-                "rgb(216, 216, 216)",
-
-
-              ],
-            },
-          ],
-        },
-        options: {},
-      });
-    });
-  </script>
+        });
+    </script>
 
 </div>
 <div class="container-2">
-  <div  class="content">
-    <div class="content-2">
-      <div class="recent-payments">
-        <div class="title">
-          <h2>Recent Complaint</h2>
-          <a th:href="@{/api/v1/complaint/showList}" class="btn">View All</a>
-        </div>
-        <table >
-          <thead>
-          <tr>
-            <th>Id</th>
-            <th>Complaint Subject</th>
-            <th>Product Name</th>
-            <th>Details</th>
-            <th>Answer</th>
+    <div class="content">
+        <div class="content-2">
+            <div class="recent-payments">
+                <div class="title">
+                    <h2>Recent Complaint</h2>
+                    <a class="btn" th:href="@{/api/v1/complaint/showList}">View All</a>
+                </div>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Complaint Subject</th>
+                        <th>Product Name</th>
+                        <th>Details</th>
+                        <th>Answer</th>
 
-          </tr>
-          </thead>
-          <tbody>
-          <tr th:each="complaintList:${complaintList}">
-            <td th:text="${complaintList.id}"/>
-            <td th:text="${complaintList.complaintSubject}"/>
-            <td th:text="${complaintList.productName}"/>
-            <td th:text="${complaintList.details}"/>
-            <td th:text="${complaintList.answer}"/>
-          </tr>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="complaintList:${complaintList}">
+                        <td th:text="${complaintList.id}"/>
+                        <td th:text="${complaintList.complaintSubject}"/>
+                        <td th:text="${complaintList.productName}"/>
+                        <td th:text="${complaintList.details}"/>
+                        <td th:text="${complaintList.answer}"/>
+                    </tr>
 
-          </tbody>
-        </table>
-      </div>
-      <div class="chart">
-        <div>
-          <canvas id="myChart" width="100%" height="80%"></canvas>
+                    </tbody>
+                </table>
+            </div>
+            <div class="chart">
+                <div>
+                    <canvas height="80%" id="myChart" width="100%"></canvas>
+                </div>
+            </div>
+            <div class="new-students">
+                <div class="title">
+                    <h2>New Users</h2>
+                    <a class="btn" href="#">View All</a>
+                </div>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Mail</th>
+                        <th>Username</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="userList:${userList}">
+                        <td th:text="${userList.id}">1</td>
+                        <td th:text="${userList.userName}">John Steve Doe</td>
+                        <td th:text="${userList.email}">45</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-      </div>
-      <div class="new-students">
-        <div class="title">
-          <h2>New Users</h2>
-          <a href="#" class="btn">View All</a>
-        </div>
-        <table>
-          <thead>
-          <tr>
-            <th>Id</th>
-            <th>Mail</th>
-            <th>Username</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr  th:each="userList:${userList}">
-            <td th:text="${userList.id}">1</td>
-            <td th:text="${userList.userName}">John Steve Doe</td>
-            <td th:text="${userList.email}">45</td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
     </div>
-  </div>
 
-  <script
-          src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"
-          integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA=="
-          crossorigin="anonymous"
-  ></script>
-  <script th:inline="javascript">
-    document.addEventListener("DOMContentLoaded", function () {
-      const ctx = document.getElementById("myChart");
-      var categories = [[${categoryList}]];
-      var labels=new Array();
-      var values=new Array();
-      for (let index = 0; index < categories.length/2; index++) {
-        labels[index]=categories[2*index];
-        values[index]=categories[2*index+1];
-      }
+    <script
+            crossorigin="anonymous"
+            integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA=="
+            src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"
+    ></script>
+    <script th:inline="javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+            const ctx = document.getElementById("myChart");
+            var categories = [[${categoryList}]];
+            var labels = new Array();
+            var values = new Array();
+            for (let index = 0; index < categories.length / 2; index++) {
+                labels[index] = categories[2 * index];
+                values[index] = categories[2 * index + 1];
+            }
 
-      new Chart(ctx, {
+            new Chart(ctx, {
 
-        type: "bar",
-        data: {
-          labels: labels,
-          datasets: [
-            {
-              label: "Category",
-              data: values,
-              borderWidth: 1,
-              backgroundColor: [
-                "rgb(42, 57, 144)",
-                "rgb(156, 37, 77)",
-                "rgb(210, 51, 105)",
-                "rgb(107, 114, 142)",
-                "rgb(240, 98, 146)",
-                "rgb(0, 0, 92)",
-                "rgb(192, 96, 161)",
-                "rgb(240, 202, 163)",
-                "rgb(64, 66, 88)",
-                "rgb(86, 43, 8)",
-                "rgb(100, 126, 104)",
-                "rgb(216, 216, 216)",
-              ],
-            },
-          ],
-        },
-        options: {},
-      });
-    });
-  </script>
+                type: "bar",
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: "Category",
+                            data: values,
+                            borderWidth: 1,
+                            backgroundColor: [
+                                "rgb(42, 57, 144)",
+                                "rgb(156, 37, 77)",
+                                "rgb(210, 51, 105)",
+                                "rgb(107, 114, 142)",
+                                "rgb(240, 98, 146)",
+                                "rgb(0, 0, 92)",
+                                "rgb(192, 96, 161)",
+                                "rgb(240, 202, 163)",
+                                "rgb(64, 66, 88)",
+                                "rgb(86, 43, 8)",
+                                "rgb(100, 126, 104)",
+                                "rgb(216, 216, 216)",
+                            ],
+                        },
+                    ],
+                },
+                options: {},
+            });
+        });
+    </script>
 
 </div>
 <!-- JQuery-->
