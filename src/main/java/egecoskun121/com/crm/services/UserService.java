@@ -38,6 +38,7 @@ public class UserService {
         User user = userMapperImpl.toUser(userDTO);
         user.setRole(Role.ROLE_USER);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+
         return userRepository.save(user);
     }
 
