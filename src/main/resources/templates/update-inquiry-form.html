@@ -238,8 +238,10 @@
     <form sec:authorize="hasAnyAuthority('ROLE_ADMIN')" th:action="@{/api/v1/inquiry/updateInquiry/}+${productInquiry.id}" th:object="${productInquiry}"
           method="put" id="register" class="input-group">
 
+        <textarea th:field="*{answer}" class="input-field" placeholder="Answer" required rows="3"
+        ></textarea>
 
-      <textarea th:field="*{details}" class="input-field" placeholder=" Details" required rows="5"
+      <textarea th:field="*{details}" class="input-field" placeholder=" Details" required rows="3"
       ></textarea>
       <input type="email" th:field="*{mail}" class="input-field" placeholder=" Email" required
       />

@@ -44,6 +44,8 @@ public class ProductInquiryService {
     public ProductInquiry updateProductInquiryById(Long productInquiryId,ProductInquiryDTO productInquiryDTO){
         ProductInquiry productInquiry = productInquiryRepository.findById(productInquiryId).orElseThrow(NotFoundException::new);
 
+        productInquiry.setProductInquiryAnswer(ProductInquiryAnswer.SOLVED);
+        productInquiry.setAnswer(productInquiryDTO.getAnswer());
         productInquiry.setDetails(productInquiryDTO.getDetails());
         productInquiry.setMail(productInquiryDTO.getMail());
 
