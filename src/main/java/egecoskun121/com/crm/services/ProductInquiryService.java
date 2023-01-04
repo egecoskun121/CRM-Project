@@ -10,8 +10,11 @@ import egecoskun121.com.crm.model.mapper.ProductInquiryMapper;
 import egecoskun121.com.crm.model.mapper.ProductMapper;
 import egecoskun121.com.crm.repositories.ProductInquiryRepository;
 import egecoskun121.com.crm.repositories.ProductRepository;
+import egecoskun121.com.crm.repositories.UserRepository;
 import lombok.extern.slf4j.Slf4j;
+
 import java.util.*;
+
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -21,18 +24,22 @@ public class ProductInquiryService {
     private final ProductInquiryRepository productInquiryRepository;
 
     private final UserService userService;
+
+    private final UserRepository userRepository;
     private final ProductInquiryMapper productInquiryMapper;
 
-    public ProductInquiryService(ProductInquiryRepository productInquiryRepository, UserService userService, ProductInquiryMapper productInquiryMapper) {
+    public ProductInquiryService(ProductInquiryRepository productInquiryRepository, UserService userService, UserRepository userRepository, ProductInquiryMapper productInquiryMapper) {
         this.productInquiryRepository = productInquiryRepository;
         this.userService = userService;
+        this.userRepository = userRepository;
         this.productInquiryMapper = productInquiryMapper;
     }
 
-    public ProductInquiry getById(Long id){
+    public ProductInquiry getById(Long id) {
         return productInquiryRepository.findById(id).orElseThrow(NotFoundException::new);
     }
-    public ProductInquiry saveNewProductInquiry(ProductInquiryDTO productInquiryDTO,String username){
+
+    public ProductInquiry saveNewProductInquiry(ProductInquiryDTO productInquiryDTO, String username) {
         productInquiryDTO.setProductInquiryAnswer(ProductInquiryAnswer.WAITING);
         User user = userService.getUserByUsername(username);
         ProductInquiry productInquiry = productInquiryMapper.toProductInquiry(productInquiryDTO);
@@ -41,7 +48,8 @@ public class ProductInquiryService {
 
         return productInquiryRepository.save(productInquiry);
     }
-    public ProductInquiry updateProductInquiryById(Long productInquiryId,ProductInquiryDTO productInquiryDTO){
+
+    public ProductInquiry updateProductInquiryById(Long productInquiryId, ProductInquiryDTO productInquiryDTO) {
         ProductInquiry productInquiry = productInquiryRepository.findById(productInquiryId).orElseThrow(NotFoundException::new);
 
         productInquiry.setProductInquiryAnswer(ProductInquiryAnswer.SOLVED);
@@ -52,7 +60,7 @@ public class ProductInquiryService {
         return productInquiryRepository.save(productInquiry);
     }
 
-    public ProductInquiry updateProductInquiryByIdUser(Long productInquiryId,ProductInquiryDTO productInquiryDTO){
+    public ProductInquiry updateProductInquiryByIdUser(Long productInquiryId, ProductInquiryDTO productInquiryDTO) {
         ProductInquiry productInquiry = productInquiryRepository.findById(productInquiryId).orElseThrow(NotFoundException::new);
 
         productInquiry.setProductInquiryAnswer(ProductInquiryAnswer.WAITING);
@@ -63,19 +71,22 @@ public class ProductInquiryService {
         return productInquiryRepository.save(productInquiry);
     }
 
-    public List<ProductInquiry> getAllProductInquiriesByUsername(String username){
-        List<ProductInquiry> list =  productInquiryRepository.findAllProductsInquiriesByName(username);;
+    public List<ProductInquiry> getAllProductInquiriesByUsername(String username) {
+        List<ProductInquiry> list = productInquiryRepository.findAllProductsInquiriesByName(username);
+        ;
         return list;
     }
 
-    public List<ProductInquiry> getAllProductInquiries(){
+    public List<ProductInquiry> getAllProductInquiries() {
         return productInquiryRepository.findAll();
     }
-    public void deleteProductInquiryById(Long id){
+
+
+    public void deleteProductInquiryById(Long id) {
         productInquiryRepository.delete(productInquiryRepository.findById(id).orElseThrow(NotFoundException::new));
     }
 
-    public List<ProductInquiry> getAllProductInquiriesOrderedById(){
+    public List<ProductInquiry> getAllProductInquiriesOrderedById() {
         return productInquiryRepository.findAllProductInquiriesOrderedById();
     }
 

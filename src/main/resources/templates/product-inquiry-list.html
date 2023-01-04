@@ -242,8 +242,9 @@
                 <thead>
                 <tr>
                     <th>Id</th>
+                    <th>Username</th>
                     <th>Details</th>
-                    <th>E-mail</th>
+                    <th>Product Name</th>
                     <th>Answer</th>
                     <th>Result</th>
                     <th>Action</th>
@@ -252,8 +253,9 @@
                 <tbody>
                 <tr th:each="productInquiry:${productInquiry}">
                     <td th:text="${productInquiry.id}"/>
+                    <td th:text="${productInquiry.user.userName}">
                     <td th:text="${productInquiry.details}"/>
-                    <td th:text="${productInquiry.mail}"/>
+                    <td th:text="${productInquiry.productName}"/>
                     <td th:text="${productInquiry.answer}"/>
                     <td th:text="${productInquiry.productInquiryAnswer}"/>
                     <td>
