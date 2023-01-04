@@ -89,7 +89,7 @@ public class UserController {
     public RedirectView submitChangedPassword(@PathVariable("username") String username, @ModelAttribute PasswordDTO passwordDTO) {
         userService.changePassword(username, passwordDTO.getOldPassword(), passwordDTO.getNewPassword());
         RedirectView redirectView = new RedirectView();
-        redirectView.setUrl("http://localhost:8093/api/v1/dashboard/dashboardForUser?username=" + username);
+        redirectView.setUrl("http://localhost:8093/api/v1/dashboard/main");
         return redirectView;
     }
 
