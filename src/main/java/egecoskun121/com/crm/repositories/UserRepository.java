@@ -20,6 +20,9 @@ public interface UserRepository extends JpaRepository<User,Long> {
     @Query(value = "SELECT EMAIL FROM USERS",nativeQuery = true)
     List<String> getAllEmails();
 
+    @Query(value = "SELECT USER_NAME FROM USERS",nativeQuery = true)
+    List<String> getAllUsernames();
+
 
 
 }

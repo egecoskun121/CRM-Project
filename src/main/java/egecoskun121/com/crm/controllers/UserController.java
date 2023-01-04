@@ -3,6 +3,7 @@ package egecoskun121.com.crm.controllers;
 import egecoskun121.com.crm.model.DTO.PasswordDTO;
 import egecoskun121.com.crm.model.DTO.UserDTO;
 import egecoskun121.com.crm.model.entity.User;
+import egecoskun121.com.crm.repositories.UserRepository;
 import egecoskun121.com.crm.services.UserService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -17,11 +18,12 @@ import org.springframework.web.servlet.view.RedirectView;
 public class UserController {
 
     private final UserService userService;
+    private final UserRepository userRepository;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, UserRepository userRepository) {
         this.userService = userService;
+        this.userRepository = userRepository;
     }
-
 
     @GetMapping("/login")
     public ModelAndView getLoginPage(){
@@ -39,9 +41,20 @@ public class UserController {
 
     @RequestMapping("/addUser")
     public RedirectView addUser(@ModelAttribute UserDTO userDTO){
-        userService.createUser(userDTO);
         RedirectView redirectView = new RedirectView();
-        redirectView.setUrl("http://localhost:8093/");
+        boolean canBeCreated=true;
+        for (String username: userRepository.getAllUsernames()) {
+            if(userDTO.getUserName().equals(username)){
+                canBeCreated=false;
+            }
+        }
+        if(canBeCreated){
+            userService.createUser(userDTO);
+            redirectView.setUrl("http://localhost:8093/");
+        }else{
+            redirectView.setUrl("http://localhost:8093/saveUser");
+        }
+
         return  redirectView;
     }
 
@@ -78,7 +91,7 @@ public class UserController {
     public RedirectView submitChangedPassword(@PathVariable("username") String username, @ModelAttribute PasswordDTO passwordDTO){
         userService.changePassword(username, passwordDTO.getOldPassword(), passwordDTO.getNewPassword());
         RedirectView redirectView = new RedirectView();
-        redirectView.setUrl("http://localhost:8093/dashboard/dashboardForUser?username="+username);
+        redirectView.setUrl("http://localhost:8093/api/v1/dashboard/dashboardForUser?username="+username);
         return redirectView;
     }
 
