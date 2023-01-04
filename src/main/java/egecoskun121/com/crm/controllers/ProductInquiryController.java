@@ -76,7 +76,7 @@ public class ProductInquiryController {
     @RequestMapping(path="/updateInquiryByUsername/{id}/{username}")
     public RedirectView updateInquiryByUsername(@PathVariable("id") Long id,@PathVariable("username") String username,@ModelAttribute ProductInquiryDTO productInquiryDTO){
 
-        productInquiryService.updateProductInquiryById(id, productInquiryDTO);
+        productInquiryService.updateProductInquiryByIdUser(id, productInquiryDTO);
         RedirectView redirectView = new RedirectView();
         redirectView.setUrl("http://localhost:8093/api/v1/inquiry/showAllProductInquiriesByName?username="+username);
 

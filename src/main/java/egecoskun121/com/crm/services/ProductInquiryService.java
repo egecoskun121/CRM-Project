@@ -52,6 +52,17 @@ public class ProductInquiryService {
         return productInquiryRepository.save(productInquiry);
     }
 
+    public ProductInquiry updateProductInquiryByIdUser(Long productInquiryId,ProductInquiryDTO productInquiryDTO){
+        ProductInquiry productInquiry = productInquiryRepository.findById(productInquiryId).orElseThrow(NotFoundException::new);
+
+        productInquiry.setProductInquiryAnswer(ProductInquiryAnswer.WAITING);
+        productInquiry.setAnswer(productInquiryDTO.getAnswer());
+        productInquiry.setDetails(productInquiryDTO.getDetails());
+        productInquiry.setMail(productInquiryDTO.getMail());
+
+        return productInquiryRepository.save(productInquiry);
+    }
+
     public List<ProductInquiry> getAllProductInquiriesByUsername(String username){
         List<ProductInquiry> list =  productInquiryRepository.findAllProductsInquiriesByName(username);;
         return list;
