@@ -3,8 +3,9 @@ package egecoskun121.com.crm.controllers;
 import egecoskun121.com.crm.model.DTO.ProductDTO;
 import egecoskun121.com.crm.model.DTO.RegisterObject;
 import egecoskun121.com.crm.model.entity.Product;
-import egecoskun121.com.crm.model.entity.ProductCategory;
+import egecoskun121.com.crm.model.entity.ProductInquiry;
 import egecoskun121.com.crm.model.entity.User;
+import egecoskun121.com.crm.services.ProductInquiryService;
 import egecoskun121.com.crm.services.ProductService;
 import egecoskun121.com.crm.services.UserService;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -22,10 +23,13 @@ public class ProductController {
     private final ProductService productService;
     private final UserService userService;
 
+    private final ProductInquiryService productInquiryService;
 
-    public ProductController(ProductService productService, UserService userService) {
+
+    public ProductController(ProductService productService, UserService userService, ProductInquiryService productInquiryService) {
         this.productService = productService;
         this.userService = userService;
+        this.productInquiryService = productInquiryService;
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -146,5 +150,19 @@ public class ProductController {
         RedirectView redirectView = new RedirectView();
         redirectView.setUrl("http://localhost:8093/api/v1/product/showAllProducts");
         return redirectView;
+    }
+
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @RequestMapping(path = "/addProductToUserWithInquiry/{id}/{username}")
+    public ModelAndView addProductToUserWithInquiry(@PathVariable("id") Long id,@PathVariable("username") String username){
+        ModelAndView mav = new ModelAndView("add-product-to-user-with-inquiry");
+        RegisterObject registerObject = new RegisterObject();
+        User userList = userService.getUserByUsername(username);
+        ProductInquiry productInquiry = productInquiryService.getById(id);
+        mav.addObject("dummy", registerObject);
+        mav.addObject("userList",userList);
+        mav.addObject("productList",productInquiry);
+        return mav;
     }
 }

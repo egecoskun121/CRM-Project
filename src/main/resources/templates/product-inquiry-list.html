@@ -260,6 +260,7 @@
                     <td th:text="${productInquiry.productInquiryAnswer}"/>
                     <td>
                         <a class="btn btn-info" th:href="@{/api/v1/inquiry/showUpdateForm(id=${productInquiry.id})}">Update</a>
+                        <a class="btn btn-info" th:href="@{/api/v1/product/addProductToUserWithInquiry/{id}/{username}(id=${productInquiry.id},username=${productInquiry.user.userName})}">Assign</a>
                         <a class="btn btn-info" th:href="@{/api/v1/inquiry/deleteInquiry(id=${productInquiry.id})}">Delete</a>
                     </td>
 
