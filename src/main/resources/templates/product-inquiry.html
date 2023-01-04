@@ -1,257 +1,296 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8"/>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <script src="https://kit.fontawesome.com/8345e13c5c.js"></script>
-  <title>Login and Refistration Form</title>
-  <link rel="stylesheet" href="../../../../../htmld/productInquiry/style.css" />
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jq-3.6.0/dt-1.12.1/datatables.min.css"/>
+    <title>Login and Refistration Form</title>
+    <link href="../../../../../htmld/productInquiry/style.css" rel="stylesheet"/>
+    <link href="https://cdn.datatables.net/v/bs4/jq-3.6.0/dt-1.12.1/datatables.min.css" rel="stylesheet"
+          type="text/css"/>
 
-  <link
-          href="https://fonts.googleapis.com/css?family=Poppins:400,400i,600,700,800"
-          rel="stylesheet"
-  />
+    <link
+            href="https://fonts.googleapis.com/css?family=Poppins:400,400i,600,700,800"
+            rel="stylesheet"
+    />
 
-  <!--Bootstrap css-->
-  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+    <!--Bootstrap css-->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
 
-  <!--Font Awesome css-->
-  <link rel="stylesheet" th:href="@{/css/fontAwesome.min.css}" />
+    <!--Font Awesome css-->
+    <link rel="stylesheet" th:href="@{/css/fontAwesome.min.css}"/>
 
-  <!--Normalizer css-->
-  <link rel="stylesheet" th:href="@{/css/jquery.animatedheadline.css}" />
+    <!--Normalizer css-->
+    <link rel="stylesheet" th:href="@{/css/jquery.animatedheadline.css}"/>
 
-  <!--Normalizer css-->
-  <link rel="stylesheet" th:href="@{/css/jquery.animatedheadline.css}" />
-<style>
-  * {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-  }
-  .hero {
-    z-index: -2;
-    height: 100%;
-    width: 100%;
-    background-color: #282A3A;
-    background-position: center;
-    background-size: cover;
-    position: absolute;
-  }
+    <!--Normalizer css-->
+    <link rel="stylesheet" th:href="@{/css/jquery.animatedheadline.css}"/>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
 
-  .form-box {
-    z-index: 0;
-    width: 380px;
-    height: 480px;
-    position: relative;
-    margin: 100px auto 1% auto;
-    background-color: #ffff;
-    padding: 5px;
-    overflow: hidden;
-  }
-  .button-box {
-    width: 220px;
-    margin: 35px auto;
-    position: relative;
-    box-shadow: 0 0 20px 9px #ff61241f;
-    border-radius: 30px;
-  }
-  .toggle-btn {
-    padding: 10px 30px;
-    cursor: pointer;
-    background: transparent;
-    border: 0;
-    outline: none;
-    position: relative;
-  }
-  #btn {
-    top: 0;
-    left: 0;
-    position: absolute;
-    width: 110px;
-    height: 100%;
-    background: linear-gradient(to right, #ff105f, #ffad06);
-    border-radius: 30px;
-    transition: 0.5s;
-  }
-  .input-group {
-    top: 120px;
-    position: absolute;
-    width: 280px;
-    transition: 0.5s;
-  }
-  .input-field {
-    width: 100%;
-    padding: 10px 0;
-    margin: 5px 0;
-    border-left: 0;
-    border-top: 0;
-    border-right: 0;
-    border-bottom: 1px solid #999;
-    outline: none;
-    background: transparent;
-  }
-  .submit-btn {
-    width: 85%;
-    padding: 10px 30px;
-    cursor: pointer;
-    display: block;
-    margin: 30px auto;
-    background: linear-gradient(to right, #ff105f, #ffad06);
-    border: 0;
-    outline: none;
-    border-radius: 30px;
-  }
-  .check-box {
-    margin: 30px 10px 30px 0;
-  }
-  #register {
-    left: 50px;
-  }
-  .title {
-    width: 85%;
-    padding: 25px 55px;
-    display: block;
-    margin: auto;
-    color: #777;
-  }
+        .hero {
+            z-index: -2;
+            height: 100%;
+            width: 100%;
+            background-color: #282A3A;
+            background-position: center;
+            background-size: cover;
+            position: absolute;
+        }
 
-  .input-opt-select {
-    color: #777;
-    width: 100%;
-    padding: 10px 0px;
-    margin: 5px 0;
-    border-left: 0;
-    border-top: 0;
-    border-right: 0;
-    border-bottom: 1px solid #999;
-    outline: none;
-    background: transparent;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease 0s;
-  }
+        .form-box {
+            z-index: 0;
+            width: 380px;
+            height: 480px;
+            position: relative;
+            margin: 150px auto 1% auto;
+            background-color: #ffff;
+            padding: 5px;
+            overflow: hidden;
+        }
 
-      .nav li a{
-      color: whitesmoke;
-      text-transform: uppercase;
-      font-weight: 600;
-      font-size: 13px;
-    }
-  .nav li a:hover,
-  .nav li a:checked,
-  .nav li a:active{
-    background-color: transparent;
-  }
+        .button-box {
+            width: 220px;
+            margin: 35px auto;
+            position: relative;
+            box-shadow: 0 0 20px 9px #ff61241f;
+            border-radius: 30px;
+        }
 
-  .navbar-header{
-    margin-top: 5px;
-  }
+        .toggle-btn {
+            padding: 10px 30px;
+            cursor: pointer;
+            background: transparent;
+            border: 0;
+            outline: none;
+            position: relative;
+        }
 
-  header{
-    height: 55px;
-  }
+        #btn {
+            top: 0;
+            left: 0;
+            position: absolute;
+            width: 110px;
+            height: 100%;
+            background: linear-gradient(to right, #ff105f, #ffad06);
+            border-radius: 30px;
+            transition: 0.5s;
+        }
 
-  .navbar-brand {
-    padding: 15px 0;
-    text-transform: uppercase;
-    font-size: 25px;
-    display: block;
-    color: #ffffff;
-    font-weight: 800;
-  }
+        .input-group {
+            top: 120px;
+            position: absolute;
+            width: 280px;
+            transition: 0.5s;
+        }
 
-  .navbar-brand:focus,
-  .navbar-brand:hover {
-    text-decoration: none;
-    color: #ffffff;
-  }
-  .navbar-brand span {
-    color: #ec3642;
-  }
+        .input-field {
+            width: 100%;
+            padding: 10px 0;
+            margin: 5px 0;
+            border-left: 0;
+            border-top: 0;
+            border-right: 0;
+            border-bottom: 1px solid #999;
+            outline: none;
+            background: transparent;
+        }
 
-</style>
+        .submit-btn {
+            width: 85%;
+            padding: 10px 30px;
+            cursor: pointer;
+            display: block;
+            margin: 30px auto;
+            background: linear-gradient(to right, #ff105f, #ffad06);
+            border: 0;
+            outline: none;
+            border-radius: 30px;
+        }
+
+        .check-box {
+            margin: 30px 10px 30px 0;
+        }
+
+        #register {
+            left: 50px;
+        }
+
+        .title {
+            width: 85%;
+            padding: 25px 55px;
+            display: block;
+            margin: auto;
+            color: #777;
+        }
+
+        .input-opt-select {
+            color: #777;
+            width: 100%;
+            padding: 10px 0px;
+            margin: 5px 0;
+            border-left: 0;
+            border-top: 0;
+            border-right: 0;
+            border-bottom: 1px solid #999;
+            outline: none;
+            background: transparent;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease 0s;
+        }
+
+        .nav li a {
+            color: whitesmoke;
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        .nav li a:hover,
+        .nav li a:checked,
+        .nav li a:active {
+            background-color: transparent;
+        }
+
+        .navbar-header {
+            margin-top: 5px;
+        }
+
+        header {
+            height: 55px;
+        }
+
+        .navbar-brand {
+            padding: 15px 0;
+            text-transform: uppercase;
+            font-size: 25px;
+            display: block;
+            color: #ffffff;
+            font-weight: 800;
+        }
+
+        .navbar-brand:focus,
+        .navbar-brand:hover {
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        .navbar-brand span {
+            color: #ec3642;
+        }
+
+    </style>
 </head>
 <body>
 <div class="hero">
-  <header class="nav-area navbar-fixed-top">
-    <div class="container">
-      <div class="row">
-        <!--main menu starts-->
-        <div class="col-md-12">
-          <div class="main-menu">
-            <div class="navbar navbar-cus">
-              <a th:href="@{/api/v1/dashboard/main}" class="navbar-brand">ZE<span>CRM</span></a>
+    <header class="nav-area navbar-fixed-top">
+        <div class="container">
+            <div class="row">
+                <!--main menu starts-->
+                <div class="col-md-12">
+                    <div class="main-menu">
+                        <div class="navbar navbar-cus">
+                            <a class="navbar-brand" th:href="@{/api/v1/dashboard/main}">ZE<span>CRM</span></a>
 
-              <div class="navbar-collapse collapse">
-                  <nav>
-                      <!--ADMIN NAVBAR-->
-                      <div sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
-                          <ul class="nav navbar-nav navbar-right">
-                              <li><a th:href="@{/api/v1/dashboard}">Dashboard</a></li>
-                              <li><a class="smooth-menu" th:href="@{/api/v1/product/showAllProducts}">Product List</a></li>
-                              <li><a class="smooth-menu" th:href="@{/api/v1/complaint/showList}">Complaint List</a></li>
-                              <li><a class="smooth-menu" th:href="@{/api/v1/inquiry/showList}">Inquiry List</a></li>
-                              <li><a class="smooth-menu" th:href="@{/api/v1/product/addProductToUser}">Product Assignment</a></li>
-                              <li><a class="smooth-menu" th:href="@{/api/v1/product/addNewProduct}">Add Product</a></li>
-                              <li><a th:href="@{/showUserDetails(username=${#authentication.getName()})}"><i class="fa-solid fa-user fa-1x"></i></a></li>
-                              <li><a th:href="@{/logout}"><i class="fa-solid fa-arrow-right-from-bracket fa-1x"></i></a></li>
-                          </ul>
-                      </div>
+                            <div class="navbar-collapse collapse">
+                                <nav>
+                                    <!--ADMIN NAVBAR-->
+                                    <div sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                                        <ul class="nav navbar-nav navbar-right">
+                                            <li><a th:href="@{/api/v1/dashboard}">Dashboard</a></li>
+                                            <li><a class="smooth-menu" th:href="@{/api/v1/product/showAllProducts}">Product
+                                                List</a></li>
+                                            <li><a class="smooth-menu" th:href="@{/api/v1/complaint/showList}">Complaint
+                                                List</a></li>
+                                            <li><a class="smooth-menu" th:href="@{/api/v1/inquiry/showList}">Inquiry
+                                                List</a></li>
+                                            <li><a class="smooth-menu" th:href="@{/api/v1/product/addProductToUser}">Product
+                                                Assignment</a></li>
+                                            <li><a class="smooth-menu" th:href="@{/api/v1/product/addNewProduct}">Add
+                                                Product</a></li>
+                                            <li><a th:href="@{/showUserDetails(username=${#authentication.getName()})}"><i
+                                                    class="fa-solid fa-user fa-1x"></i></a></li>
+                                            <li><a th:href="@{/logout}"><i
+                                                    class="fa-solid fa-arrow-right-from-bracket fa-1x"></i></a></li>
+                                        </ul>
+                                    </div>
 
-                      <!--USER NAVBAR-->
-                      <div sec:authorize="hasAnyAuthority('ROLE_USER')">
-                          <ul class="nav navbar-nav navbar-right">
-                              <li><a th:href="@{/api/v1/dashboard/dashboardForUser(username=${#authentication.getName()})}">Dashboard</a></li>
-                              <li><a th:href="@{/api/v1/product/showAllProductsByUsername(username=${#authentication.getName()})}">Product List</a></li>
-                              <li><a th:href="@{/api/v1/inquiry/addNewProductInquiry(username=${#authentication.getName()})}">Inquiry</a></li>
-                              <li><a th:href="@{/api/v1/complaint/addNewComplaint(username=${#authentication.getName()})}">Raise Complaint</a></li>
-                              <li><a th:href="@{/api/v1/complaint/showComplaintsByUsername(username=${#authentication.getName()})}">Complaint List</a></li>
-                              <li><a th:href="@{/api/v1/inquiry/showAllProductInquiriesByName(username=${#authentication.getName()})}">Inquiry List</a></li>
-                              <li><a th:href="@{/api/v1/recommendation(username=${#authentication.getName()})}">Recommendation</a></li>
-                              <li><a th:href="@{/showUserDetails(username=${#authentication.getName()})}"><i class="fa-solid fa-user fa-1x"></i></a></li>
-                              <li><a th:href="@{/logout}"><i class="fa-solid fa-arrow-right-from-bracket fa-1x"></i></a></li>
-                          </ul>
-                      </div>
-                  </nav>
-              </div>
+                                    <!--USER NAVBAR-->
+                                    <div sec:authorize="hasAnyAuthority('ROLE_USER')">
+                                        <ul class="nav navbar-nav navbar-right">
+                                            <li>
+                                                <a th:href="@{/api/v1/dashboard/dashboardForUser(username=${#authentication.getName()})}">Dashboard</a>
+                                            </li>
+                                            <li>
+                                                <a th:href="@{/api/v1/product/showAllProductsByUsername(username=${#authentication.getName()})}">Product
+                                                    List</a></li>
+                                            <li>
+                                                <a th:href="@{/api/v1/inquiry/addNewProductInquiry(username=${#authentication.getName()})}">Inquiry</a>
+                                            </li>
+                                            <li>
+                                                <a th:href="@{/api/v1/complaint/addNewComplaint(username=${#authentication.getName()})}">Raise
+                                                    Complaint</a></li>
+                                            <li>
+                                                <a th:href="@{/api/v1/complaint/showComplaintsByUsername(username=${#authentication.getName()})}">Complaint
+                                                    List</a></li>
+                                            <li>
+                                                <a th:href="@{/api/v1/inquiry/showAllProductInquiriesByName(username=${#authentication.getName()})}">Inquiry
+                                                    List</a></li>
+                                            <li>
+                                                <a th:href="@{/api/v1/recommendation(username=${#authentication.getName()})}">Recommendation</a>
+                                            </li>
+                                            <li><a th:href="@{/showUserDetails(username=${#authentication.getName()})}"><i
+                                                    class="fa-solid fa-user fa-1x"></i></a></li>
+                                            <li><a th:href="@{/logout}"><i
+                                                    class="fa-solid fa-arrow-right-from-bracket fa-1x"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--main menu ends-->
             </div>
-          </div>
         </div>
+    </header>
+    <div class="form-box">
+        <div class="title">
+            <h2>Product Inquiry</h2>
+        </div>
+        <form class="input-group"
+              id="register" th:action="@{/api/v1/inquiry/saveNewProductInquiry/{username}(username=${#authentication.getName()})}" th:object="${productInquiry}">
 
-        <!--main menu ends-->
-      </div>
+            <select class="input-opt-select" th:field="*{productName}">
+                <option id="opt2" th:each="a,iterStatus : ${productList}" th:text="${a.productName}"
+                        th:value="${a.productName}">Choose a Product
+                </option>
+            </select>
+            <textarea
+                    class="input-field"
+                    placeholder=" Details"
+                    required
+                    rows="5"
+                    th:field="*{details}"
+            ></textarea>
+            <input
+                    class="input-field"
+                    placeholder=" Email"
+                    required
+                    th:field="*{mail}"
+                    type="email"
+            />
+            <button class="submit-btn" type="submit">Submit</button>
+        </form>
     </div>
-  </header>
-  <div class="form-box">
-    <div class="title">
-      <h2>Product Inquiry</h2>
-    </div>
-    <form  th:action="@{/api/v1/inquiry/saveNewProductInquiry/{username}(username=${#authentication.getName()})}" th:object="${productInquiry}"  id="register" class="input-group">
-
-      <select th:field="*{productName}"  class="input-opt-select">
-        <option th:each="a,iterStatus : ${productList}" th:text="${a.productName}" th:value="${a.productName}" id="opt2">Choose a Product</option>
-      </select >
-      <textarea
-              class="input-field"
-              th:field="*{details}"
-              placeholder=" Details"
-              required
-              rows="5"
-      ></textarea>
-      <input
-              type="email"
-              th:field="*{mail}"
-              class="input-field"
-              placeholder=" Email"
-              required
-      />
-      <button type="submit" class="submit-btn">Submit</button>
-    </form>
-  </div>
 </div>
 </body>
 </html>
